@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sherif Ashraf | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header" id="home">
+      <nav class="nav container">
+        <a href="#home" class="logo">Sherif Ashraf</a>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero section container">
+        <p class="eyebrow">Creative Professional & Information Systems Student</p>
+        <h1>Hi, I'm Sherif Ashraf</h1>
+        <p class="subheadline" id="dynamic-role">
+          Director | Actor | Video Editor | Graphic Designer
+        </p>
+        <a href="#portfolio" class="btn">View My Work</a>
+      </section>
+
+      <section class="about section" id="about">
+        <div class="container">
+          <h2>About Me</h2>
+          <p>
+            I blend analytical thinking from Information Systems with cinematic
+            storytelling and visual design. From directing and acting to editing
+            and branding, I build impactful creative experiences supported by
+            technical structure and problem-solving.
+          </p>
+        </div>
+      </section>
+
+      <section class="portfolio section" id="portfolio">
+        <div class="container">
+          <h2>Portfolio</h2>
+          <div class="filters" role="group" aria-label="Portfolio categories">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="directing-acting">Directing & Acting</button>
+            <button class="filter-btn" data-filter="video-editing">Video Editing</button>
+            <button class="filter-btn" data-filter="graphic-design">Graphic Design</button>
+          </div>
+
+          <div class="portfolio-grid">
+            <article class="portfolio-item" data-category="directing-acting">
+              <h3>Short Film Direction</h3>
+              <p>A dramatic visual story focused on performance and atmosphere.</p>
+            </article>
+            <article class="portfolio-item" data-category="video-editing">
+              <h3>Commercial Edit Reel</h3>
+              <p>Fast-paced edits for social campaigns and branded content.</p>
+            </article>
+            <article class="portfolio-item" data-category="graphic-design">
+              <h3>Brand Identity Concept</h3>
+              <p>Logo, typography, and social media visual system.</p>
+            </article>
+            <article class="portfolio-item" data-category="directing-acting">
+              <h3>Performance Scene</h3>
+              <p>Character-driven acting scene with cinematic framing.</p>
+            </article>
+            <article class="portfolio-item" data-category="video-editing">
+              <h3>Music Video Edit</h3>
+              <p>Rhythm-driven cutting with color-focused storytelling.</p>
+            </article>
+            <article class="portfolio-item" data-category="graphic-design">
+              <h3>Poster Collection</h3>
+              <p>Minimal and high-contrast posters for film promotion.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact section" id="contact">
+        <div class="container">
+          <h2>Contact</h2>
+          <form class="contact-form" action="#" method="post">
+            <label>
+              Name
+              <input type="text" name="name" required />
+            </label>
+            <label>
+              Email
+              <input type="email" name="email" required />
+            </label>
+            <label>
+              Message
+              <textarea name="message" rows="5" required></textarea>
+            </label>
+            <button type="submit" class="btn">Send Message</button>
+          </form>
+
+          <div class="social-links" aria-label="Social media links">
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="LinkedIn">IN</a>
+            <a href="#" aria-label="YouTube">YT</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
