@@ -1,30 +1,45 @@
-const roleElement = document.getElementById("dynamic-role");
-const roles = ["Director", "Actor", "Video Editor", "Graphic Designer"];
-let roleIndex = 0;
+// Filter Portfolio Categories
+const filterBtns = document.querySelectorAll('.filter-btn');
+const portfolioItems = document.querySelectorAll('.portfolio-item');
 
-const getRotatedRoles = (index) =>
-  [...roles.slice(index), ...roles.slice(0, index)].join(" | ");
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelector('.filter-btn.active').classList.remove('active');
+    btn.classList.add('active');
+    const filter = btn.getAttribute('data-filter');
 
-if (roleElement) {
-  setInterval(() => {
-    roleIndex = (roleIndex + 1) % roles.length;
-    roleElement.textContent = getRotatedRoles(roleIndex);
-  }, 2200);
-}
-
-const filterButtons = document.querySelectorAll(".filter-btn");
-const portfolioItems = document.querySelectorAll(".portfolio-item");
-
-filterButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const category = button.dataset.filter;
-
-    filterButtons.forEach((btn) => btn.classList.remove("active"));
-    button.classList.add("active");
-
-    portfolioItems.forEach((item) => {
-      const matches = category === "all" || item.dataset.category === category;
-      item.style.display = matches ? "block" : "none";
+    portfolioItems.forEach(item => {
+      if (filter === 'all' || item.getAttribute('data-category') === filter) {
+        item.style.display = 'block';
+      } else {
+        item.style.display = 'none';
+      }
     });
   });
 });
+
+// Modal / Lightbox Image Popup Logic
+const modal = document.getElementById('imageModal');
+const modalImg = document.getElementById('modalImg');
+const closeModal = document.querySelector('.close-modal');
+
+document.querySelectorAll('.img-thumbnail-box img').forEach(img => {
+  img.addEventListener('click', () => {
+    modal.classList.add('active');
+    modalImg.src = img.src;
+  });
+});
+
+if (closeModal) {
+  closeModal.addEventListener('click', () => {
+    modal.classList.remove('active');
+  });
+}
+
+if (modal) {
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.classList.remove('active');
+    }
+  });
+}
