@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -29,7 +29,10 @@
         <p class="subheadline" id="dynamic-role">
           Director | Actor | Video Editor | Graphic Designer
         </p>
-        <a href="#portfolio" class="btn">View My Work</a>
+        <div class="hero-btns">
+          <a href="#portfolio" class="btn">View My Work</a>
+          <a href="cv.pdf" download class="btn btn-outline">Download CV</a>
+        </div>
       </section>
 
       <section class="about section" id="about">
@@ -52,6 +55,15 @@
           </div>
 
           <div class="portfolio-grid">
+            <!-- كارت فيديو حقيقي -->
+            <article class="portfolio-item" data-category="video-editing">
+              <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Showreel Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+              <h3>Cinematic Showreel</h3>
+              <p>A professional montage showcasing directing and editing skills.</p>
+            </article>
+
             <!-- Directing & Acting -->
             <article class="portfolio-item" data-category="directing-acting">
               <div class="img-thumbnail-box">
@@ -59,13 +71,6 @@
               </div>
               <h3>Short Film Direction 1</h3>
               <p>A dramatic visual story focused on performance and atmosphere.</p>
-            </article>
-            <article class="portfolio-item" data-category="directing-acting">
-              <div class="img-thumbnail-box">
-                <img src="work1.png" alt="Performance Scene" />
-              </div>
-              <h3>Performance Scene 2</h3>
-              <p>Character-driven acting scene with cinematic framing.</p>
             </article>
 
             <!-- Video Editing -->
@@ -76,13 +81,6 @@
               <h3>Commercial Edit Reel 1</h3>
               <p>Fast-paced edits for social campaigns and branded content.</p>
             </article>
-            <article class="portfolio-item" data-category="video-editing">
-              <div class="img-thumbnail-box">
-                <img src="work1.png" alt="Music Video" />
-              </div>
-              <h3>Music Video Edit 2</h3>
-              <p>Rhythm-driven cutting with color-focused storytelling.</p>
-            </article>
 
             <!-- Graphic Design -->
             <article class="portfolio-item" data-category="graphic-design">
@@ -92,13 +90,6 @@
               <h3>Brand Identity Concept 1</h3>
               <p>Logo, typography, and social media visual system.</p>
             </article>
-            <article class="portfolio-item" data-category="graphic-design">
-              <div class="img-thumbnail-box">
-                <img src="work1.png" alt="Poster Collection" />
-              </div>
-              <h3>Poster Collection 2</h3>
-              <p>Minimal and high-contrast posters for film promotion.</p>
-            </article>
           </div>
         </div>
       </section>
@@ -107,19 +98,18 @@
         <div class="container">
           <h2>Contact Me</h2>
           
-          <!-- خانة أرقام التواصل -->
           <div class="contact-info-box">
             <p><strong>Direct Email:</strong> <a href="mailto:ashreef988@gmail.com">ashreef988@gmail.com</a></p>
-            <p><strong>Phone / WhatsApp:</strong> <a href="tel:+201234567890">+20 123 456 7890</a></p>
+            <p><strong>Phone / WhatsApp:</strong> <a href="tel:+201018585432">01018585432</a></p>
           </div>
 
-          <form class="contact-form" action="mailto:ashreef988@gmail.com" method="post" enctype="text/plain">
+          <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
             <label>
-              Name
+              Your Name
               <input type="text" name="name" required />
             </label>
             <label>
-              Email
+              Your Email
               <input type="email" name="email" required />
             </label>
             <label>
@@ -129,45 +119,38 @@
             <button type="submit" class="btn">Send Message</button>
           </form>
 
-          <!-- خزن السوشيال ميديا الكبيرة -->
           <div class="social-cards">
-            <a href="https://instagram.com/YOUR_USERNAME" target="_blank" class="social-card instagram">Instagram</a>
-            <a href="https://facebook.com/YOUR_USERNAME" target="_blank" class="social-card facebook">Facebook</a>
-            <a href="https://youtube.com/@YOUR_USERNAME" target="_blank" class="social-card youtube">YouTube</a>
-            <a href="https://linkedin.com/in/YOUR_USERNAME" target="_blank" class="social-card linkedin">LinkedIn</a>
+            <a href="https://www.instagram.com/shefooo011?igsh=cWFzdnVlbXk4dWQz" target="_blank" class="social-card instagram">Instagram</a>
+            <a href="Https://www.facebook.com/share/1HTk7ZaRGQ/" target="_blank" class="social-card facebook">Facebook</a>
+            <a href="https://www.tiktok.com/@s.h.r.e.e.f0?_r=1&_t=ZS-98jaZ600Aj7" target="_blank" class="social-card tiktok">TikTok</a>
           </div>
         </div>
       </section>
     </main>
 
-    <!-- شريط الأخبار المتحرك أسفل الموقع (مثل التلفزيون) -->
+    <!-- شريط الأخبار المتحرك أسفل الموقع -->
     <div class="ticker-container">
       <div class="ticker-track">
-        <span>📧 ashreef988@gmail.com</span>
+        <span>⭐ ashreef988@gmail.com</span>
         <span>•</span>
-        <span>📱 Phone: +20 123 456 7890</span>
+        <span>📱 Phone: 01018585432</span>
         <span>•</span>
-        <span>📷 Instagram: @ashreef988</span>
+        <span>📷 Instagram: @shefooo011</span>
         <span>•</span>
-        <span>📘 Facebook: Sherif Ashraf</span>
+        <span>🎵 TikTok: @s.h.r.e.e.f0</span>
         <span>•</span>
-        <span>🎬 YouTube: Sherif Ashraf</span>
+        <span>🎬 Let's Create Together!</span>
+        <span>⭐ ashreef988@gmail.com</span>
         <span>•</span>
-        <span>💼 Let's Create Together!</span>
-        <!-- تكرار للحركة المستمرة -->
-        <span>📧 ashreef988@gmail.com</span>
+        <span>📱 Phone: 01018585432</span>
         <span>•</span>
-        <span>📱 Phone: +20 123 456 7890</span>
+        <span>📷 Instagram: @shefooo011</span>
         <span>•</span>
-        <span>📷 Instagram: @ashreef988</span>
-        <span>•</span>
-        <span>📘 Facebook: Sherif Ashraf</span>
-        <span>•</span>
-        <span>🎬 YouTube: Sherif Ashraf</span>
+        <span>🎵 TikTok: @s.h.r.e.e.f0</span>
       </div>
     </div>
 
-    <!-- نافذة عرض الصورة المكبرة (Modal Lightbox) -->
+    <!-- نافذة عرض الصورة المكبرة (Lightbox) -->
     <div class="image-modal" id="imageModal">
       <span class="close-modal">&times;</span>
       <img class="modal-content" id="modalImg" alt="Enlarged View" />
