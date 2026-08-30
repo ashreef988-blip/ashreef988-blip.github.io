@@ -1,4 +1,4 @@
-{<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -7,9 +7,475 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
+
+    <style>
+      /* =========================================
+         1. الألوان والتنسيق الأساسي (Base & Colors)
+         ========================================= */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --bg-color: #0b0c10;
+        --card-bg: #14161d;
+        --text-main: #f5f6fa;
+        --text-muted: #9aa0a6;
+        --accent-red: #fc6c85;
+        --accent-green: #32cd32;
+        --whatsapp-color: #25d366;
+        --border-color: rgba(255, 255, 255, 0.08);
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .section {
+        padding: 80px 0;
+        text-align: center;
+      }
+
+      .section h2 {
+        font-size: 2.2rem;
+        margin-bottom: 24px;
+        color: #ffffff;
+        position: relative;
+        display: inline-block;
+      }
+
+      .section h2::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 3px;
+        background: linear-gradient(90deg, var(--accent-red), var(--accent-green));
+        border-radius: 2px;
+      }
+
+      /* =========================================
+         2. الهيدر والقائمة (Header & Nav)
+         ========================================= */
+      .site-header {
+        position: sticky;
+        top: 0;
+        background: rgba(11, 12, 16, 0.88);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border-color);
+        z-index: 1000;
+      }
+
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 70px;
+      }
+
+      .logo {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #fff;
+        text-decoration: none;
+        letter-spacing: -0.5px;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 24px;
+      }
+
+      .nav-links a {
+        color: var(--text-muted);
+        text-decoration: none;
+        font-size: 0.95rem;
+        transition: color 0.2s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--accent-red);
+      }
+
+      /* =========================================
+         3. قسم الهيرو (Hero Section & Buttons)
+         ========================================= */
+      .hero {
+        padding: 110px 0 70px;
+      }
+
+      .eyebrow {
+        color: var(--accent-green);
+        font-weight: 600;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 12px;
+      }
+
+      .hero h1 {
+        font-size: 3.2rem;
+        font-weight: 800;
+        letter-spacing: -1px;
+        margin-bottom: 16px;
+      }
+
+      .subheadline {
+        color: var(--text-muted);
+        font-size: 1.2rem;
+        margin-bottom: 32px;
+      }
+
+      .hero-btns {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 12px 26px;
+        border-radius: 8px;
+        font-weight: 600;
+        text-decoration: none;
+        background: var(--accent-red);
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        opacity: 0.9;
+      }
+
+      .btn-outline {
+        background: transparent;
+        border: 1px solid var(--border-color);
+        color: #fff;
+      }
+
+      .btn-outline:hover {
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .btn-whatsapp {
+        background-color: var(--whatsapp-color) !important;
+        color: #fff !important;
+      }
+
+      /* =========================================
+         4. معرض الأعمال (Portfolio Grid)
+         ========================================= */
+      .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 28px;
+        margin-top: 40px;
+      }
+
+      .portfolio-item {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 14px;
+        padding: 16px;
+        text-align: left;
+        transition: transform 0.25s ease, border-color 0.25s ease;
+        cursor: pointer;
+      }
+
+      .portfolio-item:hover {
+        transform: translateY(-6px);
+        border-color: rgba(252, 108, 133, 0.4);
+      }
+
+      .img-thumbnail-box,
+      .video-container {
+        width: 100%;
+        height: 230px;
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+        background: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .img-thumbnail-box img,
+      .video-container video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .play-overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0, 0, 0, 0.75);
+        color: #fff;
+        padding: 8px 18px;
+        border-radius: 25px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        pointer-events: none;
+      }
+
+      .portfolio-item h3 {
+        font-size: 1.15rem;
+        margin: 16px 0 8px;
+        color: #fff;
+      }
+
+      .portfolio-item p {
+        color: var(--text-muted);
+        font-size: 0.88rem;
+        line-height: 1.5;
+      }
+
+      /* =========================================
+         5. قسم التواصل والفورم المصغرة (Contact)
+         ========================================= */
+      .about p {
+        max-width: 750px;
+        margin: 0 auto;
+        color: var(--text-muted);
+        font-size: 1.05rem;
+      }
+
+      .contact-info-box {
+        margin-bottom: 24px;
+      }
+
+      .contact-info-box p {
+        margin: 6px 0;
+        font-size: 0.95rem;
+      }
+
+      .contact-info-box a {
+        color: var(--accent-green);
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .compact-form {
+        max-width: 420px;
+        margin: 0 auto;
+        padding: 22px;
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .compact-form label {
+        font-size: 0.85rem;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        text-align: left;
+        color: var(--text-muted);
+      }
+
+      .compact-form input,
+      .compact-form textarea {
+        padding: 10px 14px;
+        font-size: 0.9rem;
+        border-radius: 6px;
+        background: #0b0c10;
+        border: 1px solid var(--border-color);
+        color: #fff;
+        font-family: inherit;
+      }
+
+      .compact-form input:focus,
+      .compact-form textarea:focus {
+        outline: none;
+        border-color: var(--accent-red);
+      }
+
+      .compact-form textarea {
+        resize: vertical;
+        min-height: 75px;
+      }
+
+      .social-cards {
+        display: flex;
+        justify-content: center;
+        gap: 14px;
+        margin-top: 28px;
+      }
+
+      .social-card {
+        padding: 8px 18px;
+        border-radius: 6px;
+        text-decoration: none;
+        color: #fff;
+        font-size: 0.85rem;
+        font-weight: 500;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border-color);
+        transition: background 0.2s ease;
+      }
+
+      .social-card:hover {
+        background: rgba(255, 255, 255, 0.12);
+      }
+
+      /* =========================================
+         6. الشريط المتحرك والزر العائم (Ticker & WhatsApp)
+         ========================================= */
+      .ticker-container {
+        overflow: hidden;
+        background: #101218;
+        border-top: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--border-color);
+        padding: 12px 0;
+        white-space: nowrap;
+      }
+
+      .ticker-track {
+        display: inline-block;
+        animation: marquee 25s linear infinite;
+      }
+
+      .ticker-track span {
+        display: inline-block;
+        padding: 0 16px;
+        font-size: 0.85rem;
+        color: var(--text-muted);
+      }
+
+      @keyframes marquee {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+
+      .floating-whatsapp {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        width: 56px;
+        height: 56px;
+        background-color: var(--whatsapp-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+        z-index: 9999;
+        transition: transform 0.2s ease;
+      }
+
+      .floating-whatsapp:hover {
+        transform: scale(1.1);
+      }
+
+      /* =========================================
+         7. شاشة العرض والتقليب بالأسهم (Modal)
+         ========================================= */
+      .image-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.94);
+        z-index: 10000;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .image-modal.active {
+        display: flex;
+      }
+
+      .modal-media-wrapper {
+        max-width: 85vw;
+        max-height: 85vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal-content {
+        max-width: 100%;
+        max-height: 80vh;
+        border-radius: 8px;
+        object-fit: contain;
+      }
+
+      .modal-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.15);
+        color: #fff;
+        border: none;
+        font-size: 2.2rem;
+        width: 54px;
+        height: 54px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border-radius: 50%;
+        transition: background 0.2s ease;
+        user-select: none;
+      }
+
+      .modal-arrow:hover {
+        background: rgba(255, 255, 255, 0.35);
+      }
+
+      .prev-btn { left: 24px; }
+      .next-btn { right: 24px; }
+
+      .close-modal {
+        position: absolute;
+        top: 20px;
+        right: 25px;
+        color: #fff;
+        font-size: 38px;
+        cursor: pointer;
+        user-select: none;
+      }
+    </style>
   </head>
   <body>
+    <!-- زرار واتساب العائم -->
+    <a href="https://wa.me/201200579103" target="_blank" class="floating-whatsapp" aria-label="WhatsApp">
+      <svg viewBox="0 0 32 32" width="28" height="28" fill="#ffffff">
+        <path d="M16.002 2C8.28 2 2 8.28 2 16c0 2.72.78 5.26 2.13 7.42L2.7 29.3a1 1 0 001.25 1.25l5.96-1.42A13.93 13.93 0 0016 30c7.72 0 14-6.28 14-14S23.72 2 16.002 2zm7.98 19.38c-.33.93-1.64 1.72-2.7 1.95-.72.16-1.66.29-4.83-1.02-4.06-1.68-6.68-5.8-6.88-6.07-.2-.27-1.65-2.2-1.65-4.2s1.05-2.98 1.42-3.39c.37-.41.81-.51 1.08-.51.27 0 .54 0 .78.01.25.02.59-.1.92.7.34.82 1.16 2.83 1.26 3.04.1.2.17.44.03.71-.13.27-.2.44-.4.67-.2.24-.42.53-.6.71-.2.2-.41.42-.18.82.24.4 1.05 1.73 2.25 2.8 1.55 1.38 2.85 1.81 3.26 2.01.41.2.65.17.89-.1.24-.27 1.02-1.19 1.29-1.6.27-.41.54-.34.92-.2.37.14 2.37 1.12 2.78 1.32.41.2.68.31.78.48.1.17.1.98-.23 1.91z"/>
+      </svg>
+    </a>
+
     <header class="site-header" id="home">
       <nav class="nav container">
         <a href="#home" class="logo">Sherif Ashraf</a>
@@ -31,6 +497,7 @@
         </p>
         <div class="hero-btns">
           <a href="#portfolio" class="btn">View My Work</a>
+          <a href="https://wa.me/201200579103" target="_blank" class="btn btn-whatsapp">Chat on WhatsApp</a>
           <a href="cv.pdf" download class="btn btn-outline">Download CV</a>
         </div>
       </section>
@@ -50,19 +517,19 @@
           
           <div class="portfolio-grid">
             <!-- مشروع الفيديو wark3 -->
-            <article class="portfolio-item">
+            <article class="portfolio-item gallery-item" data-type="video" data-src="wark3.mp4">
               <div class="video-container">
-                <video controls width="100%" style="border-radius: 8px; max-height: 400px; background: #000;">
+                <video muted loop playsinline width="100%">
                   <source src="wark3.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
                 </video>
+                <div class="play-overlay">▶ Watch Full Video</div>
               </div>
               <h3>Commercial Video Edit</h3>
               <p>Dynamic cuts, visual pacing, and sound design tailored for high engagement.</p>
             </article>
 
             <!-- مشروع الصورة الأولى wark2 -->
-            <article class="portfolio-item">
+            <article class="portfolio-item gallery-item" data-type="image" data-src="wark2.png">
               <div class="img-thumbnail-box">
                 <img src="wark2.png" alt="Commercial Design Project 1" />
               </div>
@@ -71,7 +538,7 @@
             </article>
 
             <!-- مشروع الصورة الثانية wark4 -->
-            <article class="portfolio-item">
+            <article class="portfolio-item gallery-item" data-type="image" data-src="wark4.png">
               <div class="img-thumbnail-box">
                 <img src="wark4.png" alt="Commercial Design Project 2" />
               </div>
@@ -88,29 +555,29 @@
           
           <div class="contact-info-box">
             <p><strong>Direct Email:</strong> <a href="mailto:ashreef988@gmail.com">ashreef988@gmail.com</a></p>
-            <p><strong>Phone / WhatsApp:</strong> <a href="tel:+201018585432">01018585432</a></p>
+            <p><strong>WhatsApp:</strong> <a href="https://wa.me/201200579103" target="_blank">01200579103</a></p>
           </div>
 
-          <form class="contact-form" action="https://formspree.io/f/myegkqkd" method="POST">
+          <form class="compact-form" action="https://formspree.io/f/myegkqkd" method="POST">
             <label>
               Your Name
-              <input type="text" name="name" required />
+              <input type="text" name="name" required placeholder="Your name" />
             </label>
             <label>
               Your Email
-              <input type="email" name="email" required />
+              <input type="email" name="email" required placeholder="Your email" />
             </label>
             <label>
               Message
-              <textarea name="message" rows="5" required></textarea>
+              <textarea name="message" rows="3" required placeholder="Write your message..."></textarea>
             </label>
             <button type="submit" class="btn">Send Message</button>
           </form>
 
           <div class="social-cards">
-            <a href="https://www.instagram.com/shefooo011?igsh=cWFzdnVlbXk4dWQz" target="_blank" class="social-card instagram">Instagram</a>
-            <a href="https://www.facebook.com/share/1HTk7ZaRGQ/" target="_blank" class="social-card facebook">Facebook</a>
-            <a href="https://www.tiktok.com/@s.h.r.e.e.f0?_r=1&_t=ZS-98jaZ600Aj7" target="_blank" class="social-card tiktok">TikTok</a>
+            <a href="https://www.instagram.com/shefooo011?igsh=cWFzdnVlbXk4dWQz" target="_blank" class="social-card">Instagram</a>
+            <a href="https://www.facebook.com/share/1HTk7ZaRGQ/" target="_blank" class="social-card">Facebook</a>
+            <a href="https://www.tiktok.com/@s.h.r.e.e.f0?_r=1&_t=ZS-98jaZ600Aj7" target="_blank" class="social-card">TikTok</a>
           </div>
         </div>
       </section>
@@ -120,7 +587,7 @@
       <div class="ticker-track">
         <span>⭐ ashreef988@gmail.com</span>
         <span>•</span>
-        <span>📱 Phone: 01018585432</span>
+        <span>📱 WhatsApp: 01200579103</span>
         <span>•</span>
         <span>📷 Instagram: @shefooo011</span>
         <span>•</span>
@@ -129,19 +596,95 @@
         <span>🎬 Let's Create Together!</span>
         <span>⭐ ashreef988@gmail.com</span>
         <span>•</span>
-        <span>📱 Phone: 01018585432</span>
-        <span>•</span>
-        <span>📷 Instagram: @shefooo011</span>
-        <span>•</span>
-        <span>🎵 TikTok: @s.h.r.e.e.f0</span>
+        <span>📱 WhatsApp: 01200579103</span>
       </div>
     </div>
 
+    <!-- شاشة التكبير مع الأسهم -->
     <div class="image-modal" id="imageModal">
       <span class="close-modal">&times;</span>
-      <img class="modal-content" id="modalImg" alt="Enlarged View" />
+      <button class="modal-arrow prev-btn" id="modalPrev" aria-label="Previous">&#10094;</button>
+      <div class="modal-media-wrapper">
+        <img class="modal-content" id="modalImg" alt="Enlarged View" style="display:none;" />
+        <video class="modal-content" id="modalVideo" controls style="display:none;"></video>
+      </div>
+      <button class="modal-arrow next-btn" id="modalNext" aria-label="Next">&#10095;</button>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImg");
+        const modalVideo = document.getElementById("modalVideo");
+        const closeModal = document.querySelector(".close-modal");
+        const prevBtn = document.getElementById("modalPrev");
+        const nextBtn = document.getElementById("modalNext");
+
+        const galleryItems = Array.from(document.querySelectorAll(".gallery-item"));
+        let currentIndex = 0;
+
+        function showMedia(index) {
+          if (index < 0) index = galleryItems.length - 1;
+          if (index >= galleryItems.length) index = 0;
+          currentIndex = index;
+
+          const item = galleryItems[currentIndex];
+          const type = item.getAttribute("data-type");
+          const src = item.getAttribute("data-src");
+
+          if (type === "video") {
+            modalImg.style.display = "none";
+            modalVideo.style.display = "block";
+            modalVideo.src = src;
+            modalVideo.currentTime = 0;
+            modalVideo.play();
+          } else {
+            modalVideo.pause();
+            modalVideo.style.display = "none";
+            modalImg.style.display = "block";
+            modalImg.src = src;
+          }
+          modal.classList.add("active");
+        }
+
+        galleryItems.forEach((item, index) => {
+          item.addEventListener("click", () => {
+            showMedia(index);
+          });
+        });
+
+        function hideModal() {
+          modal.classList.remove("active");
+          modalVideo.pause();
+          modalVideo.src = "";
+          modalImg.src = "";
+        }
+
+        closeModal.addEventListener("click", hideModal);
+
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) {
+            hideModal();
+          }
+        });
+
+        prevBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          showMedia(currentIndex - 1);
+        });
+
+        nextBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          showMedia(currentIndex + 1);
+        });
+
+        document.addEventListener("keydown", (e) => {
+          if (!modal.classList.contains("active")) return;
+          if (e.key === "Escape") hideModal();
+          if (e.key === "ArrowLeft") showMedia(currentIndex - 1);
+          if (e.key === "ArrowRight") showMedia(currentIndex + 1);
+        });
+      });
+    </script>
   </body>
-</html>}
+</html>
