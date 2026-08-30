@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -24,10 +24,10 @@
 
     <main>
       <section class="hero section container">
-        <p class="eyebrow">Creative Professional & Filmmaker</p>
+        <p class="eyebrow">Creative Professional & Video Editor</p>
         <h1>Hi, I'm Sherif Ashraf</h1>
         <p class="subheadline" id="dynamic-role">
-          Director | Actor | Video Editor | Graphic Designer
+          Video Editor | Graphic Designer & Content Creator
         </p>
         <div class="hero-btns">
           <a href="#portfolio" class="btn">View My Work</a>
@@ -39,7 +39,7 @@
         <div class="container">
           <h2>About Me</h2>
           <p>
-            I am a visual storyteller driven by a passion for creating. Whether I am designing striking graphics, editing dynamic videos, operating the camera, or performing on screen as an actor, I bring energy and creativity to every frame.
+            I am a visual storyteller driven by a passion for creating impactful digital experiences. Whether I am editing dynamic commercial videos with precise rhythm, cutting engaging reels, or crafting striking visual identities and commercial designs, I bring creativity and execution to every project.
           </p>
         </div>
       </section>
@@ -47,48 +47,36 @@
       <section class="portfolio section" id="portfolio">
         <div class="container">
           <h2>Portfolio</h2>
-          <div class="filters" role="group" aria-label="Portfolio categories">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="directing-acting">Directing & Acting</button>
-            <button class="filter-btn" data-filter="video-editing">Video Editing</button>
-            <button class="filter-btn" data-filter="graphic-design">Graphic Design</button>
-          </div>
-
+          
           <div class="portfolio-grid">
-            <!-- كارت فيديو حقيقي -->
-            <article class="portfolio-item" data-category="video-editing">
+            <!-- مشروع الفيديو wark3 -->
+            <article class="portfolio-item">
               <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Showreel Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <video controls width="100%" style="border-radius: 8px; max-height: 400px; background: #000;">
+                  <source src="wark3.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
               </div>
-              <h3>Cinematic Showreel</h3>
-              <p>A professional montage showcasing directing and editing skills.</p>
+              <h3>Commercial Video Edit</h3>
+              <p>Dynamic cuts, visual pacing, and sound design tailored for high engagement.</p>
             </article>
 
-            <!-- Directing & Acting -->
-            <article class="portfolio-item" data-category="directing-acting">
+            <!-- مشروع الصورة الأولى wark2 -->
+            <article class="portfolio-item">
               <div class="img-thumbnail-box">
-                <img src="work1.png" alt="Short Film Direction" />
+                <img src="wark2.png" alt="Commercial Design Project 1" />
               </div>
-              <h3>Short Film Direction 1</h3>
-              <p>A dramatic visual story focused on performance and atmosphere.</p>
+              <h3>Commercial Brand Visual</h3>
+              <p>High-impact 3D product showcase and advertising artwork.</p>
             </article>
 
-            <!-- Video Editing -->
-            <article class="portfolio-item" data-category="video-editing">
+            <!-- مشروع الصورة الثانية wark4 -->
+            <article class="portfolio-item">
               <div class="img-thumbnail-box">
-                <img src="work1.png" alt="Commercial Edit" />
+                <img src="wark4.png" alt="Commercial Design Project 2" />
               </div>
-              <h3>Commercial Edit Reel 1</h3>
-              <p>Fast-paced edits for social campaigns and branded content.</p>
-            </article>
-
-            <!-- Graphic Design -->
-            <article class="portfolio-item" data-category="graphic-design">
-              <div class="img-thumbnail-box">
-                <img src="work1.png" alt="Brand Identity" />
-              </div>
-              <h3>Brand Identity Concept 1</h3>
-              <p>Logo, typography, and social media visual system.</p>
+              <h3>Creative Promotional Poster</h3>
+              <p>Bold color contrast, modern typography, and dimensional product composition.</p>
             </article>
           </div>
         </div>
@@ -121,14 +109,13 @@
 
           <div class="social-cards">
             <a href="https://www.instagram.com/shefooo011?igsh=cWFzdnVlbXk4dWQz" target="_blank" class="social-card instagram">Instagram</a>
-            <a href="Https://www.facebook.com/share/1HTk7ZaRGQ/" target="_blank" class="social-card facebook">Facebook</a>
+            <a href="https://www.facebook.com/share/1HTk7ZaRGQ/" target="_blank" class="social-card facebook">Facebook</a>
             <a href="https://www.tiktok.com/@s.h.r.e.e.f0?_r=1&_t=ZS-98jaZ600Aj7" target="_blank" class="social-card tiktok">TikTok</a>
           </div>
         </div>
       </section>
     </main>
 
-    <!-- شريط الأخبار المتحرك أسفل الموقع -->
     <div class="ticker-container">
       <div class="ticker-track">
         <span>⭐ ashreef988@gmail.com</span>
@@ -150,7 +137,6 @@
       </div>
     </div>
 
-    <!-- نافذة عرض الصورة المكبرة -->
     <div class="image-modal" id="imageModal">
       <span class="close-modal">&times;</span>
       <img class="modal-content" id="modalImg" alt="Enlarged View" />
