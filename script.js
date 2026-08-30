@@ -1,45 +1,73 @@
-// Filter Portfolio Categories
-const filterBtns = document.querySelectorAll('.filter-btn');
-const portfolioItems = document.querySelectorAll('.portfolio-item');
+document.addEventListener("DOMContentLoaded", () => {
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("modalImg");
+  const modalVideo = document.getElementById("modalVideo");
+  const closeModal = document.querySelector(".close-modal");
+  const prevBtn = document.getElementById("modalPrev");
+  const nextBtn = document.getElementById("modalNext");
 
-filterBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelector('.filter-btn.active').classList.remove('active');
-    btn.classList.add('active');
-    const filter = btn.getAttribute('data-filter');
+  const galleryItems = Array.from(document.querySelectorAll(".gallery-item"));
+  let currentIndex = 0;
 
-    portfolioItems.forEach(item => {
-      if (filter === 'all' || item.getAttribute('data-category') === filter) {
-        item.style.display = 'block';
-      } else {
-        item.style.display = 'none';
-      }
+  function showMedia(index) {
+    if (index < 0) index = galleryItems.length - 1;
+    if (index >= galleryItems.length) index = 0;
+    currentIndex = index;
+
+    const item = galleryItems[currentIndex];
+    const type = item.getAttribute("data-type");
+    const src = item.getAttribute("data-src");
+
+    if (type === "video") {
+      modalImg.style.display = "none";
+      modalVideo.style.display = "block";
+      modalVideo.src = src;
+      modalVideo.currentTime = 0;
+      modalVideo.play();
+    } else {
+      modalVideo.pause();
+      modalVideo.style.display = "none";
+      modalImg.style.display = "block";
+      modalImg.src = src;
+    }
+    modal.classList.add("active");
+  }
+
+  galleryItems.forEach((item, index) => {
+    item.addEventListener("click", () => {
+      showMedia(index);
     });
   });
-});
 
-// Modal / Lightbox Image Popup Logic
-const modal = document.getElementById('imageModal');
-const modalImg = document.getElementById('modalImg');
-const closeModal = document.querySelector('.close-modal');
+  function hideModal() {
+    modal.classList.remove("active");
+    modalVideo.pause();
+    modalVideo.src = "";
+    modalImg.src = "";
+  }
 
-document.querySelectorAll('.img-thumbnail-box img').forEach(img => {
-  img.addEventListener('click', () => {
-    modal.classList.add('active');
-    modalImg.src = img.src;
-  });
-});
+  closeModal.addEventListener("click", hideModal);
 
-if (closeModal) {
-  closeModal.addEventListener('click', () => {
-    modal.classList.remove('active');
-  });
-}
-
-if (modal) {
-  modal.addEventListener('click', (e) => {
+  modal.addEventListener("click", (e) => {
     if (e.target === modal) {
-      modal.classList.remove('active');
+      hideModal();
     }
   });
-}
+
+  prevBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    showMedia(currentIndex - 1);
+  });
+
+  nextBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    showMedia(currentIndex + 1);
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (!modal.classList.contains("active")) return;
+    if (e.key === "Escape") hideModal();
+    if (e.key === "ArrowLeft") showMedia(currentIndex - 1);
+    if (e.key === "ArrowRight") showMedia(currentIndex + 1);
+  });
+});
