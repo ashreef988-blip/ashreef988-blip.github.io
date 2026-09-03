@@ -19,16 +19,15 @@
       }
 
       :root {
-        --bg-color: #08090d;
-        --card-bg: rgba(18, 20, 29, 0.75);
+        --bg-color: #040508;
+        --card-bg: rgba(14, 16, 24, 0.78);
         --text-main: #ffffff;
         --text-muted: #a0a6b5;
         --accent-red: #fc6c85;
         --accent-green: #32cd32;
         --cyber-cyan: #00f0ff;
         --cyber-magenta: #d91680;
-        --whatsapp-color: #25d366;
-        --border-glass: rgba(252, 108, 133, 0.2);
+        --border-glass: rgba(255, 255, 255, 0.12);
       }
 
       body {
@@ -40,7 +39,8 @@
         position: relative;
       }
 
-      #canvas3d {
+      /* خلفية المجرة والنجوم 3D */
+      #space-canvas {
         position: fixed;
         top: 0;
         left: 0;
@@ -48,7 +48,7 @@
         height: 100vh;
         z-index: -1;
         pointer-events: none;
-        background: radial-gradient(circle at 50% 20%, rgba(252, 108, 133, 0.12) 0%, rgba(8, 9, 13, 0.95) 70%);
+        background: radial-gradient(ellipse at bottom, #090b14 0%, #030407 100%);
       }
 
       .container {
@@ -94,7 +94,7 @@
       .site-header {
         position: sticky;
         top: 0;
-        background: rgba(8, 9, 13, 0.8);
+        background: rgba(4, 5, 8, 0.82);
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
         border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -257,24 +257,18 @@
         transform: translateY(-3px);
       }
 
-      .btn-whatsapp {
-        background: linear-gradient(135deg, #25d366, #128c7e) !important;
-        box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35) !important;
-        color: #fff !important;
-      }
-
       /* =========================================
-         4. سكشن المشاريع الكاملة (Full Case Studies)
+         4. سكشن دراسات الحالة (Case Studies)
          ========================================= */
       .case-studies-container {
         display: flex;
         flex-direction: column;
-        gap: 48px;
+        gap: 50px;
         margin-top: 36px;
       }
 
       .case-study-card {
-        background: linear-gradient(145deg, rgba(12, 14, 20, 0.95), rgba(18, 22, 34, 0.9));
+        background: linear-gradient(145deg, rgba(12, 14, 22, 0.9), rgba(16, 20, 32, 0.85));
         border: 1px solid rgba(0, 240, 255, 0.25);
         border-radius: 24px;
         padding: 36px;
@@ -282,6 +276,12 @@
         box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
         position: relative;
         overflow: hidden;
+        backdrop-filter: blur(12px);
+      }
+
+      .case-study-card.venom-card {
+        border-color: rgba(50, 205, 50, 0.35);
+        box-shadow: 0 20px 50px rgba(50, 205, 50, 0.1);
       }
 
       .case-study-badge {
@@ -299,6 +299,12 @@
         margin-bottom: 16px;
       }
 
+      .case-study-badge.venom-badge {
+        color: var(--accent-green);
+        border-color: var(--accent-green);
+        background: rgba(50, 205, 50, 0.08);
+      }
+
       .concept-tag {
         display: inline-block;
         background: rgba(217, 22, 128, 0.15);
@@ -313,9 +319,15 @@
         margin-left: 10px;
       }
 
+      .concept-tag.venom-concept {
+        border-color: var(--accent-green);
+        color: var(--accent-green);
+        background: rgba(50, 205, 50, 0.12);
+      }
+
       .case-study-card h3 {
         font-family: 'Orbitron', sans-serif;
-        font-size: 2.2rem;
+        font-size: 2.1rem;
         color: #ffffff;
         margin-bottom: 14px;
         letter-spacing: 0.5px;
@@ -325,7 +337,7 @@
         color: var(--text-muted);
         font-size: 1.05rem;
         line-height: 1.75;
-        max-width: 900px;
+        max-width: 920px;
         margin-bottom: 24px;
       }
 
@@ -353,7 +365,10 @@
         color: var(--cyber-cyan);
       }
 
-      /* نافذة المعاينة المباشرة للموقع */
+      .tool-pill.venom-pill span {
+        color: var(--accent-green);
+      }
+
       .website-embed-wrapper {
         border-radius: 16px;
         overflow: hidden;
@@ -361,6 +376,11 @@
         background: #000;
         box-shadow: 0 15px 35px rgba(0, 240, 255, 0.15);
         margin-bottom: 30px;
+      }
+
+      .website-embed-wrapper.venom-embed {
+        border-color: rgba(50, 205, 50, 0.4);
+        box-shadow: 0 15px 35px rgba(50, 205, 50, 0.15);
       }
 
       .embed-header-bar {
@@ -425,7 +445,25 @@
         box-shadow: 0 10px 30px rgba(0, 240, 255, 0.6);
       }
 
-      /* خانة المشاريع القادمة Placeholders */
+      .btn-venom-primary {
+        background: linear-gradient(135deg, #32cd32, #1f8b1f);
+        color: #000 !important;
+        font-weight: 700;
+        padding: 14px 28px;
+        border-radius: 10px;
+        text-decoration: none;
+        box-shadow: 0 6px 25px rgba(50, 205, 50, 0.4);
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .btn-venom-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(50, 205, 50, 0.6);
+      }
+
       .case-study-placeholder {
         border: 2px dashed rgba(255, 255, 255, 0.12);
         border-radius: 24px;
@@ -446,7 +484,7 @@
       }
 
       /* =========================================
-         5. معرض الميديا والتصميمات (Media Grid)
+         5. معرض الميديا والتصميمات
          ========================================= */
       .portfolio-grid {
         display: grid;
@@ -533,7 +571,7 @@
       }
 
       /* =========================================
-         6. عني والتواصل (About & Contact)
+         6. عني والفورم
          ========================================= */
       .about p {
         max-width: 780px;
@@ -628,39 +666,64 @@
         box-shadow: 0 0 12px rgba(252, 108, 133, 0.35);
       }
 
-      .social-cards {
+      /* =========================================
+         7. السوشيال ميديا العائمة فوق بعضها (Floating Stack)
+         ========================================= */
+      .floating-social-stack {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
         display: flex;
+        flex-direction: column;
+        gap: 12px;
+        z-index: 9999;
+      }
+
+      .floating-btn {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
         justify-content: center;
-        gap: 16px;
-        margin-top: 32px;
-        flex-wrap: wrap;
-      }
-
-      .social-card {
-        padding: 10px 22px;
-        border-radius: 8px;
-        text-decoration: none;
         color: #fff;
-        font-size: 0.9rem;
-        font-weight: 600;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        text-decoration: none;
         backdrop-filter: blur(8px);
-        transition: all 0.25s ease;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+        transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
       }
 
-      .social-card:hover {
-        background: rgba(252, 108, 133, 0.15);
-        border-color: var(--accent-red);
-        transform: translateY(-3px);
+      .floating-btn:hover {
+        transform: scale(1.15) translateY(-3px);
+      }
+
+      .btn-wa {
+        background: linear-gradient(135deg, #25d366, #128c7e);
+        box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+      }
+
+      .btn-insta {
+        background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+        box-shadow: 0 6px 20px rgba(253, 29, 29, 0.4);
+      }
+
+      .btn-fb {
+        background: linear-gradient(135deg, #1877f2, #0d5bbd);
+        box-shadow: 0 6px 20px rgba(24, 119, 242, 0.4);
+      }
+
+      .btn-tt {
+        background: linear-gradient(135deg, #000000, #25f4ee, #fe2c55);
+        box-shadow: 0 6px 20px rgba(37, 244, 238, 0.3);
       }
 
       /* =========================================
-         7. التيكر والمودال
+         8. التيكر والمودال
          ========================================= */
       .ticker-container {
         overflow: hidden;
-        background: rgba(12, 14, 20, 0.9);
+        background: rgba(8, 10, 16, 0.9);
         border-top: 1px solid rgba(255, 255, 255, 0.08);
         border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         padding: 14px 0;
@@ -683,26 +746,6 @@
       @keyframes marquee {
         0% { transform: translateX(0); }
         100% { transform: translateX(-50%); }
-      }
-
-      .floating-whatsapp {
-        position: fixed;
-        bottom: 26px;
-        right: 26px;
-        width: 60px;
-        height: 60px;
-        background: linear-gradient(135deg, #25d366, #128c7e);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 6px 22px rgba(37, 211, 102, 0.5);
-        z-index: 9999;
-        transition: transform 0.3s;
-      }
-
-      .floating-whatsapp:hover {
-        transform: scale(1.15) rotate(8deg);
       }
 
       .image-modal {
@@ -797,17 +840,47 @@
         }
         .nav-links.open { transform: translateX(0); }
         .nav-links a { display: block; width: 100%; padding: 16px 24px; }
+        .floating-social-stack { bottom: 18px; right: 18px; }
+        .floating-btn { width: 46px; height: 46px; }
       }
     </style>
   </head>
   <body>
-    <canvas id="canvas3d"></canvas>
+    <!-- خلفية المجرة والفضاء 3D -->
+    <canvas id="space-canvas"></canvas>
 
-    <a href="https://wa.me/201018585432" target="_blank" class="floating-whatsapp" aria-label="WhatsApp">
-      <svg viewBox="0 0 32 32" width="30" height="30" fill="#ffffff">
-        <path d="M16.002 2C8.28 2 2 8.28 2 16c0 2.72.78 5.26 2.13 7.42L2.7 29.3a1 1 0 001.25 1.25l5.96-1.42A13.93 13.93 0 0016 30c7.72 0 14-6.28 14-14S23.72 2 16.002 2zm7.98 19.38c-.33.93-1.64 1.72-2.7 1.95-.72.16-1.66.29-4.83-1.02-4.06-1.68-6.68-5.8-6.88-6.07-.2-.27-1.65-2.2-1.65-4.2s1.05-2.98 1.42-3.39c.37-.41.81-.51 1.08-.51.27 0 .54 0 .78.01.25.02.59-.1.92.7.34.82 1.16 2.83 1.26 3.04.1.2.17.44.03.71-.13.27-.2.44-.4.67-.2.24-.42.53-.6.71-.2.2-.41.42-.18.82.24.4 1.05 1.73 2.25 2.8 1.55 1.38 2.85 1.81 3.26 2.01.41.2.65.17.89-.1.24-.27 1.02-1.19 1.29-1.6.27-.41.54-.34.92-.2.37.14 2.37 1.12 2.78 1.32.41.2.68.31.78.48.1.17.1.98-.23 1.91z"/>
-      </svg>
-    </a>
+    <!-- أزرار السوشيال ميديا العائمة فوق بعضها -->
+    <div class="floating-social-stack">
+      <!-- زرار واتساب -->
+      <a href="https://wa.me/201018585432" target="_blank" class="floating-btn btn-wa" aria-label="WhatsApp">
+        <svg viewBox="0 0 32 32" width="26" height="26" fill="#ffffff">
+          <path d="M16.002 2C8.28 2 2 8.28 2 16c0 2.72.78 5.26 2.13 7.42L2.7 29.3a1 1 0 001.25 1.25l5.96-1.42A13.93 13.93 0 0016 30c7.72 0 14-6.28 14-14S23.72 2 16.002 2zm7.98 19.38c-.33.93-1.64 1.72-2.7 1.95-.72.16-1.66.29-4.83-1.02-4.06-1.68-6.68-5.8-6.88-6.07-.2-.27-1.65-2.2-1.65-4.2s1.05-2.98 1.42-3.39c.37-.41.81-.51 1.08-.51.27 0 .54 0 .78.01.25.02.59-.1.92.7.34.82 1.16 2.83 1.26 3.04.1.2.17.44.03.71-.13.27-.2.44-.4.67-.2.24-.42.53-.6.71-.2.2-.41.42-.18.82.24.4 1.05 1.73 2.25 2.8 1.55 1.38 2.85 1.81 3.26 2.01.41.2.65.17.89-.1.24-.27 1.02-1.19 1.29-1.6.27-.41.54-.34.92-.2.37.14 2.37 1.12 2.78 1.32.41.2.68.31.78.48.1.17.1.98-.23 1.91z"/>
+        </svg>
+      </a>
+
+      <!-- زرار إنستجرام -->
+      <a href="https://www.instagram.com/shefooo011?igsh=cWFzdnVlbXk4dWQz" target="_blank" class="floating-btn btn-insta" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+        </svg>
+      </a>
+
+      <!-- زرار فيسبوك -->
+      <a href="https://www.facebook.com/share/1HTk7ZaRGQ/" target="_blank" class="floating-btn btn-fb" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="#ffffff">
+          <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
+        </svg>
+      </a>
+
+      <!-- زرار تيك توك -->
+      <a href="https://www.tiktok.com/@s.h.r.e.e.f0?_r=1&_t=ZS-98jaZ600Aj7" target="_blank" class="floating-btn btn-tt" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="#ffffff">
+          <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.298-.002.595.042.88.13V9.4a6.33 6.33 0 0 0-1-.08A6.34 6.34 0 0 0 3 15.66a6.34 6.34 0 0 0 10.82 4.47 6.27 6.27 0 0 0 1.96-4.52V8.71a8.28 8.28 0 0 0 4.81 1.53v-3.55z"/>
+        </svg>
+      </a>
+    </div>
 
     <header class="site-header" id="home">
       <nav class="nav container">
@@ -836,7 +909,7 @@
         </p>
         <div class="hero-btns">
           <a href="#case-studies" class="btn">Explore Case Studies</a>
-          <a href="https://wa.me/201018585432" target="_blank" class="btn btn-whatsapp">Chat on WhatsApp</a>
+          <a href="https://wa.me/201018585432" target="_blank" class="btn" style="background: linear-gradient(135deg, #25d366, #128c7e);">Chat on WhatsApp</a>
           <a href="cv.pdf" download class="btn btn-outline">Download CV</a>
         </div>
       </section>
@@ -861,7 +934,6 @@
               An end-to-end experimental concept project fusing dark cyber-tech visual language with modern gourmet street food culture. Designed entirely as a self-directed identity simulation, building a coherent universe across print packaging, dynamic motion teasers, operational uniforms, and a fully interactive landing page prototype.
             </p>
 
-            <!-- الأدوات المستخدمة -->
             <div class="tools-used">
               <span class="tool-pill"><span>⚡</span> Canva AI</span>
               <span class="tool-pill"><span>⚡</span> Adobe Photoshop</span>
@@ -870,7 +942,6 @@
               <span class="tool-pill"><span>⚡</span> UI/UX System Design</span>
             </div>
 
-            <!-- نافذة المعاينة المباشرة لموقع ZONE 99 -->
             <div class="website-embed-wrapper">
               <div class="embed-header-bar">
                 <div class="embed-dots">
@@ -898,16 +969,59 @@
             </div>
           </article>
 
-          <!-- خانة لمشروع مستقبلي 2 -->
-          <div class="case-study-placeholder">
-            <h4>CASE STUDY 02 // COMING SOON</h4>
-            <p>New full-scale brand identity and media system in production.</p>
-          </div>
+          <!-- مشروع 2: VENOM LABS (تحت زون 99 مباشرة بنفس الخصائص والأدوات) -->
+          <article class="case-study-card venom-card">
+            <div class="case-study-badge venom-badge">
+              <span>●</span> CASE STUDY 02 // LAB-GRADE PERFORMANCE
+              <span class="concept-tag venom-concept">Concept Project</span>
+            </div>
+            
+            <h3>VENOM LABS — Elite Sports Nutrition System</h3>
+            
+            <p class="description">
+              An advanced sports supplement brand identity engineered under the doctrine of "Pure. Potent. Precise." Developed as a comprehensive conceptual design system featuring clinical dark-mode contrast, tactical wireframe schematics, and neon-lime reactive accents across high-purity Creatine Monohydrate and Whey Protein lines, supported by a fully operational digital store simulation.
+            </p>
 
-          <!-- خانة لمشروع مستقبلي 3 -->
+            <div class="tools-used">
+              <span class="tool-pill venom-pill"><span>⚡</span> Canva AI</span>
+              <span class="tool-pill venom-pill"><span>⚡</span> Adobe Photoshop</span>
+              <span class="tool-pill venom-pill"><span>⚡</span> Gemini AI</span>
+              <span class="tool-pill venom-pill"><span>⚡</span> 3D Product Mockups</span>
+              <span class="tool-pill venom-pill"><span>⚡</span> UI/UX System Design</span>
+            </div>
+
+            <!-- نافذة المعاينة المباشرة لموقع VENOM LABS -->
+            <div class="website-embed-wrapper venom-embed">
+              <div class="embed-header-bar">
+                <div class="embed-dots">
+                  <span style="background: #ff5f56;"></span>
+                  <span style="background: #ffbd2e;"></span>
+                  <span style="background: #27c93f;"></span>
+                </div>
+                <div class="embed-url">https://khalidmedia.my.canva.site/venom-labs-landing-page</div>
+                <div style="width: 30px;"></div>
+              </div>
+              <iframe 
+                src="https://khalidmedia.my.canva.site/venom-labs-landing-page" 
+                title="VENOM LABS Live Website Preview" 
+                loading="lazy">
+              </iframe>
+            </div>
+
+            <div class="case-study-actions">
+              <a href="https://khalidmedia.my.canva.site/venom-labs-landing-page" target="_blank" class="btn-venom-primary">
+                Open Live Prototype ↗
+              </a>
+              <a href="#venom-assets" class="btn btn-outline">
+                Browse Venom Labs Media ↓
+              </a>
+            </div>
+          </article>
+
+          <!-- خانة محجوزة لمشروع مستقبلي 3 -->
           <div class="case-study-placeholder">
             <h4>CASE STUDY 03 // COMING SOON</h4>
-            <p>Commercial advertising & digital campaign showcase.</p>
+            <p>Commercial advertising & digital campaign system currently in development.</p>
           </div>
         </div>
       </section>
@@ -920,7 +1034,56 @@
           <h2>Media & Assets Showcase</h2>
           
           <div class="portfolio-grid">
-            <!-- فيديو أنيميشن اللوجو -->
+            <!-- أصول مشروع VENOM LABS -->
+            <article class="portfolio-item gallery-item" data-type="image" data-src="venom-hero-presentation.png" id="venom-assets">
+              <div class="img-thumbnail-box">
+                <img src="venom-hero-presentation.png" alt="VENOM LABS Dual Product Lineup" />
+              </div>
+              <h3>VENOM LABS // Key Presentation</h3>
+              <p>Dual product showcase featuring Creatine & Whey with reactive neon branding.</p>
+            </article>
+
+            <article class="portfolio-item gallery-item" data-type="image" data-src="venom-creatine-tub.png">
+              <div class="img-thumbnail-box">
+                <img src="venom-creatine-tub.png" alt="Creatine Monohydrate Tub Mockup" />
+              </div>
+              <h3>Creatine Monohydrate // Tub Spec</h3>
+              <p>Tactile matte black container with bold typography and precision dosage breakdown.</p>
+            </article>
+
+            <article class="portfolio-item gallery-item" data-type="image" data-src="venom-whey-tub.png">
+              <div class="img-thumbnail-box">
+                <img src="venom-whey-tub.png" alt="Whey Protein Tub Wireframe" />
+              </div>
+              <h3>Whey Protein // Blueprint Tub</h3>
+              <p>Clinical architectural wireframe styling designed for high-purity protein formula.</p>
+            </article>
+
+            <article class="portfolio-item gallery-item" data-type="image" data-src="venom-neon-post.png">
+              <div class="img-thumbnail-box">
+                <img src="venom-neon-post.png" alt="Volumetric Glow Campaign Poster" />
+              </div>
+              <h3>Pure. Potent. Precise // Spotlight</h3>
+              <p>Atmospheric studio lighting with glowing neon wordmark and volumetric depth.</p>
+            </article>
+
+            <article class="portfolio-item gallery-item" data-type="image" data-src="venom-social-grid.png">
+              <div class="img-thumbnail-box">
+                <img src="venom-social-grid.png" alt="Social Media Launch Board" />
+              </div>
+              <h3>Multi-Frame Social Board</h3>
+              <p>Integrated editorial campaign combining athletic action, mockups, and typography.</p>
+            </article>
+
+            <article class="portfolio-item gallery-item" data-type="image" data-src="venom-logo.png">
+              <div class="img-thumbnail-box">
+                <img src="venom-logo.png" alt="VENOM LABS Fang Logo" />
+              </div>
+              <h3>Venom Fang // Emblem Concept</h3>
+              <p>Minimalist geometric monogram representing speed, toxicity, and lab precision.</p>
+            </article>
+
+            <!-- أصول مشروع ZONE 99 -->
             <article class="portfolio-item gallery-item" data-type="video" data-src="logo-animation.mp4.mp4">
               <div class="video-container">
                 <video muted loop playsinline width="100%">
@@ -932,7 +1095,6 @@
               <p>High-tech holographic emblem animation with culinary neon aesthetics.</p>
             </article>
 
-            <!-- فيديو إطلاق السيستم -->
             <article class="portfolio-item gallery-item" data-type="video" data-src="system-online-video.mp4.mp4">
               <div class="video-container">
                 <video muted loop playsinline width="100%">
@@ -944,7 +1106,6 @@
               <p>Atmospheric visual boot sequence announcing Cairo sector launch.</p>
             </article>
 
-            <!-- فيديو الموكتيل النيون -->
             <article class="portfolio-item gallery-item" data-type="video" data-src="neon-sip-video.mp4">
               <div class="video-container">
                 <video muted loop playsinline width="100%">
@@ -956,7 +1117,6 @@
               <p>Fluid dynamics and layered color showcase for cyber mixology drinks.</p>
             </article>
 
-            <!-- بوستر الإطلاق -->
             <article class="portfolio-item gallery-item" data-type="image" data-src="system-online-poster.png.png">
               <div class="img-thumbnail-box">
                 <img src="system-online-poster.png.png" alt="ZONE 99 Launch Poster" />
@@ -965,7 +1125,6 @@
               <p>Key visual campaign and typography hierarchy for dark kitchen launch.</p>
             </article>
 
-            <!-- بوستر البرجر الجليتش -->
             <article class="portfolio-item gallery-item" data-type="image" data-src="system-overload-poster.png.png">
               <div class="img-thumbnail-box">
                 <img src="system-overload-poster.png.png" alt="Glitch Burger Poster" />
@@ -974,7 +1133,6 @@
               <p>Matte black brioche hero shot accompanied by scanline glitch branding.</p>
             </article>
 
-            <!-- بوستر الموكتيل النيون -->
             <article class="portfolio-item gallery-item" data-type="image" data-src="neon-sip-poster.png.png">
               <div class="img-thumbnail-box">
                 <img src="neon-sip-poster.png.png" alt="Neon Sip Poster" />
@@ -983,7 +1141,6 @@
               <p>High-voltage layered beverage campaign featuring reactive gradients.</p>
             </article>
 
-            <!-- بروشور المنيو المطوي -->
             <article class="portfolio-item gallery-item" data-type="image" data-src="menu-brochure.png.png">
               <div class="img-thumbnail-box">
                 <img src="menu-brochure.png.png" alt="Menu Brochure C-Fold" />
@@ -992,7 +1149,6 @@
               <p>C-fold print brochure with technical nutritional metrics and calorie protocols.</p>
             </article>
 
-            <!-- موك آب علبة البرجر المات -->
             <article class="portfolio-item gallery-item" data-type="image" data-src="burger-box-matte.jpg.jpg">
               <div class="img-thumbnail-box">
                 <img src="burger-box-matte.jpg.jpg" alt="Matte Packaging Box" />
@@ -1001,7 +1157,6 @@
               <p>Premium tactile packaging mockup with glowing cyan and magenta accents.</p>
             </article>
 
-            <!-- موك آب العلبة الكرافت -->
             <article class="portfolio-item gallery-item" data-type="image" data-src="burger-box-kraft.jpg.jpg">
               <div class="img-thumbnail-box">
                 <img src="burger-box-kraft.jpg.jpg" alt="Kraft Packaging Box" />
@@ -1010,7 +1165,6 @@
               <p>Organic eco-paper container contrast with laser-engraved tech insignia.</p>
             </article>
 
-            <!-- موك آب كاب الاستاف -->
             <article class="portfolio-item gallery-item" data-type="image" data-src="staff-cap-mockup.jpg.jpg">
               <div class="img-thumbnail-box">
                 <img src="staff-cap-mockup.jpg.jpg" alt="Crew Uniform Cap" />
@@ -1019,7 +1173,6 @@
               <p>Minimalist operator headwear for on-ground culinary engineers.</p>
             </article>
 
-            <!-- بوستر الكوكي -->
             <article class="portfolio-item gallery-item" data-type="image" data-src="cookie-poster.png.png">
               <div class="img-thumbnail-box">
                 <img src="cookie-poster.png.png" alt="Blueberry Core Cookie" />
@@ -1028,7 +1181,6 @@
               <p>Core injection product design and vibrant promotional dessert branding.</p>
             </article>
 
-            <!-- الهيرو فيجوال الرئيسي -->
             <article class="portfolio-item gallery-item" data-type="image" data-src="brand-hero-visual.jpg.jpg">
               <div class="img-thumbnail-box">
                 <img src="brand-hero-visual.jpg.jpg" alt="Brand Hero Visual" />
@@ -1037,7 +1189,7 @@
               <p>Comprehensive overview of apparel, physical boxes, and merchandise.</p>
             </article>
 
-            <!-- فيديو تجاري خارجي wark3 -->
+            <!-- مشروعات خارجية سابقة -->
             <article class="portfolio-item gallery-item" data-type="video" data-src="wark3.mp4">
               <div class="video-container">
                 <video muted loop playsinline width="100%">
@@ -1049,7 +1201,6 @@
               <p>Dynamic cuts, visual pacing, and sound design tailored for high engagement.</p>
             </article>
 
-            <!-- تصميم تجاري wark2 -->
             <article class="portfolio-item gallery-item" data-type="image" data-src="wark2.png">
               <div class="img-thumbnail-box">
                 <img src="wark2.png" alt="Commercial Design Project 1" />
@@ -1058,7 +1209,6 @@
               <p>High-impact 3D product showcase and advertising artwork.</p>
             </article>
 
-            <!-- تصميم تجاري wark4 -->
             <article class="portfolio-item gallery-item" data-type="image" data-src="wark4.png">
               <div class="img-thumbnail-box">
                 <img src="wark4.png" alt="Commercial Design Project 2" />
@@ -1110,12 +1260,6 @@
             </label>
             <button type="submit" class="btn">Send Message</button>
           </form>
-
-          <div class="social-cards">
-            <a href="https://www.instagram.com/shefooo011?igsh=cWFzdnVlbXk4dWQz" target="_blank" class="social-card">Instagram</a>
-            <a href="https://www.facebook.com/share/1HTk7ZaRGQ/" target="_blank" class="social-card">Facebook</a>
-            <a href="https://www.tiktok.com/@s.h.r.e.e.f0?_r=1&_t=ZS-98jaZ600Aj7" target="_blank" class="social-card">TikTok</a>
-          </div>
         </div>
       </section>
     </main>
@@ -1137,7 +1281,7 @@
       </div>
     </div>
 
-    <!-- نافذة المودال للتكبير والتنقل -->
+    <!-- نافذة المودال للتكبير -->
     <div class="image-modal" id="imageModal">
       <span class="close-modal">&times;</span>
       <button class="modal-arrow prev-btn" id="modalPrev" aria-label="Previous">&#10094;</button>
@@ -1149,8 +1293,10 @@
     </div>
 
     <script>
-      /* محرك الخلفية التفاعلية */
-      const canvas = document.getElementById('canvas3d');
+      /* ===================================================
+         1. محرك خلفية المجرة والنجوم 3D (Interactive Starfield)
+         =================================================== */
+      const canvas = document.getElementById('space-canvas');
       const ctx = canvas.getContext('2d');
 
       let width = (canvas.width = window.innerWidth);
@@ -1161,104 +1307,76 @@
         height = canvas.height = window.innerHeight;
       });
 
-      let mouse = { x: width / 2, y: height / 2, targetX: width / 2, targetY: height / 2 };
+      const numStars = 240;
+      const stars = [];
+      let mouseX = 0;
+      let mouseY = 0;
+
+      for (let i = 0; i < numStars; i++) {
+        stars.push({
+          x: (Math.random() - 0.5) * width * 2,
+          y: (Math.random() - 0.5) * height * 2,
+          z: Math.random() * width,
+          baseColor: Math.random() > 0.3 ? '#ffffff' : (Math.random() > 0.5 ? '#00f0ff' : '#fc6c85')
+        });
+      }
 
       window.addEventListener('mousemove', (e) => {
-        mouse.targetX = e.clientX;
-        mouse.targetY = e.clientY;
+        mouseX = (e.clientX - width / 2) * 0.15;
+        mouseY = (e.clientY - height / 2) * 0.15;
       });
 
       window.addEventListener('deviceorientation', (e) => {
         if (e.gamma !== null && e.beta !== null) {
-          const tiltX = (e.gamma / 45) * (width / 2);
-          const tiltY = ((e.beta - 45) / 45) * (height / 2);
-          mouse.targetX = width / 2 + tiltX;
-          mouse.targetY = height / 2 + tiltY;
+          mouseX = e.gamma * 2;
+          mouseY = (e.beta - 45) * 2;
         }
       });
 
-      window.addEventListener('touchmove', (e) => {
-        if (e.touches.length > 0) {
-          mouse.targetX = e.touches[0].clientX;
-          mouse.targetY = e.touches[0].clientY;
-        }
-      });
+      function renderSpace() {
+        ctx.fillStyle = 'rgba(4, 5, 8, 0.35)';
+        ctx.fillRect(0, 0, width, height);
 
-      const particleCount = 45;
-      const particles = [];
-      const colors = ['#FC6C85', '#32CD32', '#00F0FF', '#ffffff'];
+        const cx = width / 2 + mouseX;
+        const cy = height / 2 + mouseY;
 
-      for (let i = 0; i < particleCount; i++) {
-        particles.push({
-          x: Math.random() * width,
-          y: Math.random() * height,
-          z: Math.random() * 2 + 0.5,
-          radius: Math.random() * 3 + 1.5,
-          color: colors[Math.floor(Math.random() * colors.length)],
-          vx: (Math.random() - 0.5) * 0.6,
-          vy: (Math.random() - 0.5) * 0.6
-        });
-      }
+        for (let i = 0; i < numStars; i++) {
+          const star = stars[i];
 
-      function animate() {
-        mouse.x += (mouse.targetX - mouse.x) * 0.05;
-        mouse.y += (mouse.targetY - mouse.y) * 0.05;
+          star.z -= 1.6; // سرعة الطيران للأمام
+          if (star.z <= 0) {
+            star.z = width;
+            star.x = (Math.random() - 0.5) * width * 2;
+            star.y = (Math.random() - 0.5) * height * 2;
+          }
 
-        ctx.clearRect(0, 0, width, height);
+          const k = 220 / star.z;
+          const px = star.x * k + cx;
+          const py = star.y * k + cy;
 
-        for (let i = 0; i < particleCount; i++) {
-          let p = particles[i];
+          if (px >= 0 && px < width && py >= 0 && py < height) {
+            const size = Math.max(0.6, (1 - star.z / width) * 3);
+            const alpha = Math.max(0.15, 1 - star.z / width);
 
-          let parallaxX = (mouse.x - width / 2) * (p.z * 0.04);
-          let parallaxY = (mouse.y - height / 2) * (p.z * 0.04);
-
-          p.x += p.vx;
-          p.y += p.vy;
-
-          if (p.x < 0) p.x = width;
-          if (p.x > width) p.x = 0;
-          if (p.y < 0) p.y = height;
-          if (p.y > height) p.y = 0;
-
-          let drawX = p.x + parallaxX;
-          let drawY = p.y + parallaxY;
-
-          ctx.beginPath();
-          ctx.arc(drawX, drawY, p.radius * p.z, 0, Math.PI * 2);
-          ctx.fillStyle = p.color;
-          ctx.shadowBlur = 15;
-          ctx.shadowColor = p.color;
-          ctx.globalAlpha = 0.6;
-          ctx.fill();
-
-          for (let j = i + 1; j < particleCount; j++) {
-            let p2 = particles[j];
-            let p2DrawX = p2.x + (mouse.x - width / 2) * (p2.z * 0.04);
-            let p2DrawY = p2.y + (mouse.y - height / 2) * (p2.z * 0.04);
-
-            let dx = drawX - p2DrawX;
-            let dy = drawY - p2DrawY;
-            let dist = Math.sqrt(dx * dx + dy * dy);
-
-            if (dist < 130) {
-              ctx.beginPath();
-              ctx.moveTo(drawX, drawY);
-              ctx.lineTo(p2DrawX, p2DrawY);
-              ctx.strokeStyle = p.color;
-              ctx.globalAlpha = (1 - dist / 130) * 0.25;
-              ctx.lineWidth = 0.8;
-              ctx.stroke();
-            }
+            ctx.beginPath();
+            ctx.arc(px, py, size, 0, Math.PI * 2);
+            ctx.fillStyle = star.baseColor;
+            ctx.globalAlpha = alpha;
+            ctx.shadowBlur = size * 3;
+            ctx.shadowColor = star.baseColor;
+            ctx.fill();
           }
         }
 
         ctx.globalAlpha = 1.0;
         ctx.shadowBlur = 0;
-        requestAnimationFrame(animate);
+        requestAnimationFrame(renderSpace);
       }
-      animate();
+      renderSpace();
 
-      /* مشغل المودال للوسائط */
+      /* ===================================================
+         2. مشغل المودال للوسائط
+         =================================================== */
       document.addEventListener("DOMContentLoaded", () => {
         const modal = document.getElementById("imageModal");
         const modalImg = document.getElementById("modalImg");
