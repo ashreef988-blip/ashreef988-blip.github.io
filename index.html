@@ -6,11 +6,11 @@
     <title>Sherif Ashraf | Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@600;700;800;900&display=swap" rel="stylesheet" />
 
     <style>
       /* =========================================
-         1. المتغيرات والألوان الأساسية
+         1. المتغيرات والأساسيات
          ========================================= */
       * {
         margin: 0;
@@ -20,11 +20,13 @@
 
       :root {
         --bg-color: #08090d;
-        --card-bg: rgba(18, 20, 29, 0.7);
+        --card-bg: rgba(18, 20, 29, 0.75);
         --text-main: #ffffff;
         --text-muted: #a0a6b5;
-        --accent-red: #fc6c85;      /* أحمر بطيخي */
-        --accent-green: #32cd32;    /* أخضر بطيخي نيون */
+        --accent-red: #fc6c85;
+        --accent-green: #32cd32;
+        --cyber-cyan: #00f0ff;
+        --cyber-magenta: #d91680;
         --whatsapp-color: #25d366;
         --border-glass: rgba(252, 108, 133, 0.2);
       }
@@ -38,7 +40,6 @@
         position: relative;
       }
 
-      /* خلفية الكانفاس التفاعلية ثلاثية الأبعاد */
       #canvas3d {
         position: fixed;
         top: 0;
@@ -51,7 +52,7 @@
       }
 
       .container {
-        max-width: 1120px;
+        max-width: 1160px;
         margin: 0 auto;
         padding: 0 24px;
       }
@@ -68,6 +69,7 @@
         margin-bottom: 24px;
         background: linear-gradient(135deg, #ffffff 40%, var(--accent-red) 100%);
         -webkit-background-clip: text;
+        background-clip: text;
         -webkit-text-fill-color: transparent;
         position: relative;
         display: inline-block;
@@ -87,12 +89,12 @@
       }
 
       /* =========================================
-         2. الهيدر والقائمة (Header)
+         2. الهيدر والقائمة
          ========================================= */
       .site-header {
         position: sticky;
         top: 0;
-        background: rgba(8, 9, 13, 0.75);
+        background: rgba(8, 9, 13, 0.8);
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
         border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -112,7 +114,6 @@
         color: #fff;
         text-decoration: none;
         letter-spacing: -0.5px;
-        position: relative;
       }
 
       .logo span {
@@ -138,7 +139,6 @@
         text-shadow: 0 0 10px rgba(50, 205, 50, 0.6);
       }
 
-      /* --- زرار الهمبرجر (يظهر بس على الموبايل) --- */
       .hamburger-btn {
         display: none;
         flex-direction: column;
@@ -174,7 +174,7 @@
       }
 
       /* =========================================
-         3. قسم الهيرو (Hero Section)
+         3. سكشن الهيرو
          ========================================= */
       .hero {
         padding: 130px 0 80px;
@@ -203,6 +203,7 @@
         margin-bottom: 20px;
         background: linear-gradient(135deg, #ffffff 30%, #f0f0f0 60%, var(--accent-red) 100%);
         -webkit-background-clip: text;
+        background-clip: text;
         -webkit-text-fill-color: transparent;
       }
 
@@ -211,7 +212,6 @@
         font-size: 1.25rem;
         max-width: 650px;
         margin: 0 auto 36px;
-        font-weight: 400;
       }
 
       .hero-btns {
@@ -248,7 +248,6 @@
         background: rgba(255, 255, 255, 0.04);
         border: 1px solid rgba(255, 255, 255, 0.15);
         color: #fff;
-        box-shadow: none;
         backdrop-filter: blur(8px);
       }
 
@@ -264,17 +263,195 @@
         color: #fff !important;
       }
 
-      .btn-whatsapp:hover {
-        box-shadow: 0 10px 28px rgba(37, 211, 102, 0.55) !important;
+      /* =========================================
+         4. سكشن المشاريع الكاملة (Full Case Studies)
+         ========================================= */
+      .case-studies-container {
+        display: flex;
+        flex-direction: column;
+        gap: 48px;
+        margin-top: 36px;
+      }
+
+      .case-study-card {
+        background: linear-gradient(145deg, rgba(12, 14, 20, 0.95), rgba(18, 22, 34, 0.9));
+        border: 1px solid rgba(0, 240, 255, 0.25);
+        border-radius: 24px;
+        padding: 36px;
+        text-align: left;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .case-study-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-family: 'Orbitron', sans-serif;
+        font-size: 0.78rem;
+        letter-spacing: 1.5px;
+        color: var(--cyber-cyan);
+        background: rgba(0, 240, 255, 0.08);
+        border: 1px solid rgba(0, 240, 255, 0.4);
+        padding: 6px 14px;
+        border-radius: 30px;
+        margin-bottom: 16px;
+      }
+
+      .concept-tag {
+        display: inline-block;
+        background: rgba(217, 22, 128, 0.15);
+        border: 1px solid var(--cyber-magenta);
+        color: #ff52a8;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding: 4px 10px;
+        border-radius: 6px;
+        margin-left: 10px;
+      }
+
+      .case-study-card h3 {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 2.2rem;
+        color: #ffffff;
+        margin-bottom: 14px;
+        letter-spacing: 0.5px;
+      }
+
+      .case-study-card p.description {
+        color: var(--text-muted);
+        font-size: 1.05rem;
+        line-height: 1.75;
+        max-width: 900px;
+        margin-bottom: 24px;
+      }
+
+      .tools-used {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 28px;
+      }
+
+      .tool-pill {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: #e2e8f0;
+        font-size: 0.85rem;
+        font-weight: 500;
+        padding: 6px 14px;
+        border-radius: 8px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .tool-pill span {
+        color: var(--cyber-cyan);
+      }
+
+      /* نافذة المعاينة المباشرة للموقع */
+      .website-embed-wrapper {
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid rgba(0, 240, 255, 0.35);
+        background: #000;
+        box-shadow: 0 15px 35px rgba(0, 240, 255, 0.15);
+        margin-bottom: 30px;
+      }
+
+      .embed-header-bar {
+        background: #11141c;
+        padding: 10px 18px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .embed-dots {
+        display: flex;
+        gap: 6px;
+      }
+
+      .embed-dots span {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        display: inline-block;
+      }
+
+      .embed-url {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        background: rgba(0, 0, 0, 0.5);
+        padding: 4px 14px;
+        border-radius: 6px;
+        font-family: monospace;
+      }
+
+      .website-embed-wrapper iframe {
+        width: 100%;
+        height: 480px;
+        border: none;
+        display: block;
+      }
+
+      .case-study-actions {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .btn-cyber-primary {
+        background: linear-gradient(135deg, var(--cyber-cyan), #0099ff);
+        color: #000 !important;
+        font-weight: 700;
+        padding: 14px 28px;
+        border-radius: 10px;
+        text-decoration: none;
+        box-shadow: 0 6px 25px rgba(0, 240, 255, 0.4);
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .btn-cyber-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(0, 240, 255, 0.6);
+      }
+
+      /* خانة المشاريع القادمة Placeholders */
+      .case-study-placeholder {
+        border: 2px dashed rgba(255, 255, 255, 0.12);
+        border-radius: 24px;
+        padding: 48px 24px;
+        background: rgba(12, 14, 20, 0.3);
+        text-align: center;
+      }
+
+      .case-study-placeholder h4 {
+        font-size: 1.4rem;
+        color: var(--text-muted);
+        margin-bottom: 8px;
+      }
+
+      .case-study-placeholder p {
+        color: rgba(160, 166, 181, 0.6);
+        font-size: 0.95rem;
       }
 
       /* =========================================
-         4. معرض الأعمال ثلاثي الأبعاد (Portfolio Grid)
+         5. معرض الميديا والتصميمات (Media Grid)
          ========================================= */
       .portfolio-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 32px;
+        gap: 30px;
         margin-top: 48px;
       }
 
@@ -291,22 +468,6 @@
         cursor: pointer;
         position: relative;
         overflow: hidden;
-      }
-
-      .portfolio-item::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
-        transition: 0.5s;
-        pointer-events: none;
-      }
-
-      .portfolio-item:hover::before {
-        left: 100%;
       }
 
       .portfolio-item:hover {
@@ -351,16 +512,16 @@
         color: #fff;
         padding: 10px 22px;
         border-radius: 30px;
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         font-weight: 700;
-        border: 1px solid var(--accent-red);
-        box-shadow: 0 0 20px rgba(252, 108, 133, 0.4);
+        border: 1px solid var(--cyber-cyan);
+        box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
         pointer-events: none;
         backdrop-filter: blur(8px);
       }
 
       .portfolio-item h3 {
-        font-size: 1.25rem;
+        font-size: 1.2rem;
         margin: 18px 0 8px;
         color: #fff;
       }
@@ -372,7 +533,7 @@
       }
 
       /* =========================================
-         5. قسم التواصل والفورم (Contact Section)
+         6. عني والتواصل (About & Contact)
          ========================================= */
       .about p {
         max-width: 780px;
@@ -423,11 +584,6 @@
         color: var(--accent-green);
         text-decoration: none;
         font-weight: 600;
-        transition: color 0.2s;
-      }
-
-      .contact-info-box a:hover {
-        text-shadow: 0 0 10px rgba(50, 205, 50, 0.8);
       }
 
       .compact-form {
@@ -452,7 +608,6 @@
         gap: 6px;
         text-align: left;
         color: var(--text-muted);
-        font-weight: 500;
       }
 
       .compact-form input,
@@ -464,7 +619,6 @@
         border: 1px solid rgba(255, 255, 255, 0.12);
         color: #fff;
         font-family: inherit;
-        transition: border-color 0.25s ease, box-shadow 0.25s ease;
       }
 
       .compact-form input:focus,
@@ -472,11 +626,6 @@
         outline: none;
         border-color: var(--accent-red);
         box-shadow: 0 0 12px rgba(252, 108, 133, 0.35);
-      }
-
-      .compact-form textarea {
-        resize: vertical;
-        min-height: 80px;
       }
 
       .social-cards {
@@ -504,11 +653,10 @@
         background: rgba(252, 108, 133, 0.15);
         border-color: var(--accent-red);
         transform: translateY(-3px);
-        box-shadow: 0 4px 15px rgba(252, 108, 133, 0.3);
       }
 
       /* =========================================
-         6. الشريط المتحرك والزر العائم
+         7. التيكر والمودال
          ========================================= */
       .ticker-container {
         overflow: hidden;
@@ -550,16 +698,13 @@
         justify-content: center;
         box-shadow: 0 6px 22px rgba(37, 211, 102, 0.5);
         z-index: 9999;
-        transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        transition: transform 0.3s;
       }
 
       .floating-whatsapp:hover {
         transform: scale(1.15) rotate(8deg);
       }
 
-      /* =========================================
-         7. نافذة التكبير والتقليب بالأسهم (Modal)
-         ========================================= */
       .image-modal {
         display: none;
         position: fixed;
@@ -591,7 +736,6 @@
         max-height: 80vh;
         border-radius: 12px;
         object-fit: contain;
-        box-shadow: 0 0 35px rgba(0, 0, 0, 0.8);
       }
 
       .modal-arrow {
@@ -610,14 +754,11 @@
         cursor: pointer;
         border-radius: 50%;
         backdrop-filter: blur(8px);
-        transition: all 0.2s ease;
         user-select: none;
       }
 
       .modal-arrow:hover {
         background: var(--accent-red);
-        border-color: var(--accent-red);
-        box-shadow: 0 0 20px rgba(252, 108, 133, 0.6);
       }
 
       .prev-btn { left: 24px; }
@@ -630,84 +771,38 @@
         color: #fff;
         font-size: 40px;
         cursor: pointer;
-        user-select: none;
-        transition: color 0.2s;
       }
 
-      .close-modal:hover {
-        color: var(--accent-red);
-      }
-
-      /* =========================================
-         8. الاستجابة للموبايل (Responsive / Mobile Menu)
-         ========================================= */
       @media (max-width: 768px) {
-        .hero h1 {
-          font-size: 2.4rem;
-        }
-
-        .subheadline {
-          font-size: 1.05rem;
-        }
-
-        .section {
-          padding: 60px 0;
-        }
-
-        .hamburger-btn {
-          display: flex;
-        }
-
+        .hero h1 { font-size: 2.4rem; }
+        .case-study-card { padding: 22px; }
+        .case-study-card h3 { font-size: 1.6rem; }
+        .website-embed-wrapper iframe { height: 340px; }
+        .hamburger-btn { display: flex; }
         .nav-links {
           position: fixed;
           top: 75px;
           right: 0;
           height: calc(100vh - 75px);
           width: 240px;
-          background: rgba(8, 9, 13, 0.97);
-          backdrop-filter: blur(16px);
-          -webkit-backdrop-filter: blur(16px);
+          background: rgba(8, 9, 13, 0.98);
           border-left: 1px solid rgba(255, 255, 255, 0.08);
           flex-direction: column;
           align-items: flex-start;
           gap: 0;
           padding: 20px 0;
           transform: translateX(100%);
-          transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+          transition: transform 0.35s ease;
           z-index: 1050;
         }
-
-        .nav-links.open {
-          transform: translateX(0);
-        }
-
-        .nav-links li {
-          width: 100%;
-        }
-
-        .nav-links a {
-          display: block;
-          width: 100%;
-          padding: 16px 24px;
-          font-size: 1rem;
-        }
-
-        .nav-links a:hover {
-          background: rgba(255, 255, 255, 0.04);
-        }
-
-        .hero-btns {
-          flex-direction: column;
-          align-items: stretch;
-        }
+        .nav-links.open { transform: translateX(0); }
+        .nav-links a { display: block; width: 100%; padding: 16px 24px; }
       }
     </style>
   </head>
   <body>
-    <!-- كانفاس الخلفية التفاعلية 3D -->
     <canvas id="canvas3d"></canvas>
 
-    <!-- زرار واتساب العائم -->
     <a href="https://wa.me/201018585432" target="_blank" class="floating-whatsapp" aria-label="WhatsApp">
       <svg viewBox="0 0 32 32" width="30" height="30" fill="#ffffff">
         <path d="M16.002 2C8.28 2 2 8.28 2 16c0 2.72.78 5.26 2.13 7.42L2.7 29.3a1 1 0 001.25 1.25l5.96-1.42A13.93 13.93 0 0016 30c7.72 0 14-6.28 14-14S23.72 2 16.002 2zm7.98 19.38c-.33.93-1.64 1.72-2.7 1.95-.72.16-1.66.29-4.83-1.02-4.06-1.68-6.68-5.8-6.88-6.07-.2-.27-1.65-2.2-1.65-4.2s1.05-2.98 1.42-3.39c.37-.41.81-.51 1.08-.51.27 0 .54 0 .78.01.25.02.59-.1.92.7.34.82 1.16 2.83 1.26 3.04.1.2.17.44.03.71-.13.27-.2.44-.4.67-.2.24-.42.53-.6.71-.2.2-.41.42-.18.82.24.4 1.05 1.73 2.25 2.8 1.55 1.38 2.85 1.81 3.26 2.01.41.2.65.17.89-.1.24-.27 1.02-1.19 1.29-1.6.27-.41.54-.34.92-.2.37.14 2.37 1.12 2.78 1.32.41.2.68.31.78.48.1.17.1.98-.23 1.91z"/>
@@ -719,8 +814,9 @@
         <a href="#home" class="logo">Sherif <span>Ashraf</span></a>
         <ul class="nav-links" id="navLinks">
           <li><a href="#home">Home</a></li>
+          <li><a href="#case-studies">Full Projects</a></li>
+          <li><a href="#portfolio">Media Assets</a></li>
           <li><a href="#about">About</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
         <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menu">
@@ -733,40 +829,215 @@
 
     <main>
       <section class="hero section container">
-        <p class="eyebrow">One Man Army &mdash; Creative & Content</p>
+        <p class="eyebrow">Creative Director &mdash; Full Brand Systems</p>
         <h1>Hi, I'm Sherif Ashraf</h1>
         <p class="subheadline" id="dynamic-role">
-          Content Creator | Graphic Designer | Video Editor | On-Camera Talent
+          Brand Identity Designer | Video Editor | Digital Media & AI Creator
         </p>
         <div class="hero-btns">
-          <a href="#portfolio" class="btn">View My Work</a>
+          <a href="#case-studies" class="btn">Explore Case Studies</a>
           <a href="https://wa.me/201018585432" target="_blank" class="btn btn-whatsapp">Chat on WhatsApp</a>
           <a href="cv.pdf" download class="btn btn-outline">Download CV</a>
         </div>
       </section>
 
-      <section class="about section" id="about">
-        <div class="container">
-          <h2>About Me</h2>
-          <p>
-            I'm not the guy who just knows a little about everything — I'm the guy who gets it done. No task stops in front of me: give me a new tool or a platform I've never touched, and I'll crack it in minutes, learn it, and put it to work. I've run media buying, marketing, editing, and design for the same project at the same time, and on top of that I bring a director's eye for framing and an actor's background that gives me natural charisma and real, unscripted reactions on camera. From the first spark of an idea to acting it out, directing it, designing it, and promoting it — I handle the whole night. I'm literally the one who serves the project, and I don't rest until the result is a solid 10/10.
-          </p>
-          <div class="about-highlights">
-            <div class="tag">Content Creation<span>UGC, on-camera, natural reactions</span></div>
-            <div class="tag">Video Editing<span>Dynamic cuts & pacing</span></div>
-            <div class="tag">Graphic Design<span>3D visuals & branding</span></div>
-            <div class="tag">Directing & Acting<span>Camera framing, real charisma</span></div>
-            <div class="tag">Media Buying & Marketing<span>End-to-end execution</span></div>
+      <!-- =========================================
+           قسم دراسات الحالة والمشاريع الكاملة
+           ========================================= -->
+      <section class="section container" id="case-studies">
+        <h2>Full Case Studies</h2>
+        
+        <div class="case-studies-container">
+          <!-- مشروع 1: ZONE 99 -->
+          <article class="case-study-card">
+            <div class="case-study-badge">
+              <span>●</span> CASE STUDY 01 // SEASON 01: GENESIS
+              <span class="concept-tag">Concept Project</span>
+            </div>
+            
+            <h3>ZONE 99 — Cyber-Tech Restaurant & Digital Experience</h3>
+            
+            <p class="description">
+              An end-to-end experimental concept project fusing dark cyber-tech visual language with modern gourmet street food culture. Designed entirely as a self-directed identity simulation, building a coherent universe across print packaging, dynamic motion teasers, operational uniforms, and a fully interactive landing page prototype.
+            </p>
+
+            <!-- الأدوات المستخدمة -->
+            <div class="tools-used">
+              <span class="tool-pill"><span>⚡</span> Canva AI</span>
+              <span class="tool-pill"><span>⚡</span> Adobe Photoshop</span>
+              <span class="tool-pill"><span>⚡</span> Gemini AI</span>
+              <span class="tool-pill"><span>⚡</span> ElevenLabs Voice AI</span>
+              <span class="tool-pill"><span>⚡</span> UI/UX System Design</span>
+            </div>
+
+            <!-- نافذة المعاينة المباشرة لموقع ZONE 99 -->
+            <div class="website-embed-wrapper">
+              <div class="embed-header-bar">
+                <div class="embed-dots">
+                  <span style="background: #ff5f56;"></span>
+                  <span style="background: #ffbd2e;"></span>
+                  <span style="background: #27c93f;"></span>
+                </div>
+                <div class="embed-url">https://khalidmedia.my.canva.site/zone-99-cyber-burger-landing-page</div>
+                <div style="width: 30px;"></div>
+              </div>
+              <iframe 
+                src="https://khalidmedia.my.canva.site/zone-99-cyber-burger-landing-page" 
+                title="ZONE 99 Live Website Preview" 
+                loading="lazy">
+              </iframe>
+            </div>
+
+            <div class="case-study-actions">
+              <a href="https://khalidmedia.my.canva.site/zone-99-cyber-burger-landing-page" target="_blank" class="btn-cyber-primary">
+                Open Live Prototype ↗
+              </a>
+              <a href="#portfolio" class="btn btn-outline">
+                Browse Project Visual Assets ↓
+              </a>
+            </div>
+          </article>
+
+          <!-- خانة لمشروع مستقبلي 2 -->
+          <div class="case-study-placeholder">
+            <h4>CASE STUDY 02 // COMING SOON</h4>
+            <p>New full-scale brand identity and media system in production.</p>
+          </div>
+
+          <!-- خانة لمشروع مستقبلي 3 -->
+          <div class="case-study-placeholder">
+            <h4>CASE STUDY 03 // COMING SOON</h4>
+            <p>Commercial advertising & digital campaign showcase.</p>
           </div>
         </div>
       </section>
 
+      <!-- =========================================
+           قسم معرض الميديا والتصميمات الفردية
+           ========================================= -->
       <section class="portfolio section" id="portfolio">
         <div class="container">
-          <h2>Portfolio</h2>
+          <h2>Media & Assets Showcase</h2>
           
           <div class="portfolio-grid">
-            <!-- مشروع الفيديو wark3 -->
+            <!-- فيديو أنيميشن اللوجو -->
+            <article class="portfolio-item gallery-item" data-type="video" data-src="logo-animation.mp4.mp4">
+              <div class="video-container">
+                <video muted loop playsinline width="100%">
+                  <source src="logo-animation.mp4.mp4" type="video/mp4" />
+                </video>
+                <div class="play-overlay">▶ Logo Reveal</div>
+              </div>
+              <h3>ZONE 99 // Cyber Emblem Reveal</h3>
+              <p>High-tech holographic emblem animation with culinary neon aesthetics.</p>
+            </article>
+
+            <!-- فيديو إطلاق السيستم -->
+            <article class="portfolio-item gallery-item" data-type="video" data-src="system-online-video.mp4.mp4">
+              <div class="video-container">
+                <video muted loop playsinline width="100%">
+                  <source src="system-online-video.mp4.mp4" type="video/mp4" />
+                </video>
+                <div class="play-overlay">▶ System Online Video</div>
+              </div>
+              <h3>System Boot // Motion Teaser</h3>
+              <p>Atmospheric visual boot sequence announcing Cairo sector launch.</p>
+            </article>
+
+            <!-- فيديو الموكتيل النيون -->
+            <article class="portfolio-item gallery-item" data-type="video" data-src="neon-sip-video.mp4">
+              <div class="video-container">
+                <video muted loop playsinline width="100%">
+                  <source src="neon-sip-video.mp4" type="video/mp4" />
+                </video>
+                <div class="play-overlay">▶ Neon Sip Video</div>
+              </div>
+              <h3>Mixology // Neon Sip Motion</h3>
+              <p>Fluid dynamics and layered color showcase for cyber mixology drinks.</p>
+            </article>
+
+            <!-- بوستر الإطلاق -->
+            <article class="portfolio-item gallery-item" data-type="image" data-src="system-online-poster.png.png">
+              <div class="img-thumbnail-box">
+                <img src="system-online-poster.png.png" alt="ZONE 99 Launch Poster" />
+              </div>
+              <h3>ZONE 99 // Launch Poster</h3>
+              <p>Key visual campaign and typography hierarchy for dark kitchen launch.</p>
+            </article>
+
+            <!-- بوستر البرجر الجليتش -->
+            <article class="portfolio-item gallery-item" data-type="image" data-src="system-overload-poster.png.png">
+              <div class="img-thumbnail-box">
+                <img src="system-overload-poster.png.png" alt="Glitch Burger Poster" />
+              </div>
+              <h3>The Glitch Burger // Key Visual</h3>
+              <p>Matte black brioche hero shot accompanied by scanline glitch branding.</p>
+            </article>
+
+            <!-- بوستر الموكتيل النيون -->
+            <article class="portfolio-item gallery-item" data-type="image" data-src="neon-sip-poster.png.png">
+              <div class="img-thumbnail-box">
+                <img src="neon-sip-poster.png.png" alt="Neon Sip Poster" />
+              </div>
+              <h3>Neon Sip // Mixology Print Art</h3>
+              <p>High-voltage layered beverage campaign featuring reactive gradients.</p>
+            </article>
+
+            <!-- بروشور المنيو المطوي -->
+            <article class="portfolio-item gallery-item" data-type="image" data-src="menu-brochure.png.png">
+              <div class="img-thumbnail-box">
+                <img src="menu-brochure.png.png" alt="Menu Brochure C-Fold" />
+              </div>
+              <h3>System Roster // Menu Architecture</h3>
+              <p>C-fold print brochure with technical nutritional metrics and calorie protocols.</p>
+            </article>
+
+            <!-- موك آب علبة البرجر المات -->
+            <article class="portfolio-item gallery-item" data-type="image" data-src="burger-box-matte.jpg.jpg">
+              <div class="img-thumbnail-box">
+                <img src="burger-box-matte.jpg.jpg" alt="Matte Packaging Box" />
+              </div>
+              <h3>Cyber Packaging // Matte Box</h3>
+              <p>Premium tactile packaging mockup with glowing cyan and magenta accents.</p>
+            </article>
+
+            <!-- موك آب العلبة الكرافت -->
+            <article class="portfolio-item gallery-item" data-type="image" data-src="burger-box-kraft.jpg.jpg">
+              <div class="img-thumbnail-box">
+                <img src="burger-box-kraft.jpg.jpg" alt="Kraft Packaging Box" />
+              </div>
+              <h3>Tactile Packaging // Kraft Edition</h3>
+              <p>Organic eco-paper container contrast with laser-engraved tech insignia.</p>
+            </article>
+
+            <!-- موك آب كاب الاستاف -->
+            <article class="portfolio-item gallery-item" data-type="image" data-src="staff-cap-mockup.jpg.jpg">
+              <div class="img-thumbnail-box">
+                <img src="staff-cap-mockup.jpg.jpg" alt="Crew Uniform Cap" />
+              </div>
+              <h3>Crew Uniform // Tactical Cap</h3>
+              <p>Minimalist operator headwear for on-ground culinary engineers.</p>
+            </article>
+
+            <!-- بوستر الكوكي -->
+            <article class="portfolio-item gallery-item" data-type="image" data-src="cookie-poster.png.png">
+              <div class="img-thumbnail-box">
+                <img src="cookie-poster.png.png" alt="Blueberry Core Cookie" />
+              </div>
+              <h3>Zero-Day Cookie Promo</h3>
+              <p>Core injection product design and vibrant promotional dessert branding.</p>
+            </article>
+
+            <!-- الهيرو فيجوال الرئيسي -->
+            <article class="portfolio-item gallery-item" data-type="image" data-src="brand-hero-visual.jpg.jpg">
+              <div class="img-thumbnail-box">
+                <img src="brand-hero-visual.jpg.jpg" alt="Brand Hero Visual" />
+              </div>
+              <h3>ZONE 99 // Brand Ecosystem</h3>
+              <p>Comprehensive overview of apparel, physical boxes, and merchandise.</p>
+            </article>
+
+            <!-- فيديو تجاري خارجي wark3 -->
             <article class="portfolio-item gallery-item" data-type="video" data-src="wark3.mp4">
               <div class="video-container">
                 <video muted loop playsinline width="100%">
@@ -778,7 +1049,7 @@
               <p>Dynamic cuts, visual pacing, and sound design tailored for high engagement.</p>
             </article>
 
-            <!-- مشروع الصورة الأولى wark2 -->
+            <!-- تصميم تجاري wark2 -->
             <article class="portfolio-item gallery-item" data-type="image" data-src="wark2.png">
               <div class="img-thumbnail-box">
                 <img src="wark2.png" alt="Commercial Design Project 1" />
@@ -787,7 +1058,7 @@
               <p>High-impact 3D product showcase and advertising artwork.</p>
             </article>
 
-            <!-- مشروع الصورة الثانية wark4 -->
+            <!-- تصميم تجاري wark4 -->
             <article class="portfolio-item gallery-item" data-type="image" data-src="wark4.png">
               <div class="img-thumbnail-box">
                 <img src="wark4.png" alt="Commercial Design Project 2" />
@@ -795,20 +1066,22 @@
               <h3>Creative Promotional Poster</h3>
               <p>Bold color contrast, modern typography, and dimensional product composition.</p>
             </article>
+          </div>
+        </div>
+      </section>
 
-            <!-- 🔽 حط هنا أي مشروع جديد تضيفه، بنفس الشكل بتاع فوق -->
-            <!--
-            <article class="portfolio-item gallery-item" data-type="video" data-src="new-video.mp4">
-              <div class="video-container">
-                <video muted loop playsinline width="100%">
-                  <source src="new-video.mp4" type="video/mp4" />
-                </video>
-                <div class="play-overlay">▶ Watch Full Video</div>
-              </div>
-              <h3>عنوان المشروع</h3>
-              <p>وصف قصير للمشروع.</p>
-            </article>
-            -->
+      <section class="about section" id="about">
+        <div class="container">
+          <h2>About Me</h2>
+          <p>
+            I'm not the guy who just knows a little about everything — I'm the guy who gets it done. No task stops in front of me: give me a new tool or a platform I've never touched, and I'll crack it in minutes, learn it, and put it to work. I've run media buying, marketing, editing, and design for the same project at the same time, and on top of that I bring a director's eye for framing and an actor's background that gives me natural charisma and real, unscripted reactions on camera.
+          </p>
+          <div class="about-highlights">
+            <div class="tag">Content Creation<span>UGC, on-camera, natural reactions</span></div>
+            <div class="tag">Video Editing<span>Dynamic cuts & pacing</span></div>
+            <div class="tag">Graphic Design<span>3D visuals & branding</span></div>
+            <div class="tag">Directing & Acting<span>Camera framing, real charisma</span></div>
+            <div class="tag">Media Buying & Marketing<span>End-to-end execution</span></div>
           </div>
         </div>
       </section>
@@ -864,7 +1137,7 @@
       </div>
     </div>
 
-    <!-- شاشة التكبير مع الأسهم -->
+    <!-- نافذة المودال للتكبير والتنقل -->
     <div class="image-modal" id="imageModal">
       <span class="close-modal">&times;</span>
       <button class="modal-arrow prev-btn" id="modalPrev" aria-label="Previous">&#10094;</button>
@@ -876,9 +1149,7 @@
     </div>
 
     <script>
-      /* ===================================================
-         1. محرك الخلفية التفاعلية 3D (الماوس + حركة الموبايل)
-         =================================================== */
+      /* محرك الخلفية التفاعلية */
       const canvas = document.getElementById('canvas3d');
       const ctx = canvas.getContext('2d');
 
@@ -892,13 +1163,11 @@
 
       let mouse = { x: width / 2, y: height / 2, targetX: width / 2, targetY: height / 2 };
 
-      // حركة الماوس على الكمبيوتر
       window.addEventListener('mousemove', (e) => {
         mouse.targetX = e.clientX;
         mouse.targetY = e.clientY;
       });
 
-      // حركة الموبايل (Gyroscope / ميل التليفون أو اللمس)
       window.addEventListener('deviceorientation', (e) => {
         if (e.gamma !== null && e.beta !== null) {
           const tiltX = (e.gamma / 45) * (width / 2);
@@ -915,16 +1184,15 @@
         }
       });
 
-      // إنشاء جزيئات ثلاثية الأبعاد مضيئة بألوان البطيخي
       const particleCount = 45;
       const particles = [];
-      const colors = ['#FC6C85', '#32CD32', '#ffffff'];
+      const colors = ['#FC6C85', '#32CD32', '#00F0FF', '#ffffff'];
 
       for (let i = 0; i < particleCount; i++) {
         particles.push({
           x: Math.random() * width,
           y: Math.random() * height,
-          z: Math.random() * 2 + 0.5, // العمق 3D
+          z: Math.random() * 2 + 0.5,
           radius: Math.random() * 3 + 1.5,
           color: colors[Math.floor(Math.random() * colors.length)],
           vx: (Math.random() - 0.5) * 0.6,
@@ -933,17 +1201,14 @@
       }
 
       function animate() {
-        // تنعيم حركة الماوس / الموبايل
         mouse.x += (mouse.targetX - mouse.x) * 0.05;
         mouse.y += (mouse.targetY - mouse.y) * 0.05;
 
         ctx.clearRect(0, 0, width, height);
 
-        // رسم خطوط وشبكة العمق
         for (let i = 0; i < particleCount; i++) {
           let p = particles[i];
 
-          // تفاعل الحركة مع موضع الماوس/الميل بحساب العمق z
           let parallaxX = (mouse.x - width / 2) * (p.z * 0.04);
           let parallaxY = (mouse.y - height / 2) * (p.z * 0.04);
 
@@ -958,7 +1223,6 @@
           let drawX = p.x + parallaxX;
           let drawY = p.y + parallaxY;
 
-          // رسم توهج الجسيم المضيء
           ctx.beginPath();
           ctx.arc(drawX, drawY, p.radius * p.z, 0, Math.PI * 2);
           ctx.fillStyle = p.color;
@@ -967,7 +1231,6 @@
           ctx.globalAlpha = 0.6;
           ctx.fill();
 
-          // توصيل خطوط ناعمة بين العناصر المتقاربة
           for (let j = i + 1; j < particleCount; j++) {
             let p2 = particles[j];
             let p2DrawX = p2.x + (mouse.x - width / 2) * (p2.z * 0.04);
@@ -995,9 +1258,7 @@
       }
       animate();
 
-      /* ===================================================
-         2. مشغل المودال والتكليب بالأسهم للصور والفيديو
-         =================================================== */
+      /* مشغل المودال للوسائط */
       document.addEventListener("DOMContentLoaded", () => {
         const modal = document.getElementById("imageModal");
         const modalImg = document.getElementById("modalImg");
@@ -1034,7 +1295,8 @@
         }
 
         galleryItems.forEach((item, index) => {
-          item.addEventListener("click", () => {
+          item.addEventListener("click", (e) => {
+            if (e.target.tagName === 'A') return;
             showMedia(index);
           });
         });
@@ -1069,9 +1331,6 @@
           if (e.key === "ArrowRight") showMedia(currentIndex + 1);
         });
 
-        /* ===================================================
-           3. قائمة الهمبرجر للموبايل
-           =================================================== */
         const hamburgerBtn = document.getElementById("hamburgerBtn");
         const navLinks = document.getElementById("navLinks");
 
@@ -1080,7 +1339,6 @@
           navLinks.classList.toggle("open");
         });
 
-        // قفل المينيو تلقائيًا لما تدوس على أي لينك
         navLinks.querySelectorAll("a").forEach((link) => {
           link.addEventListener("click", () => {
             hamburgerBtn.classList.remove("active");
