@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sherif Ashraf | Full-Stack Production & Creative Portfolio</title>
+    <title>Sherif Ashraf | Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
@@ -17,13 +17,13 @@
 
       :root {
         --bg-black: #050608;
-        --card-bg: rgba(13, 16, 24, 0.85);
+        --card-bg: rgba(14, 16, 24, 0.88);
         --text-primary: #ffffff;
-        --text-muted: #8e95a5;
+        --text-muted: #949db0;
         --accent-pink: #fc6c85;
         --accent-green: #32cd32;
         --cyber-cyan: #00f0ff;
-        --border-glass: rgba(255, 255, 255, 0.1);
+        --border-glass: rgba(255, 255, 255, 0.12);
       }
 
       body {
@@ -35,93 +35,101 @@
       }
 
       /* =========================================
-         1. شاشة البداية: دوائر الكشف الضوئي المتعددة
+         1. شاشة الإنترو: حلقات ضوئية 3D من الخلف للأمام
          ========================================= */
-      #hero-reveal-stage {
+      #rings-hero-stage {
         position: relative;
         width: 100vw;
         min-height: 100vh;
-        background: #000;
+        background: radial-gradient(circle at 50% 50%, #0c0f17 0%, #030406 100%);
         display: flex;
         align-items: center;
         justify-content: center;
         overflow: hidden;
+        perspective: 1000px;
         padding: 40px 24px;
       }
 
-      /* طبقة الإضاءات المتعددة المتداخلة */
-      .spotlight-lens {
+      .rings-perspective-box {
         position: absolute;
         inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         pointer-events: none;
-        z-index: 2;
-        transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        transform-style: preserve-3d;
+        z-index: 1;
       }
 
-      .spotlight-orb {
+      /* الحلقات الضوئية ثلاثية الأبعاد */
+      .light-ring {
         position: absolute;
         border-radius: 50%;
-        filter: blur(55px);
+        border: 4px solid rgba(255, 255, 255, 0.85);
         opacity: 0;
-        transform: translate(-50%, -50%);
-        animation-fill-mode: forwards;
+        box-shadow: 0 0 40px var(--cyber-cyan), inset 0 0 30px var(--cyber-cyan);
+        transform: translateZ(-800px) scale(0.1);
       }
 
-      /* الدائرة 1: بيضاء ناعمة تتحرك يمين وشمال */
-      .orb-1 {
-        width: 380px;
-        height: 380px;
-        background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.15) 60%, transparent 80%);
-        animation: orbScan1 3s cubic-bezier(0.4, 0, 0.2, 1) 0.3s infinite alternate;
+      /* الحلقة 1: بيضاء تندفع للأمام وتنور التايتل */
+      .ring-1 {
+        width: 500px;
+        height: 500px;
+        border-color: #ffffff;
+        box-shadow: 0 0 50px #ffffff, inset 0 0 40px rgba(255,255,255,0.8);
+        animation: pushRingForward 2.4s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s infinite;
       }
 
-      /* الدائرة 2: حزمة ثانية تظهر من الخلف بزاوية أخرى */
-      .orb-2 {
-        width: 480px;
-        height: 480px;
-        background: radial-gradient(circle, rgba(200, 235, 255, 0.75) 0%, rgba(0, 240, 255, 0.1) 60%, transparent 80%);
-        animation: orbScan2 3.6s cubic-bezier(0.4, 0, 0.2, 1) 0.8s infinite alternate;
+      /* الحلقة 2: نيون سيان تندفع بعدها وتكشف الوصف */
+      .ring-2 {
+        width: 700px;
+        height: 700px;
+        border-color: var(--cyber-cyan);
+        box-shadow: 0 0 60px var(--cyber-cyan), inset 0 0 40px var(--cyber-cyan);
+        animation: pushRingForward 2.4s cubic-bezier(0.2, 0.8, 0.2, 1) 0.9s infinite;
       }
 
-      /* الدائرة 3: الحزمة الكبرى الختامية التي تفتح الشاشة بالكامل */
-      .orb-final {
+      /* الحلقة 3: نيون وردي تندفع بزاوية وتكشف باقي التفاصيل */
+      .ring-3 {
+        width: 900px;
+        height: 900px;
+        border-color: var(--accent-pink);
+        box-shadow: 0 0 70px var(--accent-pink), inset 0 0 50px var(--accent-pink);
+        animation: pushRingForward 2.4s cubic-bezier(0.2, 0.8, 0.2, 1) 1.5s infinite;
+      }
+
+      /* الحلقة العملاقة الأخيرة التي تنفجر وتنور كل شيء */
+      .ring-massive-finale {
         position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 0px;
-        height: 0px;
-        background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(252, 108, 133, 0.3) 40%, rgba(50, 205, 50, 0.15) 70%, transparent 90%);
-        transform: translate(-50%, -50%);
+        width: 1400px;
+        height: 1400px;
         border-radius: 50%;
-        filter: blur(80px);
+        border: 8px solid #ffffff;
+        box-shadow: 0 0 100px #ffffff, 0 0 160px var(--accent-green);
         opacity: 0;
+        transform: translateZ(-1000px) scale(0.1);
       }
 
-      /* أنيميشن الدائرة الأخيرة عند فتح الموقع بالكامل */
-      .spotlight-unlocked .orb-final {
-        animation: finalFlashOpen 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      .rings-unlocked .ring-massive-finale {
+        animation: finaleBurst 1.6s cubic-bezier(0.15, 1, 0.3, 1) forwards;
       }
 
-      .spotlight-unlocked .spotlight-lens {
-        opacity: 0.2;
+      .rings-unlocked .light-ring {
+        animation: none;
+        opacity: 0.15;
       }
 
-      @keyframes orbScan1 {
-        0% { left: 20%; top: 40%; opacity: 0.85; }
-        50% { left: 75%; top: 55%; opacity: 0.95; }
-        100% { left: 45%; top: 35%; opacity: 0.7; }
+      @keyframes pushRingForward {
+        0% { transform: translateZ(-800px) scale(0.1); opacity: 0; }
+        40% { opacity: 0.9; }
+        80% { opacity: 0.7; }
+        100% { transform: translateZ(400px) scale(2.2); opacity: 0; }
       }
 
-      @keyframes orbScan2 {
-        0% { left: 80%; top: 60%; opacity: 0.65; }
-        50% { left: 25%; top: 45%; opacity: 0.85; }
-        100% { left: 70%; top: 30%; opacity: 0.75; }
-      }
-
-      @keyframes finalFlashOpen {
-        0% { width: 0px; height: 0px; opacity: 0; }
-        50% { opacity: 1; width: 140vw; height: 140vw; }
-        100% { opacity: 0; width: 200vw; height: 200vw; }
+      @keyframes finaleBurst {
+        0% { transform: translateZ(-900px) scale(0.2); opacity: 0; }
+        50% { opacity: 1; transform: translateZ(100px) scale(1.6); }
+        100% { opacity: 0; transform: translateZ(600px) scale(3.5); }
       }
 
       .hero-content {
@@ -140,7 +148,7 @@
         margin-bottom: 20px;
         opacity: 0;
         transform: translateY(20px);
-        transition: all 0.8s ease 0.2s;
+        transition: all 0.8s ease 0.3s;
       }
 
       .hero-title {
@@ -152,7 +160,7 @@
         color: #fff;
         opacity: 0;
         transform: translateY(30px);
-        transition: all 1s ease 0.4s;
+        transition: all 1s ease 0.5s;
       }
 
       .hero-desc {
@@ -162,7 +170,7 @@
         margin: 0 auto 36px;
         opacity: 0;
         transform: translateY(30px);
-        transition: all 1s ease 0.6s;
+        transition: all 1s ease 0.7s;
       }
 
       .hero-actions {
@@ -172,14 +180,13 @@
         flex-wrap: wrap;
         opacity: 0;
         transform: translateY(30px);
-        transition: all 1s ease 0.8s;
+        transition: all 1s ease 0.9s;
       }
 
-      /* ظهور كل النصوص بمجرد انتهاء ومضات الدوائر */
-      .spotlight-unlocked .hero-tagline,
-      .spotlight-unlocked .hero-title,
-      .spotlight-unlocked .hero-desc,
-      .spotlight-unlocked .hero-actions {
+      .rings-unlocked .hero-tagline,
+      .rings-unlocked .hero-title,
+      .rings-unlocked .hero-desc,
+      .rings-unlocked .hero-actions {
         opacity: 1;
         transform: translateY(0);
       }
@@ -261,7 +268,7 @@
         overflow: hidden;
         display: flex;
         flex-direction: column;
-        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+        transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
       }
 
       .duo-card:hover {
@@ -308,9 +315,6 @@
         font-family: 'Orbitron', sans-serif;
         font-weight: 700;
         backdrop-filter: blur(10px);
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
       }
 
       .badge-zone {
@@ -364,38 +368,42 @@
 
       .duo-footer {
         margin-top: auto;
-        display: flex;
-        gap: 12px;
-        flex-wrap: wrap;
       }
 
       /* =========================================
-         3. معرض الشغل الأفقي المتفاعل بالماوس (Horizontal Track)
+         3. معرض الشغل الأفقي بدون لاج نهائياً (Hardware Accelerated)
          ========================================= */
       .horizontal-showcase-section {
         padding: 80px 0;
-        overflow: hidden;
         position: relative;
       }
 
       .gallery-viewport {
         width: 100vw;
-        overflow-x: hidden;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-behavior: smooth;
+        padding: 24px 40px;
         cursor: grab;
-        padding: 20px 0;
+        scrollbar-width: thin;
+        scrollbar-color: var(--accent-pink) transparent;
+        -webkit-overflow-scrolling: touch;
       }
 
-      .gallery-viewport:active {
-        cursor: grabbing;
+      .gallery-viewport::-webkit-scrollbar {
+        height: 6px;
+      }
+
+      .gallery-viewport::-webkit-scrollbar-thumb {
+        background: var(--accent-pink);
+        border-radius: 6px;
       }
 
       .gallery-track {
         display: flex;
-        gap: 22px;
+        gap: 24px;
         width: max-content;
-        padding: 0 40px;
-        will-change: transform;
-        transition: transform 0.1s linear;
+        transform: translateZ(0); /* تسريع كارت الشاشة */
       }
 
       .work-tile {
@@ -407,13 +415,13 @@
         overflow: hidden;
         position: relative;
         cursor: pointer;
-        transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+        transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
       }
 
       .work-tile:hover {
         transform: scale(1.03) translateY(-6px);
         border-color: var(--accent-pink);
-        box-shadow: 0 15px 35px rgba(252, 108, 133, 0.25);
+        box-shadow: 0 15px 35px rgba(252, 108, 133, 0.3);
       }
 
       .work-tile img,
@@ -421,6 +429,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+        pointer-events: none;
       }
 
       .tile-video-indicator {
@@ -486,7 +495,105 @@
       }
 
       /* =========================================
-         5. السوشيال ميديا العائمة
+         5. سكشن التواصل وفورم الجيميل (Contact & Formspree)
+         ========================================= */
+      .contact-section {
+        padding: 80px 0;
+        text-align: center;
+      }
+
+      .contact-info-box {
+        margin-bottom: 30px;
+      }
+
+      .contact-info-box p {
+        margin: 8px 0;
+        font-size: 1.05rem;
+      }
+
+      .contact-info-box a {
+        color: var(--accent-green);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .compact-form {
+        max-width: 460px;
+        margin: 0 auto;
+        padding: 28px;
+        background: var(--card-bg);
+        border: 1px solid var(--border-glass);
+        border-radius: 18px;
+        backdrop-filter: blur(14px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .compact-form label {
+        font-size: 0.88rem;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        text-align: left;
+        color: var(--text-muted);
+      }
+
+      .compact-form input,
+      .compact-form textarea {
+        padding: 12px 16px;
+        font-size: 0.95rem;
+        border-radius: 10px;
+        background: rgba(6, 7, 10, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: #fff;
+        font-family: inherit;
+      }
+
+      .compact-form input:focus,
+      .compact-form textarea:focus {
+        outline: none;
+        border-color: var(--accent-pink);
+        box-shadow: 0 0 12px rgba(252, 108, 133, 0.35);
+      }
+
+      /* =========================================
+         6. الشريط السفلي المتحرك الملون
+         ========================================= */
+      .ticker-container {
+        overflow: hidden;
+        background: rgba(8, 10, 16, 0.95);
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 14px 0;
+        white-space: nowrap;
+      }
+
+      .ticker-track {
+        display: inline-block;
+        animation: marquee 24s linear infinite;
+      }
+
+      .ticker-track span {
+        display: inline-block;
+        padding: 0 14px;
+        font-size: 0.92rem;
+      }
+
+      .t-pink { color: var(--accent-pink); font-weight: 700; text-shadow: 0 0 10px rgba(252, 108, 133, 0.5); }
+      .t-green { color: var(--accent-green); font-weight: 700; text-shadow: 0 0 10px rgba(50, 205, 50, 0.5); }
+      .t-cyan { color: var(--cyber-cyan); font-weight: 700; text-shadow: 0 0 10px rgba(0, 240, 255, 0.5); }
+      .t-yellow { color: #ffbd2e; font-weight: 700; text-shadow: 0 0 10px rgba(255, 189, 46, 0.5); }
+      .t-dot { color: rgba(255, 255, 255, 0.3); }
+
+      @keyframes marquee {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+
+      /* =========================================
+         7. السوشيال ميديا العائمة
          ========================================= */
       .floating-social-stack {
         position: fixed;
@@ -522,12 +629,12 @@
       .btn-tt { background: linear-gradient(135deg, #000, #25f4ee, #fe2c55); }
 
       /* =========================================
-         6. المودال للتكبير
+         8. المودال مع أسهم التنقل (Prev / Next)
          ========================================= */
       .media-modal {
         position: fixed;
         inset: 0;
-        background: rgba(0, 0, 0, 0.95);
+        background: rgba(0, 0, 0, 0.96);
         backdrop-filter: blur(14px);
         z-index: 10000;
         display: none;
@@ -540,7 +647,7 @@
       }
 
       .modal-box {
-        max-width: 90vw;
+        max-width: 88vw;
         max-height: 85vh;
         display: flex;
         align-items: center;
@@ -555,6 +662,32 @@
         object-fit: contain;
       }
 
+      .modal-nav-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #fff;
+        font-size: 2.2rem;
+        width: 54px;
+        height: 54px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border-radius: 50%;
+        user-select: none;
+        transition: all 0.25s ease;
+      }
+
+      .modal-nav-arrow:hover {
+        background: var(--accent-pink);
+      }
+
+      .modal-arrow-left { left: 24px; }
+      .modal-arrow-right { right: 24px; }
+
       .modal-close {
         position: absolute;
         top: 24px;
@@ -567,12 +700,13 @@
       @media (max-width: 960px) {
         .case-studies-duo { grid-template-columns: 1fr; }
         .work-tile { flex: 0 0 280px; height: 380px; }
+        .modal-nav-arrow { width: 42px; height: 42px; font-size: 1.6rem; }
       }
     </style>
   </head>
   <body>
 
-    <!-- السوشيال ميديا العائمة فوق بعضها -->
+    <!-- أزرار السوشيال ميديا العائمة -->
     <div class="floating-social-stack">
       <a href="https://wa.me/201018585432" target="_blank" class="floating-btn btn-wa" aria-label="WhatsApp">
         <svg viewBox="0 0 32 32" width="24" height="24" fill="#ffffff"><path d="M16.002 2C8.28 2 2 8.28 2 16c0 2.72.78 5.26 2.13 7.42L2.7 29.3a1 1 0 001.25 1.25l5.96-1.42A13.93 13.93 0 0016 30c7.72 0 14-6.28 14-14S23.72 2 16.002 2zm7.98 19.38c-.33.93-1.64 1.72-2.7 1.95-.72.16-1.66.29-4.83-1.02-4.06-1.68-6.68-5.8-6.88-6.07-.2-.27-1.65-2.2-1.65-4.2s1.05-2.98 1.42-3.39c.37-.41.81-.51 1.08-.51.27 0 .54 0 .78.01.25.02.59-.1.92.7.34.82 1.16 2.83 1.26 3.04.1.2.17.44.03.71-.13.27-.2.44-.4.67-.2.24-.42.53-.6.71-.2.2-.41.42-.18.82.24.4 1.05 1.73 2.25 2.8 1.55 1.38 2.85 1.81 3.26 2.01.41.2.65.17.89-.1.24-.27 1.02-1.19 1.29-1.6.27-.41.54-.34.92-.2.37.14 2.37 1.12 2.78 1.32.41.2.68.31.78.48.1.17.1.98-.23 1.91z"/></svg>
@@ -588,12 +722,13 @@
       </a>
     </div>
 
-    <!-- 1. شاشة البداية: سبوت لايت متعدد يفتح على الكلام -->
-    <header id="hero-reveal-stage">
-      <div class="spotlight-lens" id="spotlightLens">
-        <div class="spotlight-orb orb-1"></div>
-        <div class="spotlight-orb orb-2"></div>
-        <div class="spotlight-orb orb-final"></div>
+    <!-- 1. شاشة الإنترو بالحلقات الضوئية 3D -->
+    <header id="rings-hero-stage">
+      <div class="rings-perspective-box">
+        <div class="light-ring ring-1"></div>
+        <div class="light-ring ring-2"></div>
+        <div class="light-ring ring-3"></div>
+        <div class="ring-massive-finale"></div>
       </div>
 
       <div class="hero-content">
@@ -609,14 +744,13 @@
       </div>
     </header>
 
-    <!-- 2. قسم المشاريع الكبيرة: الاثنين جنب بعض (Side-by-Side) -->
+    <!-- 2. المشاريع الكبرى جنب بعض (Side-by-Side) -->
     <section class="section-layout container" id="case-studies">
       <div class="section-headline">
         <h2>Major Case Studies</h2>
       </div>
 
       <div class="case-studies-duo">
-        <!-- كارت 1: ZONE 99 -->
         <article class="duo-card zone-theme">
           <div class="duo-visual">
             <img src="system-overload-poster.png.png" alt="ZONE 99 Cyberpunk Burger" />
@@ -641,7 +775,6 @@
           </div>
         </article>
 
-        <!-- كارت 2: VENOM LABS -->
         <article class="duo-card venom-theme">
           <div class="duo-visual">
             <img src="venom-hero-presentation.png" alt="VENOM LABS Nutrition System" />
@@ -668,15 +801,14 @@
       </div>
     </section>
 
-    <!-- 3. معرض الشغل: سكرول أفقي متفاعل مع حركة الماوس -->
+    <!-- 3. معرض الشغل الأفقي فائق النعومة (بدون لاج) -->
     <section class="horizontal-showcase-section">
       <div class="section-headline">
         <h2>Production Assets Gallery</h2>
       </div>
 
       <div class="gallery-viewport" id="galleryViewport">
-        <div class="gallery-track" id="galleryTrack">
-          <!-- كروت الأصول بحجم كبير وصور فقط -->
+        <div class="gallery-track">
           <div class="work-tile modal-trigger" data-type="image" data-src="venom-hero-presentation.png">
             <img src="venom-hero-presentation.png" alt="VENOM LABS Key Visual" />
           </div>
@@ -749,7 +881,7 @@
       </div>
     </section>
 
-    <!-- 4. سكشن About Me بالنص الدقيق -->
+    <!-- 4. سكشن About Me -->
     <section class="section-layout container" id="about">
       <div class="about-container">
         <div class="section-headline">
@@ -789,97 +921,158 @@
       </div>
     </section>
 
-    <!-- المودال للشاشة الكاملة -->
+    <!-- 5. سكشن التواصل وفورم الجيميل -->
+    <section class="contact-section container" id="contact">
+      <div class="section-headline">
+        <h2>Contact Me</h2>
+      </div>
+      
+      <div class="contact-info-box">
+        <p><strong>Direct Email:</strong> <a href="mailto:ashreef988@gmail.com">ashreef988@gmail.com[cite: 1]</a></p>
+        <p><strong>WhatsApp:</strong> <a href="https://wa.me/201018585432" target="_blank">01018585432[cite: 1]</a></p>
+      </div>
+
+      <form class="compact-form" action="https://formspree.io/f/myegkqkd" method="POST">
+        <label>
+          Your Name
+          <input type="text" name="name" required placeholder="Your name" />
+        </label>
+        <label>
+          Your Email
+          <input type="email" name="email" required placeholder="Your email" />
+        </label>
+        <label>
+          Message
+          <textarea name="message" rows="3" required placeholder="Write your message..."></textarea>
+        </label>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </form>
+    </section>
+
+    <!-- 6. الشريط المتحرك الملون -->
+    <div class="ticker-container">
+      <div class="ticker-track">
+        <span class="t-pink">⭐ ashreef988@gmail.com[cite: 1]</span>
+        <span class="t-dot">•</span>
+        <span class="t-green">📱 WhatsApp: 01018585432[cite: 1]</span>
+        <span class="t-dot">•</span>
+        <span class="t-cyan">📷 Instagram: @shefooo011[cite: 1]</span>
+        <span class="t-dot">•</span>
+        <span class="t-yellow">🎵 TikTok: @s.h.r.e.e.f0</span>
+        <span class="t-dot">•</span>
+        <span class="t-green">🎬 Full Production Specialist</span>
+        <span class="t-dot">•</span>
+        <span class="t-pink">⚡ Let's Create Together!</span>
+        <span class="t-dot">•</span>
+        <span class="t-pink">⭐ ashreef988@gmail.com[cite: 1]</span>
+        <span class="t-dot">•</span>
+        <span class="t-green">📱 WhatsApp: 01018585432[cite: 1]</span>
+        <span class="t-dot">•</span>
+        <span class="t-cyan">📷 Instagram: @shefooo011[cite: 1]</span>
+        <span class="t-dot">•</span>
+        <span class="t-yellow">🎵 TikTok: @s.h.r.e.e.f0</span>
+        <span class="t-dot">•</span>
+        <span class="t-green">🎬 Full Production Specialist</span>
+        <span class="t-dot">•</span>
+        <span class="t-pink">⚡ Let's Create Together!</span>
+      </div>
+    </div>
+
+    <!-- 7. المودال مع أسهم التنقل (Prev / Next) -->
     <div class="media-modal" id="mediaModal">
       <span class="modal-close" id="modalClose">&times;</span>
+      <div class="modal-nav-arrow modal-arrow-left" id="modalPrev">&#10094;</div>
       <div class="modal-box">
         <img id="mImg" src="" alt="Enlarged" style="display:none;" />
         <video id="mVideo" controls style="display:none;"></video>
       </div>
+      <div class="modal-nav-arrow modal-arrow-right" id="modalNext">&#10095;</div>
     </div>
 
     <script>
-      /* 1. نظام أنيميشن الإنترو والدوائر المتتابعة */
+      /* 1. نظام أنيميشن الحلقات 3D */
       window.addEventListener("DOMContentLoaded", () => {
-        const stage = document.getElementById("hero-reveal-stage");
-        
-        // بعد ثانيتين تظهر الدائرة الثالثة لتفتح الشاشة بالكامل
+        const stage = document.getElementById("rings-hero-stage");
         setTimeout(() => {
-          stage.classList.add("spotlight-unlocked");
+          stage.classList.add("rings-unlocked");
         }, 2200);
       });
 
-      /* 2. تحريك المعرض الأفقي بنعومة فائقة مع حركة الماوس والسحب */
+      /* 2. تحريك المعرض مع الماوس والتاتش بنعومة وبدون لاج */
       const viewport = document.getElementById("galleryViewport");
-      const track = document.getElementById("galleryTrack");
-
       let isDown = false;
-      let startX;
-      let scrollLeftPos = 0;
-      let targetTranslate = 0;
-      let currentTranslate = 0;
+      let startX, scrollLeft;
 
-      // سكرول متفاعل مع موضع الماوس في الشاشة
-      window.addEventListener("mousemove", (e) => {
-        if (isDown) return;
-        const maxScroll = track.scrollWidth - window.innerWidth;
-        const mouseRatio = e.clientX / window.innerWidth;
-        targetTranslate = -mouseRatio * maxScroll;
-      });
-
-      function animateGallery() {
-        currentTranslate += (targetTranslate - currentTranslate) * 0.08;
-        if (!isDown) {
-          track.style.transform = `translateX(${currentTranslate}px)`;
-        }
-        requestAnimationFrame(animateGallery);
-      }
-      animateGallery();
-
-      // إمكانية السحب اليدوي بالماوس أو اللمس (Touch & Drag)
       viewport.addEventListener("mousedown", (e) => {
         isDown = true;
-        startX = e.pageX - track.offsetLeft;
-        scrollLeftPos = currentTranslate;
+        startX = e.pageX - viewport.offsetLeft;
+        scrollLeft = viewport.scrollLeft;
       });
 
-      window.addEventListener("mouseup", () => {
-        isDown = false;
-      });
+      viewport.addEventListener("mouseleave", () => { isDown = false; });
+      viewport.addEventListener("mouseup", () => { isDown = false; });
 
       viewport.addEventListener("mousemove", (e) => {
         if (!isDown) return;
         e.preventDefault();
-        const x = e.pageX - track.offsetLeft;
-        const walk = (x - startX) * 1.5;
-        targetTranslate = scrollLeftPos + walk;
+        const x = e.pageX - viewport.offsetLeft;
+        const walk = (x - startX) * 1.8;
+        viewport.scrollLeft = scrollLeft - walk;
       });
 
-      /* 3. مشغل المودال للوسائط */
+      // حركة أوتوماتيكية ناعمة مع تمرير الماوس فوق المعرض
+      viewport.addEventListener("wheel", (e) => {
+        if (e.deltaY !== 0) {
+          e.preventDefault();
+          viewport.scrollLeft += e.deltaY * 1.2;
+        }
+      }, { passive: false });
+
+      /* 3. مشغل المودال وأسهم التقليب (Next & Prev) */
       const modal = document.getElementById("mediaModal");
       const modalImg = document.getElementById("mImg");
       const modalVid = document.getElementById("mVideo");
       const modalClose = document.getElementById("modalClose");
-      const triggers = document.querySelectorAll(".modal-trigger");
+      const prevBtn = document.getElementById("modalPrev");
+      const nextBtn = document.getElementById("modalNext");
+      const triggers = Array.from(document.querySelectorAll(".modal-trigger"));
+      let activeIndex = 0;
 
-      triggers.forEach(t => {
-        t.addEventListener("click", () => {
-          const type = t.getAttribute("data-type");
-          const src = t.getAttribute("data-src");
+      function renderMedia(idx) {
+        if (idx < 0) idx = triggers.length - 1;
+        if (idx >= triggers.length) idx = 0;
+        activeIndex = idx;
 
-          if (type === "video") {
-            modalImg.style.display = "none";
-            modalVid.style.display = "block";
-            modalVid.src = src;
-            modalVid.play();
-          } else {
-            modalVid.pause();
-            modalVid.style.display = "none";
-            modalImg.style.display = "block";
-            modalImg.src = src;
-          }
-          modal.classList.add("active");
-        });
+        const target = triggers[activeIndex];
+        const type = target.getAttribute("data-type");
+        const src = target.getAttribute("data-src");
+
+        if (type === "video") {
+          modalImg.style.display = "none";
+          modalVid.style.display = "block";
+          modalVid.src = src;
+          modalVid.play();
+        } else {
+          modalVid.pause();
+          modalVid.style.display = "none";
+          modalImg.style.display = "block";
+          modalImg.src = src;
+        }
+        modal.classList.add("active");
+      }
+
+      triggers.forEach((trigger, index) => {
+        trigger.addEventListener("click", () => renderMedia(index));
+      });
+
+      prevBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        renderMedia(activeIndex - 1);
+      });
+
+      nextBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        renderMedia(activeIndex + 1);
       });
 
       function closeModal() {
@@ -893,8 +1086,12 @@
       modal.addEventListener("click", (e) => {
         if (e.target === modal) closeModal();
       });
+
       document.addEventListener("keydown", (e) => {
+        if (!modal.classList.contains("active")) return;
         if (e.key === "Escape") closeModal();
+        if (e.key === "ArrowLeft") renderMedia(activeIndex - 1);
+        if (e.key === "ArrowRight") renderMedia(activeIndex + 1);
       });
     </script>
   </body>
