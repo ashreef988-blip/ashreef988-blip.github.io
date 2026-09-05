@@ -6,7 +6,7 @@
     <title>Sherif Ashraf | Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@600;700;800&display=swap" rel="stylesheet" />
 
     <style>
       * {
@@ -16,373 +16,430 @@
       }
 
       :root {
-        --bg-black: #060709;
-        --card-bg: rgba(14, 17, 24, 0.85);
-        --text-white: #ffffff;
-        --text-dim: #949db0;
-        --gold-glow: #d4af37;
-        --gold-light: #f3e5ab;
-        --accent-green: #25d366;
-        --accent-pink: #fc6c85;
-        --cyber-cyan: #00f0ff;
-        --border-glass: rgba(255, 255, 255, 0.12);
+        --bg-hero: #050608;
+        --bg-light: #f4f4f0;
+        --text-dark: #121417;
+        --text-muted: #5e6673;
+        --card-green: #0a3323;
+        --card-green-border: #14593e;
+        --neon-green: #38ef7d;
+        --gold: #dfb76c;
+        --gold-glow: rgba(223, 183, 108, 0.4);
       }
 
       body {
         font-family: 'Inter', sans-serif;
-        background-color: var(--bg-black);
-        color: var(--text-white);
+        background-color: var(--bg-hero);
+        color: #fff;
         overflow-x: hidden;
-        line-height: 1.6;
       }
 
-      /* Cursor الدائرة المضيئة المتبع للماوس */
-      .custom-cursor-glow {
+      /* Custom Cursor Ring */
+      .ring-cursor {
         position: fixed;
-        width: 320px;
-        height: 320px;
-        background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, rgba(255, 255, 255, 0.05) 45%, transparent 70%);
+        width: 44px;
+        height: 44px;
+        border: 2px solid var(--gold);
         border-radius: 50%;
         pointer-events: none;
         transform: translate(-50%, -50%);
-        z-index: 999;
-        transition: transform 0.06s ease-out;
+        transition: width 0.2s, height 0.2s, transform 0.05s ease-out;
+        z-index: 99999;
+        box-shadow: 0 0 15px var(--gold-glow);
       }
 
-      /* 1. HERO SECTION (نفس إنترو الفيديو: لوجو ذهبي مشع) */
-      .hero-section {
-        min-height: 90vh;
+      /* Navbar */
+      .top-nav {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(15, 18, 24, 0.75);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        padding: 10px 28px;
+        border-radius: 40px;
+        display: flex;
+        gap: 24px;
+        z-index: 1000;
+      }
+
+      .top-nav a {
+        color: #d1d5db;
+        text-decoration: none;
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        font-weight: 600;
+        transition: color 0.2s;
+      }
+
+      .top-nav a:hover {
+        color: var(--neon-green);
+      }
+
+      /* 1. HERO (Dark with Golden Glowing Ring Logo) */
+      .hero-stage {
+        min-height: 100vh;
+        background: #040507;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        text-align: center;
         position: relative;
+        text-align: center;
         padding: 40px 20px;
       }
 
-      .glowing-brand-title {
-        font-family: 'Cinzel', serif;
-        font-size: clamp(3.2rem, 8vw, 6rem);
-        font-weight: 900;
-        letter-spacing: 4px;
-        color: var(--gold-light);
-        text-shadow: 0 0 25px rgba(212, 175, 55, 0.8), 0 0 60px rgba(212, 175, 55, 0.3);
-        margin-bottom: 8px;
-        text-transform: uppercase;
-      }
-
-      .hero-sub {
-        font-size: 1.2rem;
-        color: var(--text-dim);
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        margin-bottom: 24px;
-      }
-
-      .hero-buttons {
-        display: flex;
-        gap: 16px;
-        justify-content: center;
-        flex-wrap: wrap;
-      }
-
-      .btn {
-        padding: 12px 28px;
-        border-radius: 10px;
-        font-size: 0.95rem;
-        font-weight: 600;
-        text-decoration: none;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-      }
-
-      .btn-gold {
-        background: linear-gradient(135deg, #d4af37, #aa8010);
-        color: #000;
-        box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4);
-      }
-
-      .btn-gold:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 30px rgba(212, 175, 55, 0.6);
-      }
-
-      .btn-glass {
-        background: rgba(255, 255, 255, 0.05);
-        color: #fff;
-        border: 1px solid var(--border-glass);
-      }
-
-      .btn-glass:hover {
-        background: rgba(255, 255, 255, 0.12);
-        transform: translateY(-2px);
-      }
-
-      /* 2. SERVICES SECTION (01, 02, 03, 04 زي الفيديو) */
-      .container {
-        max-width: 1280px;
-        margin: 0 auto;
-        padding: 0 24px;
-      }
-
-      .section-headline {
-        text-align: center;
-        margin: 80px 0 40px;
-      }
-
-      .section-headline h2 {
-        font-size: 2.4rem;
-        font-weight: 800;
-        letter-spacing: -0.5px;
-      }
-
-      .services-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: 20px;
-      }
-
-      .service-card {
-        background: var(--card-bg);
-        border: 1px solid var(--border-glass);
-        border-radius: 16px;
-        padding: 24px;
+      .hero-centerpiece {
         position: relative;
-        transition: transform 0.3s ease, border-color 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
 
-      .service-card:hover {
-        transform: translateY(-6px);
-        border-color: var(--gold-glow);
+      .golden-ring-emblem {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        border: 4px solid #fff;
+        box-shadow: 0 0 40px var(--gold), inset 0 0 25px var(--gold);
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        filter: drop-shadow(0 0 35px var(--gold));
+        animation: pulseRing 3s infinite alternate ease-in-out;
       }
 
-      .service-num {
-        font-family: 'Orbitron', sans-serif;
-        font-size: 1.1rem;
+      @keyframes pulseRing {
+        0% { transform: translate(-50%, -50%) scale(0.95); opacity: 0.8; }
+        100% { transform: translate(-50%, -50%) scale(1.05); opacity: 1; }
+      }
+
+      .hero-name {
+        font-family: 'Cinzel', serif;
+        font-size: clamp(3rem, 7.5vw, 5.6rem);
         font-weight: 900;
-        color: var(--gold-glow);
-        margin-bottom: 12px;
+        letter-spacing: 6px;
+        color: #fff;
+        text-shadow: 0 0 30px rgba(223, 183, 108, 0.6);
+        z-index: 2;
+        line-height: 1.1;
       }
 
-      .service-card h3 {
+      .hero-desc-tag {
+        margin-top: 24px;
+        font-size: 0.95rem;
+        color: #9ca3af;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        z-index: 2;
+      }
+
+      /* 2. ABOUT ME (Clean Light Section like Video) */
+      .about-section-light {
+        background: var(--bg-light);
+        color: var(--text-dark);
+        padding: 100px 24px;
+      }
+
+      .about-wrapper {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 50px;
+        align-items: center;
+      }
+
+      .about-text h2 {
+        font-size: 2.8rem;
+        font-weight: 800;
+        margin-bottom: 24px;
+        letter-spacing: -1px;
+      }
+
+      .about-text p {
+        font-size: 1.05rem;
+        line-height: 1.8;
+        color: var(--text-muted);
+        margin-bottom: 18px;
+      }
+
+      .about-text strong {
+        color: var(--text-dark);
+      }
+
+      .about-image-card {
+        background: #e2e4dc;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+      }
+
+      .about-image-card img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+      }
+
+      /* 3. SERVICES (4 Green Cards like Video) */
+      .services-section {
+        background: var(--bg-light);
+        padding: 0 24px 100px;
+      }
+
+      .services-container {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .services-container h2 {
+        font-size: 2.4rem;
+        color: var(--text-dark);
+        text-align: center;
+        margin-bottom: 40px;
+        font-weight: 800;
+      }
+
+      .services-grid-green {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+      }
+
+      .s-green-card {
+        background: var(--card-green);
+        border: 1px solid var(--card-green-border);
+        border-radius: 14px;
+        padding: 24px 20px;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 220px;
+        transition: transform 0.25s ease;
+      }
+
+      .s-green-card:hover {
+        transform: translateY(-6px);
+      }
+
+      .s-green-num {
+        font-family: 'Orbitron', sans-serif;
         font-size: 1.2rem;
-        margin-bottom: 8px;
+        font-weight: 800;
+        color: var(--neon-green);
       }
 
-      .service-card p {
-        font-size: 0.88rem;
-        color: var(--text-dim);
+      .s-green-card h3 {
+        font-size: 1.15rem;
+        margin: 12px 0 8px;
       }
 
-      /* 3. MAJOR CASE STUDIES (جنب بعض) */
-      .case-studies-duo {
+      .s-green-card p {
+        font-size: 0.82rem;
+        line-height: 1.6;
+        color: #bbf7d0;
+      }
+
+      /* 4. FEATURED PROJECTS (Side-by-side Dark Showcase) */
+      .projects-section-dark {
+        background: #0a0c10;
+        padding: 100px 24px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .max-contain {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .section-title-white {
+        font-size: 2.6rem;
+        text-align: center;
+        margin-bottom: 50px;
+        font-weight: 800;
+      }
+
+      .featured-duo-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 24px;
+        gap: 28px;
       }
 
-      .duo-card {
-        background: var(--card-bg);
+      .f-project-card {
+        background: #11141c;
+        border: 1px solid rgba(255, 255, 255, 0.12);
         border-radius: 20px;
-        border: 1px solid var(--border-glass);
         overflow: hidden;
-        transition: transform 0.35s ease;
       }
 
-      .duo-card:hover {
-        transform: translateY(-6px);
-      }
-
-      .duo-visual {
+      .f-project-visual {
         width: 100%;
         height: 320px;
         background: #000;
       }
 
-      .duo-visual img {
+      .f-project-visual img {
         width: 100%;
         height: 100%;
         object-fit: cover;
       }
 
-      .duo-body {
+      .f-project-info {
         padding: 24px;
       }
 
-      .duo-body h3 {
+      .f-project-info h3 {
         font-family: 'Orbitron', sans-serif;
         font-size: 1.5rem;
-        margin-bottom: 8px;
+        margin-bottom: 10px;
       }
 
-      .duo-body p {
+      .f-project-info p {
         font-size: 0.92rem;
-        color: var(--text-dim);
+        color: #94a3b8;
+        line-height: 1.6;
         margin-bottom: 20px;
       }
 
-      /* 4. SHORT-FORM EDITS (سكرول ناعم 9:16 زي الفيديو) */
-      .shorts-viewport {
-        overflow-x: auto;
-        padding: 20px 0;
-        display: flex;
-        gap: 20px;
-        scrollbar-width: thin;
-        scrollbar-color: var(--gold-glow) transparent;
+      .btn-action {
+        display: inline-block;
+        padding: 10px 24px;
+        background: #fff;
+        color: #000;
+        text-decoration: none;
+        font-weight: 700;
+        border-radius: 8px;
+        font-size: 0.9rem;
       }
 
-      .shorts-viewport::-webkit-scrollbar {
+      /* 5. SHORT-FORM EDITS & COMPLETE ASSETS (All files included) */
+      .shorts-slider-wrap {
+        padding: 60px 0 100px;
+        background: #0a0c10;
+      }
+
+      .shorts-scroll-deck {
+        display: flex;
+        gap: 20px;
+        overflow-x: auto;
+        padding: 20px 40px;
+        scrollbar-width: thin;
+        scrollbar-color: var(--neon-green) transparent;
+      }
+
+      .shorts-scroll-deck::-webkit-scrollbar {
         height: 6px;
       }
 
-      .shorts-viewport::-webkit-scrollbar-thumb {
-        background: var(--gold-glow);
+      .shorts-scroll-deck::-webkit-scrollbar-thumb {
+        background: var(--neon-green);
         border-radius: 6px;
       }
 
-      .short-card {
+      .short-cell {
         flex: 0 0 240px;
         height: 420px;
+        background: #151821;
+        border: 1px solid rgba(255, 255, 255, 0.12);
         border-radius: 16px;
-        background: var(--card-bg);
-        border: 1px solid var(--border-glass);
         overflow: hidden;
         position: relative;
         cursor: pointer;
-        transition: transform 0.3s ease, border-color 0.3s ease;
+        transition: transform 0.25s, border-color 0.25s;
       }
 
-      .short-card:hover {
+      .short-cell:hover {
         transform: scale(1.04);
-        border-color: var(--gold-glow);
+        border-color: var(--neon-green);
       }
 
-      .short-card img,
-      .short-card video {
+      .short-cell img,
+      .short-cell video {
         width: 100%;
         height: 100%;
         object-fit: cover;
       }
 
-      .short-badge {
+      .cell-tag {
         position: absolute;
-        bottom: 14px;
-        left: 14px;
-        background: rgba(0, 0, 0, 0.7);
+        bottom: 12px;
+        left: 12px;
         padding: 4px 10px;
+        background: rgba(0, 0, 0, 0.75);
+        backdrop-filter: blur(6px);
         border-radius: 20px;
-        font-size: 0.75rem;
+        font-size: 0.72rem;
         color: #fff;
-        backdrop-filter: blur(4px);
-      }
-
-      /* 5. ABOUT ME SECTION */
-      .about-card {
-        background: var(--card-bg);
-        border: 1px solid var(--border-glass);
-        border-radius: 20px;
-        padding: 40px;
-        max-width: 900px;
-        margin: 0 auto;
-        text-align: center;
-      }
-
-      .about-card p {
-        font-size: 1.05rem;
-        color: var(--text-dim);
-        margin-bottom: 16px;
-      }
-
-      .about-card p strong {
-        color: #fff;
-      }
-
-      /* 6. CONTACT & FORMSPREE */
-      .contact-card {
-        max-width: 480px;
-        margin: 0 auto;
-        background: var(--card-bg);
-        border: 1px solid var(--border-glass);
-        border-radius: 20px;
-        padding: 30px;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-      }
-
-      .contact-card label {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-        font-size: 0.85rem;
-        color: var(--text-dim);
-        text-align: left;
-      }
-
-      .contact-card input,
-      .contact-card textarea {
-        background: rgba(5, 6, 8, 0.8);
-        border: 1px solid var(--border-glass);
-        padding: 12px 14px;
-        border-radius: 10px;
-        color: #fff;
-        font-family: inherit;
-      }
-
-      .contact-card input:focus,
-      .contact-card textarea:focus {
-        outline: none;
-        border-color: var(--gold-glow);
-      }
-
-      /* 7. شريط متحرك ملون */
-      .ticker-bar {
-        overflow: hidden;
-        background: #000;
-        border-top: 1px solid var(--border-glass);
-        border-bottom: 1px solid var(--border-glass);
-        padding: 12px 0;
-        white-space: nowrap;
-        margin-top: 80px;
-      }
-
-      .ticker-move {
-        display: inline-block;
-        animation: tickScroll 25s linear infinite;
-      }
-
-      .ticker-move span {
-        margin: 0 16px;
-        font-size: 0.9rem;
         font-weight: 600;
       }
 
-      .c-gold { color: var(--gold-light); }
-      .c-green { color: var(--accent-green); }
-      .c-pink { color: var(--accent-pink); }
-      .c-cyan { color: var(--cyber-cyan); }
-
-      @keyframes tickScroll {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-50%); }
+      /* 6. CONTACT & FOOTER */
+      .contact-zone {
+        padding: 80px 24px;
+        background: #050608;
+        text-align: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
       }
 
-      /* 8. زرارات السوشيال العائمة */
-      .social-stack {
+      .contact-box {
+        max-width: 460px;
+        margin: 0 auto;
+        background: #11141c;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 18px;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .contact-box label {
+        text-align: left;
+        font-size: 0.85rem;
+        color: #94a3b8;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .contact-box input,
+      .contact-box textarea {
+        background: #08090d;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: #fff;
+        padding: 12px;
+        border-radius: 8px;
+        font-family: inherit;
+      }
+
+      .contact-box button {
+        background: var(--neon-green);
+        color: #000;
+        font-weight: 700;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+
+      /* Floating Social */
+      .floating-social {
         position: fixed;
         bottom: 24px;
         right: 24px;
         display: flex;
         flex-direction: column;
         gap: 12px;
-        z-index: 1000;
+        z-index: 10000;
       }
 
-      .s-btn {
+      .soc-icon {
         width: 48px;
         height: 48px;
         border-radius: 50%;
@@ -390,315 +447,338 @@
         align-items: center;
         justify-content: center;
         border: 1px solid rgba(255, 255, 255, 0.2);
-        transition: transform 0.2s ease;
+        color: #fff;
+        text-decoration: none;
       }
 
-      .s-btn:hover {
-        transform: scale(1.15);
-      }
+      .soc-wa { background: #25d366; }
+      .soc-ig { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); }
+      .soc-fb { background: #1877f2; }
+      .soc-tt { background: #000; }
 
-      .s-wa { background: #25d366; }
-      .s-ig { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); }
-      .s-fb { background: #1877f2; }
-      .s-tt { background: #000; }
-
-      /* 9. المودال مع أسهم التنقل */
-      .modal-stage {
+      /* Modal */
+      .lightbox-modal {
         position: fixed;
         inset: 0;
         background: rgba(0, 0, 0, 0.95);
-        z-index: 10000;
         display: none;
         align-items: center;
         justify-content: center;
+        z-index: 999999;
       }
 
-      .modal-stage.active { display: flex; }
+      .lightbox-modal.active { display: flex; }
+      .lightbox-content { max-width: 90vw; max-height: 85vh; }
+      .lightbox-content img, .lightbox-content video { max-width: 100%; max-height: 80vh; border-radius: 10px; }
+      .lightbox-close { position: absolute; top: 24px; right: 28px; font-size: 38px; cursor: pointer; }
+      .lightbox-arrow { position: absolute; top: 50%; transform: translateY(-50%); font-size: 2.4rem; cursor: pointer; padding: 10px; user-select: none; }
+      .l-left { left: 24px; }
+      .l-right { right: 24px; }
 
-      .modal-box {
-        max-width: 90vw;
-        max-height: 85vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+      @media (max-width: 900px) {
+        .about-wrapper, .featured-duo-grid { grid-template-columns: 1fr; }
+        .services-grid-green { grid-template-columns: 1fr 1fr; }
       }
-
-      .modal-box img, .modal-box video {
-        max-width: 100%;
-        max-height: 80vh;
-        border-radius: 12px;
-      }
-
-      .modal-arrow {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 2rem;
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid var(--border-glass);
-        color: #fff;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-      }
-
-      .arrow-left { left: 20px; }
-      .arrow-right { right: 20px; }
-      .modal-x {
-        position: absolute;
-        top: 24px;
-        right: 28px;
-        font-size: 38px;
-        color: #fff;
-        cursor: pointer;
-      }
-
-      @media (max-width: 850px) {
-        .case-studies-duo { grid-template-columns: 1fr; }
-        .custom-cursor-glow { display: none; }
+      @media (max-width: 550px) {
+        .services-grid-green { grid-template-columns: 1fr; }
+        .ring-cursor { display: none; }
       }
     </style>
   </head>
   <body>
 
-    <div class="custom-cursor-glow" id="cursorGlow"></div>
+    <div class="ring-cursor" id="ringCursor"></div>
 
-    <div class="social-stack">
-      <a href="https://wa.me/201018585432" target="_blank" class="s-btn s-wa" aria-label="WhatsApp">
+    <!-- Floating Top Nav -->
+    <nav class="top-nav">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#projects">Work</a>
+      <a href="#contact">Let's Talk</a>
+    </nav>
+
+    <!-- Socials -->
+    <div class="floating-social">
+      <a href="https://wa.me/201018585432" target="_blank" class="soc-icon soc-wa" aria-label="WhatsApp">
         <svg viewBox="0 0 32 32" width="22" height="22" fill="#fff"><path d="M16 2C8.3 2 2 8.3 2 16c0 2.7.8 5.3 2.1 7.4L2.7 29.3a1 1 0 001.3 1.3l5.9-1.4A13.9 13.9 0 0016 30c7.7 0 14-6.3 14-14S23.7 2 16 2zm8 19.4c-.3.9-1.6 1.7-2.7 2-.7.1-1.7.3-4.8-1-4.1-1.7-6.7-5.8-6.9-6.1-.2-.3-1.6-2.2-1.6-4.2s1-3 1.4-3.4c.4-.4.8-.5 1.1-.5.3 0 .5 0 .8 0 .3 0 .6-.1.9.7.3.8 1.2 2.8 1.3 3 .1.2.2.4 0 .7-.1.3-.2.4-.4.7-.2.2-.4.5-.6.7-.2.2-.4.4-.2.8.2.4 1 1.7 2.2 2.8 1.6 1.4 2.9 1.8 3.3 2 .4.2.7.2.9-.1.2-.3 1-1.2 1.3-1.6.3-.4.5-.3.9-.2.4.1 2.4 1.1 2.8 1.3.4.2.7.3.8.5.1.2.1 1-.2 1.9z"/></svg>
       </a>
-      <a href="https://www.instagram.com/shefooo011?igsh=cWFzdnVlbXk4dWQz" target="_blank" class="s-btn s-ig" aria-label="Instagram">
+      <a href="https://www.instagram.com/shefooo011?igsh=cWFzdnVlbXk4dWQz" target="_blank" class="soc-icon soc-ig" aria-label="Instagram">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
       </a>
-      <a href="https://www.facebook.com/share/1HTk7ZaRGQ/" target="_blank" class="s-btn s-fb" aria-label="Facebook">
+      <a href="https://www.facebook.com/share/1HTk7ZaRGQ/" target="_blank" class="soc-icon soc-fb" aria-label="Facebook">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="#fff"><path d="M22 12c0-5.5-4.5-10-10-10S2 6.5 2 12c0 5 3.7 9.1 8.4 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7C18.3 21.1 22 17 22 12z"/></svg>
       </a>
-      <a href="https://www.tiktok.com/@s.h.r.e.e.f0?_r=1&_t=ZS-98jaZ600Aj7" target="_blank" class="s-btn s-tt" aria-label="TikTok">
+      <a href="https://www.tiktok.com/@s.h.r.e.e.f0?_r=1&_t=ZS-98jaZ600Aj7" target="_blank" class="soc-icon soc-tt" aria-label="TikTok">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="#fff"><path d="M19.6 6.7a4.8 4.8 0 0 1-3.8-4.3V2h-3.4v13.7a2.9 2.9 0 0 1-5.2 1.7 2.9 2.9 0 0 1 2.3-4.6c.3 0 .6 0 .9.1V9.4a6.3 6.3 0 0 0-1-.1A6.3 6.3 0 0 0 3 15.7a6.3 6.3 0 0 0 10.8 4.4 6.3 6.3 0 0 0 2-4.5V8.7a8.3 8.3 0 0 0 4.8 1.5V6.7z"/></svg>
       </a>
     </div>
 
-    <header class="hero-section">
-      <h1 class="glowing-brand-title">SHERIF ASHRAF</h1>
-      <p class="hero-sub">Creative Director & Full Production Specialist</p>
-      <div class="hero-buttons">
-        <a href="#projects" class="btn btn-gold">View Work ↓</a>
-        <a href="Sherif_Ashraf_CV.pdf" download="Sherif_Ashraf_CV.pdf" class="btn btn-glass">Download CV</a>
+    <!-- 1. HERO SECTION -->
+    <header class="hero-stage">
+      <div class="hero-centerpiece">
+        <div class="golden-ring-emblem"></div>
+        <h1 class="hero-name">SHERIF<br/>ASHRAF</h1>
       </div>
+      <p class="hero-desc-tag">Creative Direction &bull; Editing &bull; Brand Worlds</p>
     </header>
 
-    <section class="container">
-      <div class="section-headline">
-        <h2>What I Deliver</h2>
-      </div>
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-num">01</div>
-          <h3>Video Editing</h3>
-          <p>Dynamic cuts, pacing, sound design, and color grading built to hold retention from second zero.</p>
+    <!-- 2. ABOUT ME (Clean Light Theme) -->
+    <section class="about-section-light" id="about">
+      <div class="about-wrapper">
+        <div class="about-text">
+          <h2>About Me</h2>
+          <p>
+            I'm <strong>Sherif Ashraf</strong> — a graphic designer, video editor, and content creator who treats every project as a full production, not just a task.
+          </p>
+          <p>
+            On the design side, I build brand visuals, 3D commercial graphics, and promotional artwork that give products and businesses a real identity. On the editing side, I handle dynamic cuts, pacing, sound design, and color — turning raw footage into content that actually holds attention.
+          </p>
+          <p>
+            I don't stop at the technical work either. I've run media buying, marketing, editing, and design for the same project at the same time, which means I understand how a piece of content performs, not just how it looks. And with a background in acting and directing, I bring a director's eye for framing and real, unscripted charisma in front of the camera.
+          </p>
+          <p>
+            <strong>From the first idea to the final export, I like owning the whole process.</strong>
+          </p>
+          <a href="Sherif_Ashraf_CV.pdf" download="Sherif_Ashraf_CV.pdf" class="btn-action" style="background:#0a3323; color:#fff; margin-top:12px;">Download CV</a>
         </div>
-        <div class="service-card">
-          <div class="service-num">02</div>
-          <h3>Motion Graphics</h3>
-          <p>Sleek title typography, VFX enhancements, and visual assets engineered for seamless conversions.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-num">03</div>
-          <h3>Short-Form Content</h3>
-          <p>Hook-first TikToks, Reels, and UGC that perform consistently across modern algorithms.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-num">04</div>
-          <h3>Graphic Design</h3>
-          <p>End-to-end branding, 3D commercial product packaging, and high-CTR social posters.</p>
+        <div class="about-image-card">
+          <!-- صورة الكيز الأولى المتاحة لديك -->
+          <img src="wark2.png" alt="Sherif Ashraf Visual" />
         </div>
       </div>
     </section>
 
-    <section class="container" id="projects">
-      <div class="section-headline">
-        <h2>Featured Projects</h2>
-      </div>
-      <div class="case-studies-duo">
-        <div class="duo-card">
-          <div class="duo-visual">
-            <img src="system-overload-poster.png.png" alt="ZONE 99" />
+    <!-- 3. SERVICES (4 Green Cards) -->
+    <section class="services-section" id="services">
+      <div class="services-container">
+        <h2>Services</h2>
+        <div class="services-grid-green">
+          <div class="s-green-card">
+            <span class="s-green-num">01</span>
+            <div>
+              <h3>Video Editing</h3>
+              <p>Dynamic cuts, rhythm, color, and sound design calibrated for audience retention.</p>
+            </div>
           </div>
-          <div class="duo-body">
-            <h3>ZONE 99</h3>
-            <p>Cyberpunk dark kitchen brand identity, 3D matte burger packaging, teasers, and a live web prototype.</p>
-            <a href="https://khalidmedia.my.canva.site/zone-99-cyber-burger-landing-page" target="_blank" class="btn btn-gold">Launch Experience ↗</a>
+          <div class="s-green-card">
+            <span class="s-green-num">02</span>
+            <div>
+              <h3>Motion Graphics</h3>
+              <p>Cyber typography, slick visual animations, and responsive product renders.</p>
+            </div>
           </div>
-        </div>
-
-        <div class="duo-card">
-          <div class="duo-visual">
-            <img src="venom-hero-presentation.png" alt="VENOM LABS" />
+          <div class="s-green-card">
+            <span class="s-green-num">03</span>
+            <div>
+              <h3>Short-Form Content</h3>
+              <p>Hook-first UGC, TikToks, and Reels crafted for engagement and viral reach.</p>
+            </div>
           </div>
-          <div class="duo-body">
-            <h3>VENOM LABS</h3>
-            <p>High-potency clinical nutrition branding, custom creatine/whey mockups, and responsive landing interface.</p>
-            <a href="https://khalidmedia.my.canva.site/venom-labs-landing-page" target="_blank" class="btn btn-gold">Launch Experience ↗</a>
+          <div class="s-green-card">
+            <span class="s-green-num">04</span>
+            <div>
+              <h3>Graphic Design</h3>
+              <p>End-to-end branding, 3D commercial packaging, and high-CTR marketing layouts.</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="container">
-      <div class="section-headline">
-        <h2>Short-Form & Visual Assets</h2>
-      </div>
-      <div class="shorts-viewport" id="shortsTrack">
-        <div class="short-card modal-click" data-type="video" data-src="logo-animation.mp4.mp4">
-          <video muted loop playsinline preload="metadata"><source src="logo-animation.mp4.mp4" type="video/mp4" /></video>
-          <div class="short-badge">▶ Video Reveal</div>
+    <!-- 4. FEATURED PROJECTS -->
+    <section class="projects-section-dark" id="projects">
+      <div class="max-contain">
+        <h2 class="section-title-white">Featured Projects</h2>
+        <div class="featured-duo-grid">
+          <div class="f-project-card">
+            <div class="f-project-visual">
+              <img src="system-overload-poster.png.png" alt="ZONE 99" />
+            </div>
+            <div class="f-project-info">
+              <h3>ZONE 99</h3>
+              <p>Full cyber-tech restaurant ecosystem, matte black packaging, teasers, and web simulator.</p>
+              <a href="https://khalidmedia.my.canva.site/zone-99-cyber-burger-landing-page" target="_blank" class="btn-action">Launch Experience ↗</a>
+            </div>
+          </div>
+
+          <div class="f-project-card">
+            <div class="f-project-visual">
+              <img src="venom-hero-presentation.png" alt="VENOM LABS" />
+            </div>
+            <div class="f-project-info">
+              <h3>VENOM LABS</h3>
+              <p>Clinical sports nutrition brand, custom 3D creatine & whey product packaging, and UI prototype.</p>
+              <a href="https://khalidmedia.my.canva.site/venom-labs-landing-page" target="_blank" class="btn-action">Launch Experience ↗</a>
+            </div>
+          </div>
         </div>
-        <div class="short-card modal-click" data-type="video" data-src="system-online-video.mp4.mp4">
+      </div>
+    </section>
+
+    <!-- 5. SHORT-FORM EDITS & ALL ASSETS (كامل شغلك من غير نقص) -->
+    <section class="shorts-slider-wrap">
+      <div class="max-contain">
+        <h2 class="section-title-white" style="margin-bottom: 24px;">Short-Form Edits & Creative Assets</h2>
+      </div>
+      <div class="shorts-scroll-deck">
+        <!-- 1. System Online Video -->
+        <div class="short-cell lb-item" data-type="video" data-src="system-online-video.mp4.mp4">
           <video muted loop playsinline preload="metadata"><source src="system-online-video.mp4.mp4" type="video/mp4" /></video>
-          <div class="short-badge">▶ Motion Teaser</div>
+          <div class="cell-tag">▶ Video / Motion</div>
         </div>
-        <div class="short-card modal-click" data-type="video" data-src="neon-sip-video.mp4">
+
+        <!-- 2. Logo Animation -->
+        <div class="short-cell lb-item" data-type="video" data-src="logo-animation.mp4.mp4">
+          <video muted loop playsinline preload="metadata"><source src="logo-animation.mp4.mp4" type="video/mp4" /></video>
+          <div class="cell-tag">▶ Logo Reveal</div>
+        </div>
+
+        <!-- 3. Neon Sip Video -->
+        <div class="short-cell lb-item" data-type="video" data-src="neon-sip-video.mp4">
           <video muted loop playsinline preload="metadata"><source src="neon-sip-video.mp4" type="video/mp4" /></video>
-          <div class="short-badge">▶ Drink Motion</div>
+          <div class="cell-tag">▶ Drink Teaser</div>
         </div>
-        <div class="short-card modal-click" data-type="image" data-src="burger-box-matte.jpg.jpg">
+
+        <!-- 4. Matte Box -->
+        <div class="short-cell lb-item" data-type="image" data-src="burger-box-matte.jpg.jpg">
           <img src="burger-box-matte.jpg.jpg" alt="Matte Box" />
-          <div class="short-badge">Artwork</div>
+          <div class="cell-tag">3D Packaging</div>
         </div>
-        <div class="short-card modal-click" data-type="image" data-src="venom-creatine-tub.png">
+
+        <!-- 5. Creatine Tub -->
+        <div class="short-cell lb-item" data-type="image" data-src="venom-creatine-tub.png">
           <img src="venom-creatine-tub.png" alt="Creatine Tub" />
-          <div class="short-badge">3D Mockup</div>
+          <div class="cell-tag">3D Tub</div>
         </div>
-        <div class="short-card modal-click" data-type="image" data-src="venom-whey-tub.png">
+
+        <!-- 6. Whey Tub -->
+        <div class="short-cell lb-item" data-type="image" data-src="venom-whey-tub.png">
           <img src="venom-whey-tub.png" alt="Whey Tub" />
-          <div class="short-badge">3D Mockup</div>
+          <div class="cell-tag">3D Tub</div>
         </div>
-        <div class="short-card modal-click" data-type="image" data-src="cookie-poster.png.png">
+
+        <!-- 7. Neon Sip Poster -->
+        <div class="short-cell lb-item" data-type="image" data-src="neon-sip-poster.png.png">
+          <img src="neon-sip-poster.png.png" alt="Neon Sip Poster" />
+          <div class="cell-tag">Poster</div>
+        </div>
+
+        <!-- 8. Menu Architecture -->
+        <div class="short-cell lb-item" data-type="image" data-src="menu-brochure.png.png">
+          <img src="menu-brochure.png.png" alt="Menu" />
+          <div class="cell-tag">Editorial</div>
+        </div>
+
+        <!-- 9. Zero-Day Cookie -->
+        <div class="short-cell lb-item" data-type="image" data-src="cookie-poster.png.png">
           <img src="cookie-poster.png.png" alt="Cookie Poster" />
-          <div class="short-badge">Poster</div>
+          <div class="cell-tag">Poster</div>
         </div>
-        <div class="short-card modal-click" data-type="image" data-src="wark2.png">
-          <img src="wark2.png" alt="3D Commercial" />
-          <div class="short-badge">3D Render</div>
+
+        <!-- 10. Social Grid -->
+        <div class="short-cell lb-item" data-type="image" data-src="venom-social-grid.png">
+          <img src="venom-social-grid.png" alt="Social Grid" />
+          <div class="cell-tag">Social</div>
+        </div>
+
+        <!-- 11. Pure Potent Precise -->
+        <div class="short-cell lb-item" data-type="image" data-src="venom-neon-post.png">
+          <img src="venom-neon-post.png" alt="Neon Post" />
+          <div class="cell-tag">Artwork</div>
+        </div>
+
+        <!-- 12. Venom Fang Logo -->
+        <div class="short-cell lb-item" data-type="image" data-src="venom-logo.png">
+          <img src="venom-logo.png" alt="Venom Logo" />
+          <div class="cell-tag">Identity</div>
         </div>
       </div>
     </section>
 
-    <section class="container" style="margin-top: 60px;">
-      <div class="about-card">
-        <h2 style="margin-bottom: 20px; font-size: 2.2rem;">About Me</h2>
-        <p>I'm Sherif Ashraf — a graphic designer, video editor, and content creator who treats every project as a full production, not just a task.</p>
-        <p>On the design side, I build brand visuals, 3D commercial graphics, and promotional artwork that give products and businesses a real identity. On the editing side, I handle dynamic cuts, pacing, sound design, and color — turning raw footage into content that actually holds attention.</p>
-        <p>I don't stop at the technical work either. I've run media buying, marketing, editing, and design for the same project at the same time, which means I understand how a piece of content performs, not just how it looks. And with a background in acting and directing, I bring a director's eye for framing and real, unscripted charisma in front of the camera.</p>
-        <p><strong>From the first idea to the final export, I like owning the whole process.</strong></p>
-      </div>
-    </section>
-
-    <section class="container" style="margin-top: 70px;">
-      <div class="section-headline">
-        <h2>Let's Connect</h2>
-      </div>
-      <form class="contact-card" action="https://formspree.io/f/myegkqkd" method="POST">
-        <label>Name<input type="text" name="name" required placeholder="Your Name" /></label>
-        <label>Email<input type="email" name="email" required placeholder="Your Email" /></label>
-        <label>Message<textarea name="message" rows="3" required placeholder="Project details..."></textarea></label>
-        <button type="submit" class="btn btn-gold" style="justify-content: center;">Send Message</button>
+    <!-- 6. CONTACT SECTION -->
+    <section class="contact-zone" id="contact">
+      <h2 style="font-size: 2.4rem; margin-bottom: 30px;">Let's Connect</h2>
+      <form class="contact-box" action="https://formspree.io/f/myegkqkd" method="POST">
+        <label>Your Name<input type="text" name="name" required placeholder="Name" /></label>
+        <label>Your Email<input type="email" name="email" required placeholder="Email" /></label>
+        <label>Message<textarea name="message" rows="3" required placeholder="Message..."></textarea></label>
+        <button type="submit">Send Inquiry</button>
       </form>
     </section>
 
-    <div class="ticker-bar">
-      <div class="ticker-move">
-        <span class="c-gold">⭐ ashreef988@gmail.com</span>•
-        <span class="c-green">📱 WhatsApp: 01018585432</span>•
-        <span class="c-cyan">📷 Instagram: @shefooo011</span>•
-        <span class="c-pink">🎵 TikTok: @s.h.r.e.e.f0</span>•
-        <span class="c-gold">🎬 Full Production Specialist</span>•
-        <span class="c-green">⚡ Let's Create Together!</span>•
-        <span class="c-gold">⭐ ashreef988@gmail.com</span>•
-        <span class="c-green">📱 WhatsApp: 01018585432</span>•
-        <span class="c-cyan">📷 Instagram: @shefooo011</span>•
-        <span class="c-pink">🎵 TikTok: @s.h.r.e.e.f0</span>•
-        <span class="c-gold">🎬 Full Production Specialist</span>•
-        <span class="c-green">⚡ Let's Create Together!</span>
+    <!-- LIGHTBOX MODAL -->
+    <div class="lightbox-modal" id="lbModal">
+      <span class="lightbox-close" id="lbClose">&times;</span>
+      <div class="lightbox-arrow l-left" id="lbPrev">&#10094;</div>
+      <div class="lightbox-content">
+        <img id="lbImg" src="" alt="Enlarged" style="display:none;" />
+        <video id="lbVid" controls style="display:none;"></video>
       </div>
-    </div>
-
-    <div class="modal-stage" id="mediaModal">
-      <span class="modal-x" id="modalClose">&times;</span>
-      <div class="modal-arrow arrow-left" id="mPrev">&#10094;</div>
-      <div class="modal-box">
-        <img id="mImg" src="" alt="View" style="display:none;" />
-        <video id="mVideo" controls style="display:none;"></video>
-      </div>
-      <div class="modal-arrow arrow-right" id="mNext">&#10095;</div>
+      <div class="lightbox-arrow l-right" id="lbNext">&#10095;</div>
     </div>
 
     <script>
-      // 1. مؤشر الماوس المضيء
-      const glow = document.getElementById("cursorGlow");
+      // Follow cursor ring
+      const ring = document.getElementById("ringCursor");
       window.addEventListener("mousemove", (e) => {
-        glow.style.left = e.clientX + "px";
-        glow.style.top = e.clientY + "px";
+        ring.style.left = e.clientX + "px";
+        ring.style.top = e.clientY + "px";
       });
 
-      // 2. تفعيل المودال وأسهم التنقل
-      const modal = document.getElementById("mediaModal");
-      const mImg = document.getElementById("mImg");
-      const mVideo = document.getElementById("mVideo");
-      const mClose = document.getElementById("modalClose");
-      const mPrev = document.getElementById("mPrev");
-      const mNext = document.getElementById("mNext");
-      const items = Array.from(document.querySelectorAll(".modal-click"));
-      let currentIndex = 0;
+      // Lightbox system with Prev / Next
+      const modal = document.getElementById("lbModal");
+      const img = document.getElementById("lbImg");
+      const vid = document.getElementById("lbVid");
+      const closeBtn = document.getElementById("lbClose");
+      const prevBtn = document.getElementById("lbPrev");
+      const nextBtn = document.getElementById("lbNext");
+      const items = Array.from(document.querySelectorAll(".lb-item"));
+      let activeIndex = 0;
 
-      function displayItem(idx) {
-        if (idx < 0) idx = items.length - 1;
-        if (idx >= items.length) idx = 0;
-        currentIndex = idx;
+      function showMedia(i) {
+        if (i < 0) i = items.length - 1;
+        if (i >= items.length) i = 0;
+        activeIndex = i;
 
-        const target = items[currentIndex];
+        const target = items[activeIndex];
         const type = target.getAttribute("data-type");
         const src = target.getAttribute("data-src");
 
         if (type === "video") {
-          mImg.style.display = "none";
-          mVideo.style.display = "block";
-          mVideo.src = src;
-          mVideo.play();
+          img.style.display = "none";
+          vid.style.display = "block";
+          vid.src = src;
+          vid.play();
         } else {
-          mVideo.pause();
-          mVideo.style.display = "none";
-          mImg.style.display = "block";
-          mImg.src = src;
+          vid.pause();
+          vid.style.display = "none";
+          img.style.display = "block";
+          img.src = src;
         }
         modal.classList.add("active");
       }
 
-      items.forEach((item, i) => {
-        item.addEventListener("click", () => displayItem(i));
+      items.forEach((item, idx) => {
+        item.addEventListener("click", () => showMedia(idx));
       });
 
-      mPrev.addEventListener("click", (e) => { e.stopPropagation(); displayItem(currentIndex - 1); });
-      mNext.addEventListener("click", (e) => { e.stopPropagation(); displayItem(currentIndex + 1); });
+      prevBtn.addEventListener("click", (e) => { e.stopPropagation(); showMedia(activeIndex - 1); });
+      nextBtn.addEventListener("click", (e) => { e.stopPropagation(); showMedia(activeIndex + 1); });
 
-      function exitModal() {
+      function hideModal() {
         modal.classList.remove("active");
-        mVideo.pause();
-        mVideo.src = "";
-        mImg.src = "";
+        vid.pause();
+        vid.src = "";
+        img.src = "";
       }
 
-      mClose.addEventListener("click", exitModal);
-      modal.addEventListener("click", (e) => { if (e.target === modal) exitModal(); });
+      closeBtn.addEventListener("click", hideModal);
+      modal.addEventListener("click", (e) => { if (e.target === modal) hideModal(); });
       document.addEventListener("keydown", (e) => {
         if (!modal.classList.contains("active")) return;
-        if (e.key === "Escape") exitModal();
-        if (e.key === "ArrowLeft") displayItem(currentIndex - 1);
-        if (e.key === "ArrowRight") displayItem(currentIndex + 1);
+        if (e.key === "Escape") hideModal();
+        if (e.key === "ArrowLeft") showMedia(activeIndex - 1);
+        if (e.key === "ArrowRight") showMedia(activeIndex + 1);
       });
     </script>
   </body>
