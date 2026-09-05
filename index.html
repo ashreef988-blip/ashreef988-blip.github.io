@@ -6,7 +6,7 @@
     <title>Sherif Ashraf | Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
 
     <style>
       * {
@@ -16,12 +16,14 @@
       }
 
       :root {
-        --bg-black: #050608;
-        --card-bg: rgba(14, 16, 24, 0.88);
-        --text-primary: #ffffff;
-        --text-muted: #949db0;
+        --bg-black: #060709;
+        --card-bg: rgba(14, 17, 24, 0.85);
+        --text-white: #ffffff;
+        --text-dim: #949db0;
+        --gold-glow: #d4af37;
+        --gold-light: #f3e5ab;
+        --accent-green: #25d366;
         --accent-pink: #fc6c85;
-        --accent-green: #32cd32;
         --cyber-cyan: #00f0ff;
         --border-glass: rgba(255, 255, 255, 0.12);
       }
@@ -29,1070 +31,245 @@
       body {
         font-family: 'Inter', sans-serif;
         background-color: var(--bg-black);
-        color: var(--text-primary);
+        color: var(--text-white);
         overflow-x: hidden;
         line-height: 1.6;
       }
 
-      /* =========================================
-         1. شاشة الإنترو: حلقات ضوئية 3D من الخلف للأمام
-         ========================================= */
-      #rings-hero-stage {
-        position: relative;
-        width: 100vw;
-        min-height: 100vh;
-        background: radial-gradient(circle at 50% 50%, #0c0f17 0%, #030406 100%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-        perspective: 1000px;
-        padding: 40px 24px;
-      }
-
-      .rings-perspective-box {
-        position: absolute;
-        inset: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+      /* Cursor الدائرة المضيئة المتبع للماوس */
+      .custom-cursor-glow {
+        position: fixed;
+        width: 320px;
+        height: 320px;
+        background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, rgba(255, 255, 255, 0.05) 45%, transparent 70%);
+        border-radius: 50%;
         pointer-events: none;
-        transform-style: preserve-3d;
-        z-index: 1;
+        transform: translate(-50%, -50%);
+        z-index: 999;
+        transition: transform 0.06s ease-out;
       }
 
-      /* الحلقات الضوئية ثلاثية الأبعاد */
-      .light-ring {
-        position: absolute;
-        border-radius: 50%;
-        border: 4px solid rgba(255, 255, 255, 0.85);
-        opacity: 0;
-        box-shadow: 0 0 40px var(--cyber-cyan), inset 0 0 30px var(--cyber-cyan);
-        transform: translateZ(-800px) scale(0.1);
-      }
-
-      /* الحلقة 1: بيضاء تندفع للأمام وتنور التايتل */
-      .ring-1 {
-        width: 500px;
-        height: 500px;
-        border-color: #ffffff;
-        box-shadow: 0 0 50px #ffffff, inset 0 0 40px rgba(255,255,255,0.8);
-        animation: pushRingForward 2.4s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s infinite;
-      }
-
-      /* الحلقة 2: نيون سيان تندفع بعدها وتكشف الوصف */
-      .ring-2 {
-        width: 700px;
-        height: 700px;
-        border-color: var(--cyber-cyan);
-        box-shadow: 0 0 60px var(--cyber-cyan), inset 0 0 40px var(--cyber-cyan);
-        animation: pushRingForward 2.4s cubic-bezier(0.2, 0.8, 0.2, 1) 0.9s infinite;
-      }
-
-      /* الحلقة 3: نيون وردي تندفع بزاوية وتكشف باقي التفاصيل */
-      .ring-3 {
-        width: 900px;
-        height: 900px;
-        border-color: var(--accent-pink);
-        box-shadow: 0 0 70px var(--accent-pink), inset 0 0 50px var(--accent-pink);
-        animation: pushRingForward 2.4s cubic-bezier(0.2, 0.8, 0.2, 1) 1.5s infinite;
-      }
-
-      /* الحلقة العملاقة الأخيرة التي تنفجر وتنور كل شيء */
-      .ring-massive-finale {
-        position: absolute;
-        width: 1400px;
-        height: 1400px;
-        border-radius: 50%;
-        border: 8px solid #ffffff;
-        box-shadow: 0 0 100px #ffffff, 0 0 160px var(--accent-green);
-        opacity: 0;
-        transform: translateZ(-1000px) scale(0.1);
-      }
-
-      .rings-unlocked .ring-massive-finale {
-        animation: finaleBurst 1.6s cubic-bezier(0.15, 1, 0.3, 1) forwards;
-      }
-
-      .rings-unlocked .light-ring {
-        animation: none;
-        opacity: 0.15;
-      }
-
-      @keyframes pushRingForward {
-        0% { transform: translateZ(-800px) scale(0.1); opacity: 0; }
-        40% { opacity: 0.9; }
-        80% { opacity: 0.7; }
-        100% { transform: translateZ(400px) scale(2.2); opacity: 0; }
-      }
-
-      @keyframes finaleBurst {
-        0% { transform: translateZ(-900px) scale(0.2); opacity: 0; }
-        50% { opacity: 1; transform: translateZ(100px) scale(1.6); }
-        100% { opacity: 0; transform: translateZ(600px) scale(3.5); }
-      }
-
-      .hero-content {
-        position: relative;
-        z-index: 5;
-        max-width: 900px;
-        text-align: center;
-      }
-
-      .hero-tagline {
-        font-size: 0.85rem;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        color: var(--accent-green);
-        font-weight: 700;
-        margin-bottom: 20px;
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.8s ease 0.3s;
-      }
-
-      .hero-title {
-        font-size: clamp(2.8rem, 7vw, 5.2rem);
-        font-weight: 900;
-        letter-spacing: -2px;
-        line-height: 1.08;
-        margin-bottom: 24px;
-        color: #fff;
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 1s ease 0.5s;
-      }
-
-      .hero-desc {
-        font-size: 1.25rem;
-        color: var(--text-muted);
-        max-width: 700px;
-        margin: 0 auto 36px;
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 1s ease 0.7s;
-      }
-
-      .hero-actions {
+      /* 1. HERO SECTION (نفس إنترو الفيديو: لوجو ذهبي مشع) */
+      .hero-section {
+        min-height: 90vh;
         display: flex;
+        flex-direction: column;
+        align-items: center;
         justify-content: center;
-        gap: 16px;
-        flex-wrap: wrap;
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 1s ease 0.9s;
+        text-align: center;
+        position: relative;
+        padding: 40px 20px;
       }
 
-      .rings-unlocked .hero-tagline,
-      .rings-unlocked .hero-title,
-      .rings-unlocked .hero-desc,
-      .rings-unlocked .hero-actions {
-        opacity: 1;
-        transform: translateY(0);
+      .glowing-brand-title {
+        font-family: 'Cinzel', serif;
+        font-size: clamp(3.2rem, 8vw, 6rem);
+        font-weight: 900;
+        letter-spacing: 4px;
+        color: var(--gold-light);
+        text-shadow: 0 0 25px rgba(212, 175, 55, 0.8), 0 0 60px rgba(212, 175, 55, 0.3);
+        margin-bottom: 8px;
+        text-transform: uppercase;
+      }
+
+      .hero-sub {
+        font-size: 1.2rem;
+        color: var(--text-dim);
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 24px;
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        flex-wrap: wrap;
       }
 
       .btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 14px 28px;
-        border-radius: 12px;
+        padding: 12px 28px;
+        border-radius: 10px;
         font-size: 0.95rem;
         font-weight: 600;
         text-decoration: none;
         cursor: pointer;
-        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        border: none;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
       }
 
-      .btn-primary {
-        background: linear-gradient(135deg, var(--accent-pink), #e04b66);
-        color: #fff;
-        box-shadow: 0 8px 25px rgba(252, 108, 133, 0.35);
+      .btn-gold {
+        background: linear-gradient(135deg, #d4af37, #aa8010);
+        color: #000;
+        box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4);
       }
 
-      .btn-primary:hover {
-        transform: translateY(-3px) scale(1.03);
-        box-shadow: 0 12px 30px rgba(252, 108, 133, 0.5);
+      .btn-gold:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 30px rgba(212, 175, 55, 0.6);
       }
 
       .btn-glass {
         background: rgba(255, 255, 255, 0.05);
         color: #fff;
         border: 1px solid var(--border-glass);
-        backdrop-filter: blur(10px);
       }
 
       .btn-glass:hover {
         background: rgba(255, 255, 255, 0.12);
-        transform: translateY(-3px);
+        transform: translateY(-2px);
       }
 
-      /* =========================================
-         2. المشاريع الكبرى جنب بعض (Side-by-Side)
-         ========================================= */
-      .section-layout {
-        padding: 100px 0;
-      }
-
+      /* 2. SERVICES SECTION (01, 02, 03, 04 زي الفيديو) */
       .container {
-        max-width: 1300px;
+        max-width: 1280px;
         margin: 0 auto;
         padding: 0 24px;
       }
 
       .section-headline {
         text-align: center;
-        margin-bottom: 50px;
+        margin: 80px 0 40px;
       }
 
       .section-headline h2 {
-        font-size: 2.6rem;
-        font-weight: 900;
-        letter-spacing: -1px;
-        background: linear-gradient(135deg, #fff 40%, var(--accent-pink));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        font-size: 2.4rem;
+        font-weight: 800;
+        letter-spacing: -0.5px;
       }
 
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 20px;
+      }
+
+      .service-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border-glass);
+        border-radius: 16px;
+        padding: 24px;
+        position: relative;
+        transition: transform 0.3s ease, border-color 0.3s ease;
+      }
+
+      .service-card:hover {
+        transform: translateY(-6px);
+        border-color: var(--gold-glow);
+      }
+
+      .service-num {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 1.1rem;
+        font-weight: 900;
+        color: var(--gold-glow);
+        margin-bottom: 12px;
+      }
+
+      .service-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+      }
+
+      .service-card p {
+        font-size: 0.88rem;
+        color: var(--text-dim);
+      }
+
+      /* 3. MAJOR CASE STUDIES (جنب بعض) */
       .case-studies-duo {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 30px;
+        gap: 24px;
       }
 
       .duo-card {
-        background: linear-gradient(160deg, rgba(16, 20, 30, 0.95), rgba(8, 10, 15, 0.95));
-        border-radius: 24px;
+        background: var(--card-bg);
+        border-radius: 20px;
         border: 1px solid var(--border-glass);
         overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+        transition: transform 0.35s ease;
       }
 
       .duo-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7);
-      }
-
-      .duo-card.zone-theme:hover {
-        border-color: var(--cyber-cyan);
-        box-shadow: 0 15px 40px rgba(0, 240, 255, 0.15);
-      }
-
-      .duo-card.venom-theme:hover {
-        border-color: var(--accent-green);
-        box-shadow: 0 15px 40px rgba(50, 205, 50, 0.15);
+        transform: translateY(-6px);
       }
 
       .duo-visual {
         width: 100%;
-        height: 360px;
-        position: relative;
+        height: 320px;
         background: #000;
-        overflow: hidden;
       }
 
       .duo-visual img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: transform 0.5s ease;
-      }
-
-      .duo-card:hover .duo-visual img {
-        transform: scale(1.05);
-      }
-
-      .duo-badge {
-        position: absolute;
-        top: 18px;
-        left: 18px;
-        padding: 6px 14px;
-        border-radius: 30px;
-        font-size: 0.75rem;
-        font-family: 'Orbitron', sans-serif;
-        font-weight: 700;
-        backdrop-filter: blur(10px);
-      }
-
-      .badge-zone {
-        background: rgba(0, 240, 255, 0.15);
-        border: 1px solid var(--cyber-cyan);
-        color: var(--cyber-cyan);
-      }
-
-      .badge-venom {
-        background: rgba(50, 205, 50, 0.15);
-        border: 1px solid var(--accent-green);
-        color: var(--accent-green);
       }
 
       .duo-body {
-        padding: 28px;
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
+        padding: 24px;
       }
 
       .duo-body h3 {
         font-family: 'Orbitron', sans-serif;
-        font-size: 1.65rem;
-        margin-bottom: 12px;
-        color: #fff;
+        font-size: 1.5rem;
+        margin-bottom: 8px;
       }
 
       .duo-body p {
-        color: var(--text-muted);
-        font-size: 0.96rem;
-        line-height: 1.65;
-        margin-bottom: 22px;
-      }
-
-      .duo-tools {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-bottom: 24px;
-      }
-
-      .tool-tag {
-        font-size: 0.8rem;
-        padding: 5px 12px;
-        border-radius: 8px;
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        color: #cbd5e1;
-      }
-
-      .duo-footer {
-        margin-top: auto;
-      }
-
-      /* =========================================
-         3. معرض الشغل الأفقي بدون لاج نهائياً (Hardware Accelerated)
-         ========================================= */
-      .horizontal-showcase-section {
-        padding: 80px 0;
-        position: relative;
-      }
-
-      .gallery-viewport {
-        width: 100vw;
-        overflow-x: auto;
-        overflow-y: hidden;
-        scroll-behavior: smooth;
-        padding: 24px 40px;
-        cursor: grab;
-        scrollbar-width: thin;
-        scrollbar-color: var(--accent-pink) transparent;
-        -webkit-overflow-scrolling: touch;
-      }
-
-      .gallery-viewport::-webkit-scrollbar {
-        height: 6px;
-      }
-
-      .gallery-viewport::-webkit-scrollbar-thumb {
-        background: var(--accent-pink);
-        border-radius: 6px;
-      }
-
-      .gallery-track {
-        display: flex;
-        gap: 24px;
-        width: max-content;
-        transform: translateZ(0); /* تسريع كارت الشاشة */
-      }
-
-      .work-tile {
-        flex: 0 0 380px;
-        height: 480px;
-        border-radius: 20px;
-        background: var(--card-bg);
-        border: 1px solid var(--border-glass);
-        overflow: hidden;
-        position: relative;
-        cursor: pointer;
-        transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-      }
-
-      .work-tile:hover {
-        transform: scale(1.03) translateY(-6px);
-        border-color: var(--accent-pink);
-        box-shadow: 0 15px 35px rgba(252, 108, 133, 0.3);
-      }
-
-      .work-tile img,
-      .work-tile video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        pointer-events: none;
-      }
-
-      .tile-video-indicator {
-        position: absolute;
-        bottom: 20px;
-        left: 20px;
-        padding: 6px 14px;
-        background: rgba(0, 0, 0, 0.7);
-        border: 1px solid var(--accent-green);
-        border-radius: 20px;
-        font-size: 0.75rem;
-        font-weight: 700;
-        color: var(--accent-green);
-        backdrop-filter: blur(8px);
-      }
-
-      /* =========================================
-         4. سكشن About Me
-         ========================================= */
-      .about-container {
-        max-width: 860px;
-        margin: 0 auto;
-        text-align: center;
-      }
-
-      .about-container p {
-        color: var(--text-muted);
-        font-size: 1.1rem;
-        line-height: 1.8;
+        font-size: 0.92rem;
+        color: var(--text-dim);
         margin-bottom: 20px;
       }
 
-      .about-lead-bold {
-        font-size: 1.25rem !important;
-        font-weight: 800;
-        color: #fff !important;
+      /* 4. SHORT-FORM EDITS (سكرول ناعم 9:16 زي الفيديو) */
+      .shorts-viewport {
+        overflow-x: auto;
+        padding: 20px 0;
+        display: flex;
+        gap: 20px;
+        scrollbar-width: thin;
+        scrollbar-color: var(--gold-glow) transparent;
       }
 
-      .highlights-row {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-        gap: 14px;
-        margin-top: 36px;
-        text-align: left;
+      .shorts-viewport::-webkit-scrollbar {
+        height: 6px;
       }
 
-      .highlight-box {
+      .shorts-viewport::-webkit-scrollbar-thumb {
+        background: var(--gold-glow);
+        border-radius: 6px;
+      }
+
+      .short-card {
+        flex: 0 0 240px;
+        height: 420px;
+        border-radius: 16px;
         background: var(--card-bg);
         border: 1px solid var(--border-glass);
-        border-radius: 14px;
-        padding: 16px;
-      }
-
-      .highlight-box h4 {
-        font-size: 0.92rem;
-        color: #fff;
-        margin-bottom: 4px;
-      }
-
-      .highlight-box span {
-        font-size: 0.8rem;
-        color: var(--text-muted);
-      }
-
-      /* =========================================
-         5. سكشن التواصل وفورم الجيميل (Contact & Formspree)
-         ========================================= */
-      .contact-section {
-        padding: 80px 0;
-        text-align: center;
-      }
-
-      .contact-info-box {
-        margin-bottom: 30px;
-      }
-
-      .contact-info-box p {
-        margin: 8px 0;
-        font-size: 1.05rem;
-      }
-
-      .contact-info-box a {
-        color: var(--accent-green);
-        text-decoration: none;
-        font-weight: 600;
-      }
-
-      .compact-form {
-        max-width: 460px;
-        margin: 0 auto;
-        padding: 28px;
-        background: var(--card-bg);
-        border: 1px solid var(--border-glass);
-        border-radius: 18px;
-        backdrop-filter: blur(14px);
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-      }
-
-      .compact-form label {
-        font-size: 0.88rem;
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-        text-align: left;
-        color: var(--text-muted);
-      }
-
-      .compact-form input,
-      .compact-form textarea {
-        padding: 12px 16px;
-        font-size: 0.95rem;
-        border-radius: 10px;
-        background: rgba(6, 7, 10, 0.8);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        color: #fff;
-        font-family: inherit;
-      }
-
-      .compact-form input:focus,
-      .compact-form textarea:focus {
-        outline: none;
-        border-color: var(--accent-pink);
-        box-shadow: 0 0 12px rgba(252, 108, 133, 0.35);
-      }
-
-      /* =========================================
-         6. الشريط السفلي المتحرك الملون
-         ========================================= */
-      .ticker-container {
         overflow: hidden;
-        background: rgba(8, 10, 16, 0.95);
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        padding: 14px 0;
-        white-space: nowrap;
-      }
-
-      .ticker-track {
-        display: inline-block;
-        animation: marquee 24s linear infinite;
-      }
-
-      .ticker-track span {
-        display: inline-block;
-        padding: 0 14px;
-        font-size: 0.92rem;
-      }
-
-      .t-pink { color: var(--accent-pink); font-weight: 700; text-shadow: 0 0 10px rgba(252, 108, 133, 0.5); }
-      .t-green { color: var(--accent-green); font-weight: 700; text-shadow: 0 0 10px rgba(50, 205, 50, 0.5); }
-      .t-cyan { color: var(--cyber-cyan); font-weight: 700; text-shadow: 0 0 10px rgba(0, 240, 255, 0.5); }
-      .t-yellow { color: #ffbd2e; font-weight: 700; text-shadow: 0 0 10px rgba(255, 189, 46, 0.5); }
-      .t-dot { color: rgba(255, 255, 255, 0.3); }
-
-      @keyframes marquee {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-50%); }
-      }
-
-      /* =========================================
-         7. السوشيال ميديا العائمة
-         ========================================= */
-      .floating-social-stack {
-        position: fixed;
-        bottom: 24px;
-        right: 24px;
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        z-index: 9999;
-      }
-
-      .floating-btn {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #fff;
-        text-decoration: none;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      }
-
-      .floating-btn:hover {
-        transform: scale(1.15) translateY(-3px);
-      }
-
-      .btn-wa { background: linear-gradient(135deg, #25d366, #128c7e); }
-      .btn-insta { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); }
-      .btn-fb { background: linear-gradient(135deg, #1877f2, #0d5bbd); }
-      .btn-tt { background: linear-gradient(135deg, #000, #25f4ee, #fe2c55); }
-
-      /* =========================================
-         8. المودال مع أسهم التنقل (Prev / Next)
-         ========================================= */
-      .media-modal {
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.96);
-        backdrop-filter: blur(14px);
-        z-index: 10000;
-        display: none;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .media-modal.active {
-        display: flex;
-      }
-
-      .modal-box {
-        max-width: 88vw;
-        max-height: 85vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .modal-box img,
-      .modal-box video {
-        max-width: 100%;
-        max-height: 80vh;
-        border-radius: 12px;
-        object-fit: contain;
-      }
-
-      .modal-nav-arrow {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        color: #fff;
-        font-size: 2.2rem;
-        width: 54px;
-        height: 54px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        position: relative;
         cursor: pointer;
-        border-radius: 50%;
-        user-select: none;
-        transition: all 0.25s ease;
+        transition: transform 0.3s ease, border-color 0.3s ease;
       }
 
-      .modal-nav-arrow:hover {
-        background: var(--accent-pink);
+      .short-card:hover {
+        transform: scale(1.04);
+        border-color: var(--gold-glow);
       }
 
-      .modal-arrow-left { left: 24px; }
-      .modal-arrow-right { right: 24px; }
+      .short-card img,
+      .short-card video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
 
-      .modal-close {
+      .short-badge {
         position: absolute;
-        top: 24px;
-        right: 28px;
-        font-size: 40px;
-        color: #fff;
-        cursor: pointer;
-      }
-
-      @media (max-width: 960px) {
-        .case-studies-duo { grid-template-columns: 1fr; }
-        .work-tile { flex: 0 0 280px; height: 380px; }
-        .modal-nav-arrow { width: 42px; height: 42px; font-size: 1.6rem; }
-      }
-    </style>
-  </head>
-  <body>
-
-    <!-- أزرار السوشيال ميديا العائمة -->
-    <div class="floating-social-stack">
-      <a href="https://wa.me/201018585432" target="_blank" class="floating-btn btn-wa" aria-label="WhatsApp">
-        <svg viewBox="0 0 32 32" width="24" height="24" fill="#ffffff"><path d="M16.002 2C8.28 2 2 8.28 2 16c0 2.72.78 5.26 2.13 7.42L2.7 29.3a1 1 0 001.25 1.25l5.96-1.42A13.93 13.93 0 0016 30c7.72 0 14-6.28 14-14S23.72 2 16.002 2zm7.98 19.38c-.33.93-1.64 1.72-2.7 1.95-.72.16-1.66.29-4.83-1.02-4.06-1.68-6.68-5.8-6.88-6.07-.2-.27-1.65-2.2-1.65-4.2s1.05-2.98 1.42-3.39c.37-.41.81-.51 1.08-.51.27 0 .54 0 .78.01.25.02.59-.1.92.7.34.82 1.16 2.83 1.26 3.04.1.2.17.44.03.71-.13.27-.2.44-.4.67-.2.24-.42.53-.6.71-.2.2-.41.42-.18.82.24.4 1.05 1.73 2.25 2.8 1.55 1.38 2.85 1.81 3.26 2.01.41.2.65.17.89-.1.24-.27 1.02-1.19 1.29-1.6.27-.41.54-.34.92-.2.37.14 2.37 1.12 2.78 1.32.41.2.68.31.78.48.1.17.1.98-.23 1.91z"/></svg>
-      </a>
-      <a href="https://www.instagram.com/shefooo011?igsh=cWFzdnVlbXk4dWQz" target="_blank" class="floating-btn btn-insta" aria-label="Instagram">
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-      </a>
-      <a href="https://www.facebook.com/share/1HTk7ZaRGQ/" target="_blank" class="floating-btn btn-fb" aria-label="Facebook">
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="#ffffff"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
-      </a>
-      <a href="https://www.tiktok.com/@s.h.r.e.e.f0?_r=1&_t=ZS-98jaZ600Aj7" target="_blank" class="floating-btn btn-tt" aria-label="TikTok">
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="#ffffff"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.298-.002.595.042.88.13V9.4a6.33 6.33 0 0 0-1-.08A6.34 6.34 0 0 0 3 15.66a6.34 6.34 0 0 0 10.82 4.47 6.27 6.27 0 0 0 1.96-4.52V8.71a8.28 8.28 0 0 0 4.81 1.53v-3.55z"/></svg>
-      </a>
-    </div>
-
-    <!-- 1. شاشة الإنترو بالحلقات الضوئية 3D -->
-    <header id="rings-hero-stage">
-      <div class="rings-perspective-box">
-        <div class="light-ring ring-1"></div>
-        <div class="light-ring ring-2"></div>
-        <div class="light-ring ring-3"></div>
-        <div class="ring-massive-finale"></div>
-      </div>
-
-      <div class="hero-content">
-        <p class="hero-tagline">Full Production &mdash; Concept to Execution</p>
-        <h1 class="hero-title">SHERIF ASHRAF</h1>
-        <p class="hero-desc">
-          Graphic Designer, Video Editor & Content Creator who builds end-to-end brand worlds, high-impact 3D visuals, and dynamic digital media.
-        </p>
-        <div class="hero-actions">
-          <a href="#case-studies" class="btn btn-primary">Inspect Major Works ↓</a>
-          <a href="Sherif_Ashraf_CV.pdf" download="Sherif_Ashraf_CV.pdf" class="btn btn-glass">Download CV[cite: 1]</a>
-        </div>
-      </div>
-    </header>
-
-    <!-- 2. المشاريع الكبرى جنب بعض (Side-by-Side) -->
-    <section class="section-layout container" id="case-studies">
-      <div class="section-headline">
-        <h2>Major Case Studies</h2>
-      </div>
-
-      <div class="case-studies-duo">
-        <article class="duo-card zone-theme">
-          <div class="duo-visual">
-            <img src="system-overload-poster.png.png" alt="ZONE 99 Cyberpunk Burger" />
-            <div class="duo-badge badge-zone">CASE 01 // SEASON 01</div>
-          </div>
-          <div class="duo-body">
-            <h3>ZONE 99</h3>
-            <p>
-              A complete cyber-tech restaurant ecosystem fusing futuristic visual language with gourmet dark-kitchen culture. Complete identity, matte packaging, motion teasers, and a live web simulator.
-            </p>
-            <div class="duo-tools">
-              <span class="tool-tag">Canva AI</span>
-              <span class="tool-tag">Photoshop</span>
-              <span class="tool-tag">3D Packaging</span>
-              <span class="tool-tag">Interactive UI</span>
-            </div>
-            <div class="duo-footer">
-              <a href="https://khalidmedia.my.canva.site/zone-99-cyber-burger-landing-page" target="_blank" class="btn btn-primary" style="background: linear-gradient(135deg, var(--cyber-cyan), #0088cc); color: #000;">
-                Launch Prototype ↗
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <article class="duo-card venom-theme">
-          <div class="duo-visual">
-            <img src="venom-hero-presentation.png" alt="VENOM LABS Nutrition System" />
-            <div class="duo-badge badge-venom">CASE 02 // LAB GRADE</div>
-          </div>
-          <div class="duo-body">
-            <h3>VENOM LABS</h3>
-            <p>
-              High-potency sports nutrition brand built on "Pure. Potent. Precise." Clinical dark contrast, tactical wireframes, and reactive neon green across Creatine & Whey product lines.
-            </p>
-            <div class="duo-tools">
-              <span class="tool-tag">Canva AI</span>
-              <span class="tool-tag">Photoshop</span>
-              <span class="tool-tag">3D Tubs Mockup</span>
-              <span class="tool-tag">Store Prototype</span>
-            </div>
-            <div class="duo-footer">
-              <a href="https://khalidmedia.my.canva.site/venom-labs-landing-page" target="_blank" class="btn btn-primary" style="background: linear-gradient(135deg, var(--accent-green), #1b851b); color: #000;">
-                Launch Prototype ↗
-              </a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- 3. معرض الشغل الأفقي فائق النعومة (بدون لاج) -->
-    <section class="horizontal-showcase-section">
-      <div class="section-headline">
-        <h2>Production Assets Gallery</h2>
-      </div>
-
-      <div class="gallery-viewport" id="galleryViewport">
-        <div class="gallery-track">
-          <div class="work-tile modal-trigger" data-type="image" data-src="venom-hero-presentation.png">
-            <img src="venom-hero-presentation.png" alt="VENOM LABS Key Visual" />
-          </div>
-
-          <div class="work-tile modal-trigger" data-type="image" data-src="system-overload-poster.png.png">
-            <img src="system-overload-poster.png.png" alt="The Glitch Burger" />
-          </div>
-
-          <div class="work-tile modal-trigger" data-type="video" data-src="logo-animation.mp4.mp4">
-            <video muted loop playsinline preload="metadata">
-              <source src="logo-animation.mp4.mp4" type="video/mp4" />
-            </video>
-            <div class="tile-video-indicator">▶ VIDEO REVEAL</div>
-          </div>
-
-          <div class="work-tile modal-trigger" data-type="image" data-src="venom-creatine-tub.png">
-            <img src="venom-creatine-tub.png" alt="Creatine Tub Mockup" />
-          </div>
-
-          <div class="work-tile modal-trigger" data-type="image" data-src="burger-box-matte.jpg.jpg">
-            <img src="burger-box-matte.jpg.jpg" alt="Matte Burger Box" />
-          </div>
-
-          <div class="work-tile modal-trigger" data-type="video" data-src="system-online-video.mp4.mp4">
-            <video muted loop playsinline preload="metadata">
-              <source src="system-online-video.mp4.mp4" type="video/mp4" />
-            </video>
-            <div class="tile-video-indicator">▶ MOTION TEASER</div>
-          </div>
-
-          <div class="work-tile modal-trigger" data-type="image" data-src="venom-whey-tub.png">
-            <img src="venom-whey-tub.png" alt="Whey Protein Tub" />
-          </div>
-
-          <div class="work-tile modal-trigger" data-type="image" data-src="neon-sip-poster.png.png">
-            <img src="neon-sip-poster.png.png" alt="Neon Sip Mixology" />
-          </div>
-
-          <div class="work-tile modal-trigger" data-type="video" data-src="neon-sip-video.mp4">
-            <video muted loop playsinline preload="metadata">
-              <source src="neon-sip-video.mp4" type="video/mp4" />
-            </video>
-            <div class="tile-video-indicator">▶ DRINK MOTION</div>
-          </div>
-
-          <div class="work-tile modal-trigger" data-type="image" data-src="venom-neon-post.png">
-            <img src="venom-neon-post.png" alt="Pure Potent Precise" />
-          </div>
-
-          <div class="work-tile modal-trigger" data-type="image" data-src="menu-brochure.png.png">
-            <img src="menu-brochure.png.png" alt="Menu Architecture" />
-          </div>
-
-          <div class="work-tile modal-trigger" data-type="image" data-src="venom-social-grid.png">
-            <img src="venom-social-grid.png" alt="Social Media Board" />
-          </div>
-
-          <div class="work-tile modal-trigger" data-type="image" data-src="cookie-poster.png.png">
-            <img src="cookie-poster.png.png" alt="Zero-Day Cookie" />
-          </div>
-
-          <div class="work-tile modal-trigger" data-type="image" data-src="venom-logo.png">
-            <img src="venom-logo.png" alt="Venom Fang Emblem" />
-          </div>
-
-          <div class="work-tile modal-trigger" data-type="image" data-src="wark2.png">
-            <img src="wark2.png" alt="3D Commercial Artwork" />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 4. سكشن About Me -->
-    <section class="section-layout container" id="about">
-      <div class="about-container">
-        <div class="section-headline">
-          <h2>About Me</h2>
-        </div>
-        <p>
-          I'm Sherif Ashraf — a graphic designer, video editor, and content creator who treats every project as a full production, not just a task.
-        </p>
-        <p>
-          On the design side, I build brand visuals, 3D commercial graphics, and promotional artwork that give products and businesses a real identity. On the editing side, I handle dynamic cuts, pacing, sound design, and color — turning raw footage into content that actually holds attention.
-        </p>
-        <p>
-          I don't stop at the technical work either. I've run media buying, marketing, editing, and design for the same project at the same time, which means I understand how a piece of content performs, not just how it looks. And with a background in acting and directing, I bring a director's eye for framing and real, unscripted charisma in front of the camera — so anything I'm part of, whether behind the lens or in front of it, comes out natural.
-        </p>
-        <p class="about-lead-bold">
-          From the first idea to the final export, I like owning the whole process.
-        </p>
-
-        <div class="highlights-row">
-          <div class="highlight-box">
-            <h4>Content Creation</h4>
-            <span>UGC, on-camera, natural charisma</span>
-          </div>
-          <div class="highlight-box">
-            <h4>Video Editing</h4>
-            <span>Dynamic cuts, sound design & pacing</span>
-          </div>
-          <div class="highlight-box">
-            <h4>Graphic Design</h4>
-            <span>3D commercial artwork & full branding</span>
-          </div>
-          <div class="highlight-box">
-            <h4>Directing & Acting</h4>
-            <span>Camera framing & unscripted presence</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5. سكشن التواصل وفورم الجيميل -->
-    <section class="contact-section container" id="contact">
-      <div class="section-headline">
-        <h2>Contact Me</h2>
-      </div>
-      
-      <div class="contact-info-box">
-        <p><strong>Direct Email:</strong> <a href="mailto:ashreef988@gmail.com">ashreef988@gmail.com[cite: 1]</a></p>
-        <p><strong>WhatsApp:</strong> <a href="https://wa.me/201018585432" target="_blank">01018585432[cite: 1]</a></p>
-      </div>
-
-      <form class="compact-form" action="https://formspree.io/f/myegkqkd" method="POST">
-        <label>
-          Your Name
-          <input type="text" name="name" required placeholder="Your name" />
-        </label>
-        <label>
-          Your Email
-          <input type="email" name="email" required placeholder="Your email" />
-        </label>
-        <label>
-          Message
-          <textarea name="message" rows="3" required placeholder="Write your message..."></textarea>
-        </label>
-        <button type="submit" class="btn btn-primary">Send Message</button>
-      </form>
-    </section>
-
-    <!-- 6. الشريط المتحرك الملون -->
-    <div class="ticker-container">
-      <div class="ticker-track">
-        <span class="t-pink">⭐ ashreef988@gmail.com[cite: 1]</span>
-        <span class="t-dot">•</span>
-        <span class="t-green">📱 WhatsApp: 01018585432[cite: 1]</span>
-        <span class="t-dot">•</span>
-        <span class="t-cyan">📷 Instagram: @shefooo011[cite: 1]</span>
-        <span class="t-dot">•</span>
-        <span class="t-yellow">🎵 TikTok: @s.h.r.e.e.f0</span>
-        <span class="t-dot">•</span>
-        <span class="t-green">🎬 Full Production Specialist</span>
-        <span class="t-dot">•</span>
-        <span class="t-pink">⚡ Let's Create Together!</span>
-        <span class="t-dot">•</span>
-        <span class="t-pink">⭐ ashreef988@gmail.com[cite: 1]</span>
-        <span class="t-dot">•</span>
-        <span class="t-green">📱 WhatsApp: 01018585432[cite: 1]</span>
-        <span class="t-dot">•</span>
-        <span class="t-cyan">📷 Instagram: @shefooo011[cite: 1]</span>
-        <span class="t-dot">•</span>
-        <span class="t-yellow">🎵 TikTok: @s.h.r.e.e.f0</span>
-        <span class="t-dot">•</span>
-        <span class="t-green">🎬 Full Production Specialist</span>
-        <span class="t-dot">•</span>
-        <span class="t-pink">⚡ Let's Create Together!</span>
-      </div>
-    </div>
-
-    <!-- 7. المودال مع أسهم التنقل (Prev / Next) -->
-    <div class="media-modal" id="mediaModal">
-      <span class="modal-close" id="modalClose">&times;</span>
-      <div class="modal-nav-arrow modal-arrow-left" id="modalPrev">&#10094;</div>
-      <div class="modal-box">
-        <img id="mImg" src="" alt="Enlarged" style="display:none;" />
-        <video id="mVideo" controls style="display:none;"></video>
-      </div>
-      <div class="modal-nav-arrow modal-arrow-right" id="modalNext">&#10095;</div>
-    </div>
-
-    <script>
-      /* 1. نظام أنيميشن الحلقات 3D */
-      window.addEventListener("DOMContentLoaded", () => {
-        const stage = document.getElementById("rings-hero-stage");
-        setTimeout(() => {
-          stage.classList.add("rings-unlocked");
-        }, 2200);
-      });
-
-      /* 2. تحريك المعرض مع الماوس والتاتش بنعومة وبدون لاج */
-      const viewport = document.getElementById("galleryViewport");
-      let isDown = false;
-      let startX, scrollLeft;
-
-      viewport.addEventListener("mousedown", (e) => {
-        isDown = true;
-        startX = e.pageX - viewport.offsetLeft;
-        scrollLeft = viewport.scrollLeft;
-      });
-
-      viewport.addEventListener("mouseleave", () => { isDown = false; });
-      viewport.addEventListener("mouseup", () => { isDown = false; });
-
-      viewport.addEventListener("mousemove", (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - viewport.offsetLeft;
-        const walk = (x - startX) * 1.8;
-        viewport.scrollLeft = scrollLeft - walk;
-      });
-
-      // حركة أوتوماتيكية ناعمة مع تمرير الماوس فوق المعرض
-      viewport.addEventListener("wheel", (e) => {
-        if (e.deltaY !== 0) {
-          e.preventDefault();
-          viewport.scrollLeft += e.deltaY * 1.2;
-        }
-      }, { passive: false });
-
-      /* 3. مشغل المودال وأسهم التقليب (Next & Prev) */
-      const modal = document.getElementById("mediaModal");
-      const modalImg = document.getElementById("mImg");
-      const modalVid = document.getElementById("mVideo");
-      const modalClose = document.getElementById("modalClose");
-      const prevBtn = document.getElementById("modalPrev");
-      const nextBtn = document.getElementById("modalNext");
-      const triggers = Array.from(document.querySelectorAll(".modal-trigger"));
-      let activeIndex = 0;
-
-      function renderMedia(idx) {
-        if (idx < 0) idx = triggers.length - 1;
-        if (idx >= triggers.length) idx = 0;
-        activeIndex = idx;
-
-        const target = triggers[activeIndex];
-        const type = target.getAttribute("data-type");
-        const src = target.getAttribute("data-src");
-
-        if (type === "video") {
-          modalImg.style.display = "none";
-          modalVid.style.display = "block";
-          modalVid.src = src;
-          modalVid.play();
-        } else {
-          modalVid.pause();
-          modalVid.style.display = "none";
-          modalImg.style.display = "block";
-          modalImg.src = src;
-        }
-        modal.classList.add("active");
-      }
-
-      triggers.forEach((trigger, index) => {
-        trigger.addEventListener("click", () => renderMedia(index));
-      });
-
-      prevBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        renderMedia(activeIndex - 1);
-      });
-
-      nextBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        renderMedia(activeIndex + 1);
-      });
-
-      function closeModal() {
-        modal.classList.remove("active");
-        modalVid.pause();
-        modalVid.src = "";
-        modalImg.src = "";
-      }
-
-      modalClose.addEventListener("click", closeModal);
-      modal.addEventListener("click", (e) => {
-        if (e.target === modal) closeModal();
-      });
-
-      document.addEventListener("keydown", (e) => {
-        if (!modal.classList.contains("active")) return;
-        if (e.key === "Escape") closeModal();
-        if (e.key === "ArrowLeft") renderMedia(activeIndex - 1);
-        if (e.key === "ArrowRight") renderMedia(activeIndex + 1);
-      });
-    </script>
-  </body>
-</html>
+        bottom: 14px;
+        left: 14px;
+        background: rgba(0, 0,
