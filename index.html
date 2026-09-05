@@ -3,15 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sherif Ashraf | Portfolio</title>
+    <title>Sherif Ashraf | Full-Stack Production & Creative Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
 
     <style>
-      /* =========================================
-         1. المتغيرات والأساسيات
-         ========================================= */
       * {
         margin: 0;
         padding: 0;
@@ -19,679 +16,477 @@
       }
 
       :root {
-        --bg-color: #06070a;
-        --card-bg: rgba(14, 16, 24, 0.85);
-        --text-main: #ffffff;
-        --text-muted: #a0a6b5;
-        --accent-red: #fc6c85;      /* أحمر بطيخي نيون */
-        --accent-green: #32cd32;    /* أخضر بطيخي نيون */
+        --bg-black: #050608;
+        --card-bg: rgba(13, 16, 24, 0.85);
+        --text-primary: #ffffff;
+        --text-muted: #8e95a5;
+        --accent-pink: #fc6c85;
+        --accent-green: #32cd32;
         --cyber-cyan: #00f0ff;
-        --cyber-magenta: #d91680;
-        --border-glass: rgba(255, 255, 255, 0.12);
+        --border-glass: rgba(255, 255, 255, 0.1);
       }
 
       body {
         font-family: 'Inter', sans-serif;
-        background-color: var(--bg-color);
-        color: var(--text-main);
-        line-height: 1.6;
+        background-color: var(--bg-black);
+        color: var(--text-primary);
         overflow-x: hidden;
-        position: relative;
-      }
-
-      /* خلفية أيقونات وتصميمات الشغل البلور الثابتة */
-      .bg-work-wall {
-        position: fixed;
-        top: -5%;
-        left: -5%;
-        width: 110vw;
-        height: 110vh;
-        z-index: -1;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-        gap: 18px;
-        padding: 20px;
-        pointer-events: none;
-        overflow: hidden;
-        opacity: 0.15;
-        filter: blur(10px);
-      }
-
-      .bg-work-item {
-        border-radius: 14px;
-        overflow: hidden;
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        aspect-ratio: 1;
-      }
-
-      .bg-work-item img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .bg-overlay-gradient {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        z-index: -1;
-        pointer-events: none;
-        background: radial-gradient(circle at 50% 30%, rgba(6, 7, 10, 0.4) 0%, rgba(6, 7, 10, 0.95) 80%);
-      }
-
-      .container {
-        max-width: 1160px;
-        margin: 0 auto;
-        padding: 0 24px;
-      }
-
-      .section {
-        padding: 90px 0;
-        text-align: center;
-        position: relative;
-      }
-
-      .section h2 {
-        font-size: 2.5rem;
-        font-weight: 800;
-        margin-bottom: 24px;
-        background: linear-gradient(135deg, #ffffff 40%, var(--accent-red) 100%);
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-        position: relative;
-        display: inline-block;
-      }
-
-      .section h2::after {
-        content: '';
-        position: absolute;
-        bottom: -10px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 60px;
-        height: 4px;
-        background: linear-gradient(90deg, var(--accent-red), var(--accent-green));
-        border-radius: 4px;
-        box-shadow: 0 0 12px var(--accent-red);
+        line-height: 1.6;
       }
 
       /* =========================================
-         2. الهيدر والقائمة
+         1. شاشة البداية: دوائر الكشف الضوئي المتعددة
          ========================================= */
-      .site-header {
-        position: sticky;
-        top: 0;
-        background: rgba(6, 7, 10, 0.85);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        z-index: 1000;
-      }
-
-      .nav {
+      #hero-reveal-stage {
+        position: relative;
+        width: 100vw;
+        min-height: 100vh;
+        background: #000;
         display: flex;
-        justify-content: space-between;
         align-items: center;
-        height: 75px;
-      }
-
-      .logo {
-        font-size: 1.4rem;
-        font-weight: 800;
-        color: #fff;
-        text-decoration: none;
-        letter-spacing: -0.5px;
-      }
-
-      .logo span {
-        color: var(--accent-red);
-      }
-
-      .nav-links {
-        display: flex;
-        list-style: none;
-        gap: 28px;
-      }
-
-      .nav-links a {
-        color: var(--text-muted);
-        text-decoration: none;
-        font-size: 0.95rem;
-        font-weight: 500;
-        transition: all 0.25s ease;
-      }
-
-      .nav-links a:hover {
-        color: var(--accent-green);
-        text-shadow: 0 0 10px rgba(50, 205, 50, 0.6);
-      }
-
-      .hamburger-btn {
-        display: none;
-        flex-direction: column;
         justify-content: center;
-        align-items: center;
-        gap: 5px;
-        width: 40px;
-        height: 40px;
-        background: transparent;
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        border-radius: 8px;
-        cursor: pointer;
-        z-index: 1100;
+        overflow: hidden;
+        padding: 40px 24px;
       }
 
-      .hamburger-btn span {
-        display: block;
-        width: 20px;
-        height: 2px;
-        background: #fff;
-        border-radius: 2px;
-        transition: all 0.3s ease;
+      /* طبقة الإضاءات المتعددة المتداخلة */
+      .spotlight-lens {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 2;
+        transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
-      .hamburger-btn.active span:nth-child(1) {
-        transform: translateY(7px) rotate(45deg);
+      .spotlight-orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(55px);
+        opacity: 0;
+        transform: translate(-50%, -50%);
+        animation-fill-mode: forwards;
       }
-      .hamburger-btn.active span:nth-child(2) {
+
+      /* الدائرة 1: بيضاء ناعمة تتحرك يمين وشمال */
+      .orb-1 {
+        width: 380px;
+        height: 380px;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.15) 60%, transparent 80%);
+        animation: orbScan1 3s cubic-bezier(0.4, 0, 0.2, 1) 0.3s infinite alternate;
+      }
+
+      /* الدائرة 2: حزمة ثانية تظهر من الخلف بزاوية أخرى */
+      .orb-2 {
+        width: 480px;
+        height: 480px;
+        background: radial-gradient(circle, rgba(200, 235, 255, 0.75) 0%, rgba(0, 240, 255, 0.1) 60%, transparent 80%);
+        animation: orbScan2 3.6s cubic-bezier(0.4, 0, 0.2, 1) 0.8s infinite alternate;
+      }
+
+      /* الدائرة 3: الحزمة الكبرى الختامية التي تفتح الشاشة بالكامل */
+      .orb-final {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0px;
+        height: 0px;
+        background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(252, 108, 133, 0.3) 40%, rgba(50, 205, 50, 0.15) 70%, transparent 90%);
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        filter: blur(80px);
         opacity: 0;
       }
-      .hamburger-btn.active span:nth-child(3) {
-        transform: translateY(-7px) rotate(-45deg);
+
+      /* أنيميشن الدائرة الأخيرة عند فتح الموقع بالكامل */
+      .spotlight-unlocked .orb-final {
+        animation: finalFlashOpen 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
       }
 
-      /* =========================================
-         3. سكشن الهيرو
-         ========================================= */
-      .hero {
-        padding: 130px 0 80px;
+      .spotlight-unlocked .spotlight-lens {
+        opacity: 0.2;
       }
 
-      .eyebrow {
-        display: inline-block;
+      @keyframes orbScan1 {
+        0% { left: 20%; top: 40%; opacity: 0.85; }
+        50% { left: 75%; top: 55%; opacity: 0.95; }
+        100% { left: 45%; top: 35%; opacity: 0.7; }
+      }
+
+      @keyframes orbScan2 {
+        0% { left: 80%; top: 60%; opacity: 0.65; }
+        50% { left: 25%; top: 45%; opacity: 0.85; }
+        100% { left: 70%; top: 30%; opacity: 0.75; }
+      }
+
+      @keyframes finalFlashOpen {
+        0% { width: 0px; height: 0px; opacity: 0; }
+        50% { opacity: 1; width: 140vw; height: 140vw; }
+        100% { opacity: 0; width: 200vw; height: 200vw; }
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 5;
+        max-width: 900px;
+        text-align: center;
+      }
+
+      .hero-tagline {
+        font-size: 0.85rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
         color: var(--accent-green);
         font-weight: 700;
-        font-size: 0.9rem;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        margin-bottom: 16px;
-        padding: 6px 16px;
-        border-radius: 30px;
-        background: rgba(50, 205, 50, 0.08);
-        border: 1px solid rgba(50, 205, 50, 0.25);
-        box-shadow: 0 0 15px rgba(50, 205, 50, 0.15);
-      }
-
-      .hero h1 {
-        font-size: 3.6rem;
-        font-weight: 900;
-        letter-spacing: -1.5px;
-        line-height: 1.15;
         margin-bottom: 20px;
-        background: linear-gradient(135deg, #ffffff 30%, #f0f0f0 60%, var(--accent-red) 100%);
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.8s ease 0.2s;
       }
 
-      .subheadline {
-        color: var(--text-muted);
+      .hero-title {
+        font-size: clamp(2.8rem, 7vw, 5.2rem);
+        font-weight: 900;
+        letter-spacing: -2px;
+        line-height: 1.08;
+        margin-bottom: 24px;
+        color: #fff;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 1s ease 0.4s;
+      }
+
+      .hero-desc {
         font-size: 1.25rem;
-        max-width: 680px;
+        color: var(--text-muted);
+        max-width: 700px;
         margin: 0 auto 36px;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 1s ease 0.6s;
       }
 
-      .hero-btns {
+      .hero-actions {
         display: flex;
         justify-content: center;
-        gap: 18px;
+        gap: 16px;
         flex-wrap: wrap;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 1s ease 0.8s;
+      }
+
+      /* ظهور كل النصوص بمجرد انتهاء ومضات الدوائر */
+      .spotlight-unlocked .hero-tagline,
+      .spotlight-unlocked .hero-title,
+      .spotlight-unlocked .hero-desc,
+      .spotlight-unlocked .hero-actions {
+        opacity: 1;
+        transform: translateY(0);
       }
 
       .btn {
         display: inline-flex;
         align-items: center;
-        justify-content: center;
         gap: 8px;
         padding: 14px 28px;
-        border-radius: 10px;
-        font-weight: 600;
-        font-size: 0.95rem;
-        text-decoration: none;
-        background: linear-gradient(135deg, var(--accent-red), #e04b66);
-        color: #fff;
-        border: none;
-        cursor: pointer;
-        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        box-shadow: 0 6px 20px rgba(252, 108, 133, 0.35);
-      }
-
-      .btn:hover {
-        transform: translateY(-3px) scale(1.02);
-        box-shadow: 0 10px 28px rgba(252, 108, 133, 0.5);
-      }
-
-      .btn-outline {
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        color: #fff;
-        backdrop-filter: blur(8px);
-      }
-
-      .btn-outline:hover {
-        background: rgba(255, 255, 255, 0.12);
-        border-color: rgba(255, 255, 255, 0.4);
-        transform: translateY(-3px);
-      }
-
-      /* =========================================
-         4. سكشن دراسات الحالة (Case Studies)
-         ========================================= */
-      .case-studies-container {
-        display: flex;
-        flex-direction: column;
-        gap: 50px;
-        margin-top: 36px;
-      }
-
-      .case-study-card {
-        background: linear-gradient(145deg, rgba(12, 14, 22, 0.92), rgba(16, 20, 32, 0.88));
-        border: 1px solid rgba(0, 240, 255, 0.25);
-        border-radius: 24px;
-        padding: 36px;
-        text-align: left;
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-        position: relative;
-        overflow: hidden;
-        backdrop-filter: blur(12px);
-      }
-
-      .case-study-card.venom-card {
-        border-color: rgba(50, 205, 50, 0.35);
-        box-shadow: 0 20px 50px rgba(50, 205, 50, 0.1);
-      }
-
-      .case-study-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        font-family: 'Orbitron', sans-serif;
-        font-size: 0.78rem;
-        letter-spacing: 1.5px;
-        color: var(--cyber-cyan);
-        background: rgba(0, 240, 255, 0.08);
-        border: 1px solid rgba(0, 240, 255, 0.4);
-        padding: 6px 14px;
-        border-radius: 30px;
-        margin-bottom: 16px;
-      }
-
-      .case-study-badge.venom-badge {
-        color: var(--accent-green);
-        border-color: var(--accent-green);
-        background: rgba(50, 205, 50, 0.08);
-      }
-
-      .concept-tag {
-        display: inline-block;
-        background: rgba(217, 22, 128, 0.15);
-        border: 1px solid var(--cyber-magenta);
-        color: #ff52a8;
-        font-size: 0.75rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        padding: 4px 10px;
-        border-radius: 6px;
-        margin-left: 10px;
-      }
-
-      .concept-tag.venom-concept {
-        border-color: var(--accent-green);
-        color: var(--accent-green);
-        background: rgba(50, 205, 50, 0.12);
-      }
-
-      .case-study-card h3 {
-        font-family: 'Orbitron', sans-serif;
-        font-size: 2.1rem;
-        color: #ffffff;
-        margin-bottom: 14px;
-        letter-spacing: 0.5px;
-      }
-
-      .case-study-card p.description {
-        color: var(--text-muted);
-        font-size: 1.05rem;
-        line-height: 1.75;
-        max-width: 920px;
-        margin-bottom: 24px;
-      }
-
-      .tools-used {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-bottom: 28px;
-      }
-
-      .tool-pill {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        color: #e2e8f0;
-        font-size: 0.85rem;
-        font-weight: 500;
-        padding: 6px 14px;
-        border-radius: 8px;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-      }
-
-      .tool-pill span {
-        color: var(--cyber-cyan);
-      }
-
-      .tool-pill.venom-pill span {
-        color: var(--accent-green);
-      }
-
-      .website-embed-wrapper {
-        border-radius: 16px;
-        overflow: hidden;
-        border: 1px solid rgba(0, 240, 255, 0.35);
-        background: #000;
-        box-shadow: 0 15px 35px rgba(0, 240, 255, 0.15);
-        margin-bottom: 30px;
-      }
-
-      .website-embed-wrapper.venom-embed {
-        border-color: rgba(50, 205, 50, 0.4);
-        box-shadow: 0 15px 35px rgba(50, 205, 50, 0.15);
-      }
-
-      .embed-header-bar {
-        background: #11141c;
-        padding: 10px 18px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      .embed-dots {
-        display: flex;
-        gap: 6px;
-      }
-
-      .embed-dots span {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        display: inline-block;
-      }
-
-      .embed-url {
-        font-size: 0.8rem;
-        color: var(--text-muted);
-        background: rgba(0, 0, 0, 0.5);
-        padding: 4px 14px;
-        border-radius: 6px;
-        font-family: monospace;
-      }
-
-      .website-embed-wrapper iframe {
-        width: 100%;
-        height: 480px;
-        border: none;
-        display: block;
-      }
-
-      .case-study-actions {
-        display: flex;
-        gap: 16px;
-        flex-wrap: wrap;
-      }
-
-      .btn-cyber-primary {
-        background: linear-gradient(135deg, var(--cyber-cyan), #0099ff);
-        color: #000 !important;
-        font-weight: 700;
-        padding: 14px 28px;
-        border-radius: 10px;
-        text-decoration: none;
-        box-shadow: 0 6px 25px rgba(0, 240, 255, 0.4);
-        transition: all 0.3s ease;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-      }
-
-      .btn-cyber-primary:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 30px rgba(0, 240, 255, 0.6);
-      }
-
-      .btn-venom-primary {
-        background: linear-gradient(135deg, #32cd32, #1f8b1f);
-        color: #000 !important;
-        font-weight: 700;
-        padding: 14px 28px;
-        border-radius: 10px;
-        text-decoration: none;
-        box-shadow: 0 6px 25px rgba(50, 205, 50, 0.4);
-        transition: all 0.3s ease;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-      }
-
-      .btn-venom-primary:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 30px rgba(50, 205, 50, 0.6);
-      }
-
-      .case-study-placeholder {
-        border: 2px dashed rgba(255, 255, 255, 0.12);
-        border-radius: 24px;
-        padding: 48px 24px;
-        background: rgba(12, 14, 20, 0.3);
-        text-align: center;
-      }
-
-      .case-study-placeholder h4 {
-        font-size: 1.4rem;
-        color: var(--text-muted);
-        margin-bottom: 8px;
-      }
-
-      .case-study-placeholder p {
-        color: rgba(160, 166, 181, 0.6);
-        font-size: 0.95rem;
-      }
-
-      /* =========================================
-         5. معرض الميديا والتصميمات (الصور فقط بدون نصوص)
-         ========================================= */
-      .portfolio-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 22px;
-        margin-top: 48px;
-      }
-
-      .portfolio-item {
-        background: var(--card-bg);
-        border: 1px solid var(--border-glass);
-        border-radius: 16px;
-        padding: 10px;
-        backdrop-filter: blur(14px);
-        -webkit-backdrop-filter: blur(14px);
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
-        transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
-        cursor: pointer;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .portfolio-item:hover {
-        transform: translateY(-6px) scale(1.02);
-        border-color: var(--accent-red);
-        box-shadow: 0 18px 35px rgba(252, 108, 133, 0.3);
-      }
-
-      .img-thumbnail-box,
-      .video-container {
-        width: 100%;
-        height: 290px;
-        border-radius: 10px;
-        overflow: hidden;
-        position: relative;
-        background: #000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .img-thumbnail-box img,
-      .video-container video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.4s ease;
-      }
-
-      .portfolio-item:hover .img-thumbnail-box img,
-      .portfolio-item:hover .video-container video {
-        transform: scale(1.05);
-      }
-
-      .play-overlay {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: rgba(6, 7, 10, 0.85);
-        color: #fff;
-        padding: 8px 18px;
-        border-radius: 30px;
-        font-size: 0.85rem;
-        font-weight: 700;
-        border: 1px solid var(--accent-green);
-        box-shadow: 0 0 16px rgba(50, 205, 50, 0.5);
-        pointer-events: none;
-        backdrop-filter: blur(8px);
-      }
-
-      /* =========================================
-         6. سكشن About Me المعدل
-         ========================================= */
-      .about p {
-        max-width: 820px;
-        margin: 0 auto;
-        color: var(--text-muted);
-        font-size: 1.08rem;
-        line-height: 1.8;
-      }
-
-      .about p.closing-lead {
-        margin-top: 18px;
-        font-weight: 700;
-        color: #ffffff;
-        font-size: 1.15rem;
-      }
-
-      .about-highlights {
-        max-width: 820px;
-        margin: 28px auto 0;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-        gap: 14px;
-        text-align: left;
-      }
-
-      .about-highlights .tag {
-        background: var(--card-bg);
-        border: 1px solid var(--border-glass);
         border-radius: 12px;
-        padding: 14px 16px;
-        font-size: 0.9rem;
+        font-size: 0.95rem;
         font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        border: none;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--accent-pink), #e04b66);
         color: #fff;
+        box-shadow: 0 8px 25px rgba(252, 108, 133, 0.35);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-3px) scale(1.03);
+        box-shadow: 0 12px 30px rgba(252, 108, 133, 0.5);
+      }
+
+      .btn-glass {
+        background: rgba(255, 255, 255, 0.05);
+        color: #fff;
+        border: 1px solid var(--border-glass);
         backdrop-filter: blur(10px);
       }
 
-      .about-highlights .tag span {
-        display: block;
-        margin-top: 4px;
-        font-size: 0.8rem;
-        font-weight: 400;
-        color: var(--text-muted);
-      }
-
-      .contact-info-box {
-        margin-bottom: 30px;
-      }
-
-      .contact-info-box p {
-        margin: 8px 0;
-        font-size: 1rem;
-      }
-
-      .contact-info-box a {
-        color: var(--accent-green);
-        text-decoration: none;
-        font-weight: 600;
-      }
-
-      .compact-form {
-        max-width: 440px;
-        margin: 0 auto;
-        padding: 26px;
-        background: var(--card-bg);
-        border: 1px solid var(--border-glass);
-        border-radius: 16px;
-        backdrop-filter: blur(14px);
-        -webkit-backdrop-filter: blur(14px);
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-        display: flex;
-        flex-direction: column;
-        gap: 14px;
-      }
-
-      .compact-form label {
-        font-size: 0.88rem;
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-        text-align: left;
-        color: var(--text-muted);
-      }
-
-      .compact-form input,
-      .compact-form textarea {
-        padding: 12px 16px;
-        font-size: 0.95rem;
-        border-radius: 8px;
-        background: rgba(6, 7, 10, 0.8);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        color: #fff;
-        font-family: inherit;
-      }
-
-      .compact-form input:focus,
-      .compact-form textarea:focus {
-        outline: none;
-        border-color: var(--accent-red);
-        box-shadow: 0 0 12px rgba(252, 108, 133, 0.35);
+      .btn-glass:hover {
+        background: rgba(255, 255, 255, 0.12);
+        transform: translateY(-3px);
       }
 
       /* =========================================
-         7. السوشيال ميديا العائمة فوق بعضها (Floating Stack)
+         2. المشاريع الكبرى جنب بعض (Side-by-Side)
+         ========================================= */
+      .section-layout {
+        padding: 100px 0;
+      }
+
+      .container {
+        max-width: 1300px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      .section-headline {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      .section-headline h2 {
+        font-size: 2.6rem;
+        font-weight: 900;
+        letter-spacing: -1px;
+        background: linear-gradient(135deg, #fff 40%, var(--accent-pink));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .case-studies-duo {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+      }
+
+      .duo-card {
+        background: linear-gradient(160deg, rgba(16, 20, 30, 0.95), rgba(8, 10, 15, 0.95));
+        border-radius: 24px;
+        border: 1px solid var(--border-glass);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+      }
+
+      .duo-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7);
+      }
+
+      .duo-card.zone-theme:hover {
+        border-color: var(--cyber-cyan);
+        box-shadow: 0 15px 40px rgba(0, 240, 255, 0.15);
+      }
+
+      .duo-card.venom-theme:hover {
+        border-color: var(--accent-green);
+        box-shadow: 0 15px 40px rgba(50, 205, 50, 0.15);
+      }
+
+      .duo-visual {
+        width: 100%;
+        height: 360px;
+        position: relative;
+        background: #000;
+        overflow: hidden;
+      }
+
+      .duo-visual img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .duo-card:hover .duo-visual img {
+        transform: scale(1.05);
+      }
+
+      .duo-badge {
+        position: absolute;
+        top: 18px;
+        left: 18px;
+        padding: 6px 14px;
+        border-radius: 30px;
+        font-size: 0.75rem;
+        font-family: 'Orbitron', sans-serif;
+        font-weight: 700;
+        backdrop-filter: blur(10px);
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .badge-zone {
+        background: rgba(0, 240, 255, 0.15);
+        border: 1px solid var(--cyber-cyan);
+        color: var(--cyber-cyan);
+      }
+
+      .badge-venom {
+        background: rgba(50, 205, 50, 0.15);
+        border: 1px solid var(--accent-green);
+        color: var(--accent-green);
+      }
+
+      .duo-body {
+        padding: 28px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+      }
+
+      .duo-body h3 {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 1.65rem;
+        margin-bottom: 12px;
+        color: #fff;
+      }
+
+      .duo-body p {
+        color: var(--text-muted);
+        font-size: 0.96rem;
+        line-height: 1.65;
+        margin-bottom: 22px;
+      }
+
+      .duo-tools {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 24px;
+      }
+
+      .tool-tag {
+        font-size: 0.8rem;
+        padding: 5px 12px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #cbd5e1;
+      }
+
+      .duo-footer {
+        margin-top: auto;
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      /* =========================================
+         3. معرض الشغل الأفقي المتفاعل بالماوس (Horizontal Track)
+         ========================================= */
+      .horizontal-showcase-section {
+        padding: 80px 0;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .gallery-viewport {
+        width: 100vw;
+        overflow-x: hidden;
+        cursor: grab;
+        padding: 20px 0;
+      }
+
+      .gallery-viewport:active {
+        cursor: grabbing;
+      }
+
+      .gallery-track {
+        display: flex;
+        gap: 22px;
+        width: max-content;
+        padding: 0 40px;
+        will-change: transform;
+        transition: transform 0.1s linear;
+      }
+
+      .work-tile {
+        flex: 0 0 380px;
+        height: 480px;
+        border-radius: 20px;
+        background: var(--card-bg);
+        border: 1px solid var(--border-glass);
+        overflow: hidden;
+        position: relative;
+        cursor: pointer;
+        transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+      }
+
+      .work-tile:hover {
+        transform: scale(1.03) translateY(-6px);
+        border-color: var(--accent-pink);
+        box-shadow: 0 15px 35px rgba(252, 108, 133, 0.25);
+      }
+
+      .work-tile img,
+      .work-tile video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .tile-video-indicator {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        padding: 6px 14px;
+        background: rgba(0, 0, 0, 0.7);
+        border: 1px solid var(--accent-green);
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--accent-green);
+        backdrop-filter: blur(8px);
+      }
+
+      /* =========================================
+         4. سكشن About Me
+         ========================================= */
+      .about-container {
+        max-width: 860px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .about-container p {
+        color: var(--text-muted);
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin-bottom: 20px;
+      }
+
+      .about-lead-bold {
+        font-size: 1.25rem !important;
+        font-weight: 800;
+        color: #fff !important;
+      }
+
+      .highlights-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 14px;
+        margin-top: 36px;
+        text-align: left;
+      }
+
+      .highlight-box {
+        background: var(--card-bg);
+        border: 1px solid var(--border-glass);
+        border-radius: 14px;
+        padding: 16px;
+      }
+
+      .highlight-box h4 {
+        font-size: 0.92rem;
+        color: #fff;
+        margin-bottom: 4px;
+      }
+
+      .highlight-box span {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+      }
+
+      /* =========================================
+         5. السوشيال ميديا العائمة
          ========================================= */
       .floating-social-stack {
         position: fixed;
@@ -704,732 +499,402 @@
       }
 
       .floating-btn {
-        width: 52px;
-        height: 52px;
+        width: 50px;
+        height: 50px;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         color: #fff;
         text-decoration: none;
-        backdrop-filter: blur(8px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
         border: 1px solid rgba(255, 255, 255, 0.2);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
-        transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       .floating-btn:hover {
         transform: scale(1.15) translateY(-3px);
       }
 
-      .btn-wa {
-        background: linear-gradient(135deg, #25d366, #128c7e);
-        box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
-      }
-
-      .btn-insta {
-        background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
-        box-shadow: 0 6px 20px rgba(253, 29, 29, 0.4);
-      }
-
-      .btn-fb {
-        background: linear-gradient(135deg, #1877f2, #0d5bbd);
-        box-shadow: 0 6px 20px rgba(24, 119, 242, 0.4);
-      }
-
-      .btn-tt {
-        background: linear-gradient(135deg, #000000, #25f4ee, #fe2c55);
-        box-shadow: 0 6px 20px rgba(37, 244, 238, 0.3);
-      }
+      .btn-wa { background: linear-gradient(135deg, #25d366, #128c7e); }
+      .btn-insta { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); }
+      .btn-fb { background: linear-gradient(135deg, #1877f2, #0d5bbd); }
+      .btn-tt { background: linear-gradient(135deg, #000, #25f4ee, #fe2c55); }
 
       /* =========================================
-         8. الشريط المتحرك بالألوان البطيخية الأصلية
+         6. المودال للتكبير
          ========================================= */
-      .ticker-container {
-        overflow: hidden;
-        background: rgba(8, 10, 16, 0.95);
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        padding: 14px 0;
-        white-space: nowrap;
-      }
-
-      .ticker-track {
-        display: inline-block;
-        animation: marquee 24s linear infinite;
-      }
-
-      .ticker-track span {
-        display: inline-block;
-        padding: 0 14px;
-        font-size: 0.92rem;
-      }
-
-      .t-pink {
-        color: var(--accent-red);
-        font-weight: 700;
-        text-shadow: 0 0 10px rgba(252, 108, 133, 0.5);
-      }
-
-      .t-green {
-        color: var(--accent-green);
-        font-weight: 700;
-        text-shadow: 0 0 10px rgba(50, 205, 50, 0.5);
-      }
-
-      .t-cyan {
-        color: var(--cyber-cyan);
-        font-weight: 700;
-        text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
-      }
-
-      .t-yellow {
-        color: #ffbd2e;
-        font-weight: 700;
-        text-shadow: 0 0 10px rgba(255, 189, 46, 0.5);
-      }
-
-      .t-white {
-        color: #ffffff;
-        font-weight: 600;
-      }
-
-      .t-dot {
-        color: rgba(255, 255, 255, 0.3);
-      }
-
-      @keyframes marquee {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-50%); }
-      }
-
-      /* =========================================
-         9. المودال للتكبير
-         ========================================= */
-      .image-modal {
-        display: none;
+      .media-modal {
         position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
+        inset: 0;
         background: rgba(0, 0, 0, 0.95);
-        backdrop-filter: blur(10px);
+        backdrop-filter: blur(14px);
         z-index: 10000;
+        display: none;
         align-items: center;
         justify-content: center;
       }
 
-      .image-modal.active {
+      .media-modal.active {
         display: flex;
       }
 
-      .modal-media-wrapper {
-        max-width: 88vw;
+      .modal-box {
+        max-width: 90vw;
         max-height: 85vh;
         display: flex;
         align-items: center;
         justify-content: center;
       }
 
-      .modal-content {
+      .modal-box img,
+      .modal-box video {
         max-width: 100%;
         max-height: 80vh;
         border-radius: 12px;
         object-fit: contain;
       }
 
-      .modal-arrow {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background: rgba(255, 255, 255, 0.12);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        color: #fff;
-        font-size: 2.2rem;
-        width: 56px;
-        height: 56px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        border-radius: 50%;
-        backdrop-filter: blur(8px);
-        user-select: none;
-      }
-
-      .modal-arrow:hover {
-        background: var(--accent-red);
-      }
-
-      .prev-btn { left: 24px; }
-      .next-btn { right: 24px; }
-
-      .close-modal {
+      .modal-close {
         position: absolute;
         top: 24px;
         right: 28px;
-        color: #fff;
         font-size: 40px;
+        color: #fff;
         cursor: pointer;
       }
 
-      @media (max-width: 768px) {
-        .hero h1 { font-size: 2.4rem; }
-        .case-study-card { padding: 22px; }
-        .case-study-card h3 { font-size: 1.6rem; }
-        .website-embed-wrapper iframe { height: 340px; }
-        .hamburger-btn { display: flex; }
-        .nav-links {
-          position: fixed;
-          top: 75px;
-          right: 0;
-          height: calc(100vh - 75px);
-          width: 240px;
-          background: rgba(6, 7, 10, 0.98);
-          border-left: 1px solid rgba(255, 255, 255, 0.08);
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 0;
-          padding: 20px 0;
-          transform: translateX(100%);
-          transition: transform 0.35s ease;
-          z-index: 1050;
-        }
-        .nav-links.open { transform: translateX(0); }
-        .nav-links a { display: block; width: 100%; padding: 16px 24px; }
-        .floating-social-stack { bottom: 18px; right: 18px; }
-        .floating-btn { width: 46px; height: 46px; }
+      @media (max-width: 960px) {
+        .case-studies-duo { grid-template-columns: 1fr; }
+        .work-tile { flex: 0 0 280px; height: 380px; }
       }
     </style>
   </head>
   <body>
-    <!-- خلفية أيقونات الشغل البلور الثابتة المتراصة -->
-    <div class="bg-work-wall">
-      <div class="bg-work-item"><img src="venom-hero-presentation.png" alt="" /></div>
-      <div class="bg-work-item"><img src="system-overload-poster.png.png" alt="" /></div>
-      <div class="bg-work-item"><img src="venom-creatine-tub.png" alt="" /></div>
-      <div class="bg-work-item"><img src="burger-box-matte.jpg.jpg" alt="" /></div>
-      <div class="bg-work-item"><img src="venom-neon-post.png" alt="" /></div>
-      <div class="bg-work-item"><img src="neon-sip-poster.png.png" alt="" /></div>
-      <div class="bg-work-item"><img src="venom-whey-tub.png" alt="" /></div>
-      <div class="bg-work-item"><img src="menu-brochure.png.png" alt="" /></div>
-      <div class="bg-work-item"><img src="venom-social-grid.png" alt="" /></div>
-      <div class="bg-work-item"><img src="cookie-poster.png.png" alt="" /></div>
-      <div class="bg-work-item"><img src="venom-logo.png" alt="" /></div>
-      <div class="bg-work-item"><img src="staff-cap-mockup.jpg.jpg" alt="" /></div>
-      <div class="bg-work-item"><img src="wark2.png" alt="" /></div>
-      <div class="bg-work-item"><img src="system-online-poster.png.png" alt="" /></div>
-      <div class="bg-work-item"><img src="wark4.png" alt="" /></div>
-      <div class="bg-work-item"><img src="brand-hero-visual.jpg.jpg" alt="" /></div>
-    </div>
-    <div class="bg-overlay-gradient"></div>
 
-    <!-- أزرار السوشيال ميديا العائمة فوق بعضها -->
+    <!-- السوشيال ميديا العائمة فوق بعضها -->
     <div class="floating-social-stack">
       <a href="https://wa.me/201018585432" target="_blank" class="floating-btn btn-wa" aria-label="WhatsApp">
-        <svg viewBox="0 0 32 32" width="26" height="26" fill="#ffffff">
-          <path d="M16.002 2C8.28 2 2 8.28 2 16c0 2.72.78 5.26 2.13 7.42L2.7 29.3a1 1 0 001.25 1.25l5.96-1.42A13.93 13.93 0 0016 30c7.72 0 14-6.28 14-14S23.72 2 16.002 2zm7.98 19.38c-.33.93-1.64 1.72-2.7 1.95-.72.16-1.66.29-4.83-1.02-4.06-1.68-6.68-5.8-6.88-6.07-.2-.27-1.65-2.2-1.65-4.2s1.05-2.98 1.42-3.39c.37-.41.81-.51 1.08-.51.27 0 .54 0 .78.01.25.02.59-.1.92.7.34.82 1.16 2.83 1.26 3.04.1.2.17.44.03.71-.13.27-.2.44-.4.67-.2.24-.42.53-.6.71-.2.2-.41.42-.18.82.24.4 1.05 1.73 2.25 2.8 1.55 1.38 2.85 1.81 3.26 2.01.41.2.65.17.89-.1.24-.27 1.02-1.19 1.29-1.6.27-.41.54-.34.92-.2.37.14 2.37 1.12 2.78 1.32.41.2.68.31.78.48.1.17.1.98-.23 1.91z"/>
-        </svg>
+        <svg viewBox="0 0 32 32" width="24" height="24" fill="#ffffff"><path d="M16.002 2C8.28 2 2 8.28 2 16c0 2.72.78 5.26 2.13 7.42L2.7 29.3a1 1 0 001.25 1.25l5.96-1.42A13.93 13.93 0 0016 30c7.72 0 14-6.28 14-14S23.72 2 16.002 2zm7.98 19.38c-.33.93-1.64 1.72-2.7 1.95-.72.16-1.66.29-4.83-1.02-4.06-1.68-6.68-5.8-6.88-6.07-.2-.27-1.65-2.2-1.65-4.2s1.05-2.98 1.42-3.39c.37-.41.81-.51 1.08-.51.27 0 .54 0 .78.01.25.02.59-.1.92.7.34.82 1.16 2.83 1.26 3.04.1.2.17.44.03.71-.13.27-.2.44-.4.67-.2.24-.42.53-.6.71-.2.2-.41.42-.18.82.24.4 1.05 1.73 2.25 2.8 1.55 1.38 2.85 1.81 3.26 2.01.41.2.65.17.89-.1.24-.27 1.02-1.19 1.29-1.6.27-.41.54-.34.92-.2.37.14 2.37 1.12 2.78 1.32.41.2.68.31.78.48.1.17.1.98-.23 1.91z"/></svg>
       </a>
-
       <a href="https://www.instagram.com/shefooo011?igsh=cWFzdnVlbXk4dWQz" target="_blank" class="floating-btn btn-insta" aria-label="Instagram">
-        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-        </svg>
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
       </a>
-
       <a href="https://www.facebook.com/share/1HTk7ZaRGQ/" target="_blank" class="floating-btn btn-fb" aria-label="Facebook">
-        <svg viewBox="0 0 24 24" width="24" height="24" fill="#ffffff">
-          <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
-        </svg>
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="#ffffff"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
       </a>
-
       <a href="https://www.tiktok.com/@s.h.r.e.e.f0?_r=1&_t=ZS-98jaZ600Aj7" target="_blank" class="floating-btn btn-tt" aria-label="TikTok">
-        <svg viewBox="0 0 24 24" width="24" height="24" fill="#ffffff">
-          <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.298-.002.595.042.88.13V9.4a6.33 6.33 0 0 0-1-.08A6.34 6.34 0 0 0 3 15.66a6.34 6.34 0 0 0 10.82 4.47 6.27 6.27 0 0 0 1.96-4.52V8.71a8.28 8.28 0 0 0 4.81 1.53v-3.55z"/>
-        </svg>
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="#ffffff"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.298-.002.595.042.88.13V9.4a6.33 6.33 0 0 0-1-.08A6.34 6.34 0 0 0 3 15.66a6.34 6.34 0 0 0 10.82 4.47 6.27 6.27 0 0 0 1.96-4.52V8.71a8.28 8.28 0 0 0 4.81 1.53v-3.55z"/></svg>
       </a>
     </div>
 
-    <header class="site-header" id="home">
-      <nav class="nav container">
-        <a href="#home" class="logo">Sherif <span>Ashraf</span></a>
-        <ul class="nav-links" id="navLinks">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#case-studies">Full Projects</a></li>
-          <li><a href="#portfolio">Media Assets</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </nav>
+    <!-- 1. شاشة البداية: سبوت لايت متعدد يفتح على الكلام -->
+    <header id="hero-reveal-stage">
+      <div class="spotlight-lens" id="spotlightLens">
+        <div class="spotlight-orb orb-1"></div>
+        <div class="spotlight-orb orb-2"></div>
+        <div class="spotlight-orb orb-final"></div>
+      </div>
+
+      <div class="hero-content">
+        <p class="hero-tagline">Full Production &mdash; Concept to Execution</p>
+        <h1 class="hero-title">SHERIF ASHRAF</h1>
+        <p class="hero-desc">
+          Graphic Designer, Video Editor & Content Creator who builds end-to-end brand worlds, high-impact 3D visuals, and dynamic digital media.
+        </p>
+        <div class="hero-actions">
+          <a href="#case-studies" class="btn btn-primary">Inspect Major Works ↓</a>
+          <a href="Sherif_Ashraf_CV.pdf" download="Sherif_Ashraf_CV.pdf" class="btn btn-glass">Download CV[cite: 1]</a>
+        </div>
+      </div>
     </header>
 
-    <main>
-      <section class="hero section container">
-        <p class="eyebrow">Creative Director &mdash; Full Brand Systems</p>
-        <h1>Hi, I'm Sherif Ashraf</h1>
-        <p class="subheadline" id="dynamic-role">
-          Brand Identity Designer | Video Editor | Digital Media & AI Creator
-        </p>
-        <div class="hero-btns">
-          <a href="#case-studies" class="btn">Explore Case Studies</a>
-          <a href="https://wa.me/201018585432" target="_blank" class="btn" style="background: linear-gradient(135deg, #25d366, #128c7e);">Chat on WhatsApp</a>
-          <a href="Sherif_Ashraf_CV.pdf" download="Sherif_Ashraf_CV.pdf" class="btn btn-outline">Download CV</a>
-        </div>
-      </section>
+    <!-- 2. قسم المشاريع الكبيرة: الاثنين جنب بعض (Side-by-Side) -->
+    <section class="section-layout container" id="case-studies">
+      <div class="section-headline">
+        <h2>Major Case Studies</h2>
+      </div>
 
-      <!-- =========================================
-           قسم دراسات الحالة والمشاريع الكاملة
-           ========================================= -->
-      <section class="section container" id="case-studies">
-        <h2>Full Case Studies</h2>
-        
-        <div class="case-studies-container">
-          <!-- مشروع 1: ZONE 99 -->
-          <article class="case-study-card">
-            <div class="case-study-badge">
-              <span>●</span> CASE STUDY 01 // SEASON 01: GENESIS
-              <span class="concept-tag">Concept Project</span>
-            </div>
-            
-            <h3>ZONE 99 — Cyber-Tech Restaurant & Digital Experience</h3>
-            
-            <p class="description">
-              An end-to-end experimental concept project fusing dark cyber-tech visual language with modern gourmet street food culture. Designed entirely as a self-directed identity simulation, building a coherent universe across print packaging, dynamic motion teasers, operational uniforms, and a fully interactive landing page prototype.
+      <div class="case-studies-duo">
+        <!-- كارت 1: ZONE 99 -->
+        <article class="duo-card zone-theme">
+          <div class="duo-visual">
+            <img src="system-overload-poster.png.png" alt="ZONE 99 Cyberpunk Burger" />
+            <div class="duo-badge badge-zone">CASE 01 // SEASON 01</div>
+          </div>
+          <div class="duo-body">
+            <h3>ZONE 99</h3>
+            <p>
+              A complete cyber-tech restaurant ecosystem fusing futuristic visual language with gourmet dark-kitchen culture. Complete identity, matte packaging, motion teasers, and a live web simulator.
             </p>
-
-            <div class="tools-used">
-              <span class="tool-pill"><span>⚡</span> Canva AI</span>
-              <span class="tool-pill"><span>⚡</span> Adobe Photoshop</span>
-              <span class="tool-pill"><span>⚡</span> Gemini AI</span>
-              <span class="tool-pill"><span>⚡</span> ElevenLabs Voice AI</span>
-              <span class="tool-pill"><span>⚡</span> UI/UX System Design</span>
+            <div class="duo-tools">
+              <span class="tool-tag">Canva AI</span>
+              <span class="tool-tag">Photoshop</span>
+              <span class="tool-tag">3D Packaging</span>
+              <span class="tool-tag">Interactive UI</span>
             </div>
-
-            <div class="website-embed-wrapper">
-              <div class="embed-header-bar">
-                <div class="embed-dots">
-                  <span style="background: #ff5f56;"></span>
-                  <span style="background: #ffbd2e;"></span>
-                  <span style="background: #27c93f;"></span>
-                </div>
-                <div class="embed-url">https://khalidmedia.my.canva.site/zone-99-cyber-burger-landing-page</div>
-                <div style="width: 30px;"></div>
-              </div>
-              <iframe 
-                src="https://khalidmedia.my.canva.site/zone-99-cyber-burger-landing-page" 
-                title="ZONE 99 Live Website Preview" 
-                loading="lazy">
-              </iframe>
-            </div>
-
-            <div class="case-study-actions">
-              <a href="https://khalidmedia.my.canva.site/zone-99-cyber-burger-landing-page" target="_blank" class="btn-cyber-primary">
-                Open Live Prototype ↗
-              </a>
-              <a href="#portfolio" class="btn btn-outline">
-                Browse Project Visual Assets ↓
+            <div class="duo-footer">
+              <a href="https://khalidmedia.my.canva.site/zone-99-cyber-burger-landing-page" target="_blank" class="btn btn-primary" style="background: linear-gradient(135deg, var(--cyber-cyan), #0088cc); color: #000;">
+                Launch Prototype ↗
               </a>
             </div>
-          </article>
+          </div>
+        </article>
 
-          <!-- مشروع 2: VENOM LABS -->
-          <article class="case-study-card venom-card">
-            <div class="case-study-badge venom-badge">
-              <span>●</span> CASE STUDY 02 // LAB-GRADE PERFORMANCE
-              <span class="concept-tag venom-concept">Concept Project</span>
-            </div>
-            
-            <h3>VENOM LABS — Elite Sports Nutrition System</h3>
-            
-            <p class="description">
-              An advanced sports supplement brand identity engineered under the doctrine of "Pure. Potent. Precise." Developed as a comprehensive conceptual design system featuring clinical dark-mode contrast, tactical wireframe schematics, and neon-lime reactive accents across high-purity Creatine Monohydrate and Whey Protein lines, supported by a fully operational digital store simulation.
+        <!-- كارت 2: VENOM LABS -->
+        <article class="duo-card venom-theme">
+          <div class="duo-visual">
+            <img src="venom-hero-presentation.png" alt="VENOM LABS Nutrition System" />
+            <div class="duo-badge badge-venom">CASE 02 // LAB GRADE</div>
+          </div>
+          <div class="duo-body">
+            <h3>VENOM LABS</h3>
+            <p>
+              High-potency sports nutrition brand built on "Pure. Potent. Precise." Clinical dark contrast, tactical wireframes, and reactive neon green across Creatine & Whey product lines.
             </p>
-
-            <div class="tools-used">
-              <span class="tool-pill venom-pill"><span>⚡</span> Canva AI</span>
-              <span class="tool-pill venom-pill"><span>⚡</span> Adobe Photoshop</span>
-              <span class="tool-pill venom-pill"><span>⚡</span> Gemini AI</span>
-              <span class="tool-pill venom-pill"><span>⚡</span> 3D Product Mockups</span>
-              <span class="tool-pill venom-pill"><span>⚡</span> UI/UX System Design</span>
+            <div class="duo-tools">
+              <span class="tool-tag">Canva AI</span>
+              <span class="tool-tag">Photoshop</span>
+              <span class="tool-tag">3D Tubs Mockup</span>
+              <span class="tool-tag">Store Prototype</span>
             </div>
-
-            <div class="website-embed-wrapper venom-embed">
-              <div class="embed-header-bar">
-                <div class="embed-dots">
-                  <span style="background: #ff5f56;"></span>
-                  <span style="background: #ffbd2e;"></span>
-                  <span style="background: #27c93f;"></span>
-                </div>
-                <div class="embed-url">https://khalidmedia.my.canva.site/venom-labs-landing-page</div>
-                <div style="width: 30px;"></div>
-              </div>
-              <iframe 
-                src="https://khalidmedia.my.canva.site/venom-labs-landing-page" 
-                title="VENOM LABS Live Website Preview" 
-                loading="lazy">
-              </iframe>
-            </div>
-
-            <div class="case-study-actions">
-              <a href="https://khalidmedia.my.canva.site/venom-labs-landing-page" target="_blank" class="btn-venom-primary">
-                Open Live Prototype ↗
-              </a>
-              <a href="#portfolio" class="btn btn-outline">
-                Browse Venom Labs Media ↓
+            <div class="duo-footer">
+              <a href="https://khalidmedia.my.canva.site/venom-labs-landing-page" target="_blank" class="btn btn-primary" style="background: linear-gradient(135deg, var(--accent-green), #1b851b); color: #000;">
+                Launch Prototype ↗
               </a>
             </div>
-          </article>
+          </div>
+        </article>
+      </div>
+    </section>
 
-          <!-- خانة محجوزة لمشروع مستقبلي 3 -->
-          <div class="case-study-placeholder">
-            <h4>CASE STUDY 03 // COMING SOON</h4>
-            <p>Commercial advertising & digital campaign system currently in development.</p>
+    <!-- 3. معرض الشغل: سكرول أفقي متفاعل مع حركة الماوس -->
+    <section class="horizontal-showcase-section">
+      <div class="section-headline">
+        <h2>Production Assets Gallery</h2>
+      </div>
+
+      <div class="gallery-viewport" id="galleryViewport">
+        <div class="gallery-track" id="galleryTrack">
+          <!-- كروت الأصول بحجم كبير وصور فقط -->
+          <div class="work-tile modal-trigger" data-type="image" data-src="venom-hero-presentation.png">
+            <img src="venom-hero-presentation.png" alt="VENOM LABS Key Visual" />
+          </div>
+
+          <div class="work-tile modal-trigger" data-type="image" data-src="system-overload-poster.png.png">
+            <img src="system-overload-poster.png.png" alt="The Glitch Burger" />
+          </div>
+
+          <div class="work-tile modal-trigger" data-type="video" data-src="logo-animation.mp4.mp4">
+            <video muted loop playsinline preload="metadata">
+              <source src="logo-animation.mp4.mp4" type="video/mp4" />
+            </video>
+            <div class="tile-video-indicator">▶ VIDEO REVEAL</div>
+          </div>
+
+          <div class="work-tile modal-trigger" data-type="image" data-src="venom-creatine-tub.png">
+            <img src="venom-creatine-tub.png" alt="Creatine Tub Mockup" />
+          </div>
+
+          <div class="work-tile modal-trigger" data-type="image" data-src="burger-box-matte.jpg.jpg">
+            <img src="burger-box-matte.jpg.jpg" alt="Matte Burger Box" />
+          </div>
+
+          <div class="work-tile modal-trigger" data-type="video" data-src="system-online-video.mp4.mp4">
+            <video muted loop playsinline preload="metadata">
+              <source src="system-online-video.mp4.mp4" type="video/mp4" />
+            </video>
+            <div class="tile-video-indicator">▶ MOTION TEASER</div>
+          </div>
+
+          <div class="work-tile modal-trigger" data-type="image" data-src="venom-whey-tub.png">
+            <img src="venom-whey-tub.png" alt="Whey Protein Tub" />
+          </div>
+
+          <div class="work-tile modal-trigger" data-type="image" data-src="neon-sip-poster.png.png">
+            <img src="neon-sip-poster.png.png" alt="Neon Sip Mixology" />
+          </div>
+
+          <div class="work-tile modal-trigger" data-type="video" data-src="neon-sip-video.mp4">
+            <video muted loop playsinline preload="metadata">
+              <source src="neon-sip-video.mp4" type="video/mp4" />
+            </video>
+            <div class="tile-video-indicator">▶ DRINK MOTION</div>
+          </div>
+
+          <div class="work-tile modal-trigger" data-type="image" data-src="venom-neon-post.png">
+            <img src="venom-neon-post.png" alt="Pure Potent Precise" />
+          </div>
+
+          <div class="work-tile modal-trigger" data-type="image" data-src="menu-brochure.png.png">
+            <img src="menu-brochure.png.png" alt="Menu Architecture" />
+          </div>
+
+          <div class="work-tile modal-trigger" data-type="image" data-src="venom-social-grid.png">
+            <img src="venom-social-grid.png" alt="Social Media Board" />
+          </div>
+
+          <div class="work-tile modal-trigger" data-type="image" data-src="cookie-poster.png.png">
+            <img src="cookie-poster.png.png" alt="Zero-Day Cookie" />
+          </div>
+
+          <div class="work-tile modal-trigger" data-type="image" data-src="venom-logo.png">
+            <img src="venom-logo.png" alt="Venom Fang Emblem" />
+          </div>
+
+          <div class="work-tile modal-trigger" data-type="image" data-src="wark2.png">
+            <img src="wark2.png" alt="3D Commercial Artwork" />
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- =========================================
-           قسم معرض الميديا والتصميمات الفردية (الصور فقط)
-           ========================================= -->
-      <section class="portfolio section" id="portfolio">
-        <div class="container">
-          <h2>Media & Assets Showcase</h2>
-          
-          <div class="portfolio-grid">
-            <!-- أصول VENOM LABS -->
-            <article class="portfolio-item gallery-item" data-type="image" data-src="venom-hero-presentation.png">
-              <div class="img-thumbnail-box">
-                <img src="venom-hero-presentation.png" alt="VENOM LABS Key Presentation" />
-              </div>
-            </article>
-
-            <article class="portfolio-item gallery-item" data-type="image" data-src="venom-creatine-tub.png">
-              <div class="img-thumbnail-box">
-                <img src="venom-creatine-tub.png" alt="Creatine Monohydrate Tub" />
-              </div>
-            </article>
-
-            <article class="portfolio-item gallery-item" data-type="image" data-src="venom-whey-tub.png">
-              <div class="img-thumbnail-box">
-                <img src="venom-whey-tub.png" alt="Whey Protein Tub Wireframe" />
-              </div>
-            </article>
-
-            <article class="portfolio-item gallery-item" data-type="image" data-src="venom-neon-post.png">
-              <div class="img-thumbnail-box">
-                <img src="venom-neon-post.png" alt="Pure Potent Precise Spotlight" />
-              </div>
-            </article>
-
-            <article class="portfolio-item gallery-item" data-type="image" data-src="venom-social-grid.png">
-              <div class="img-thumbnail-box">
-                <img src="venom-social-grid.png" alt="Multi-Frame Social Board" />
-              </div>
-            </article>
-
-            <article class="portfolio-item gallery-item" data-type="image" data-src="venom-logo.png">
-              <div class="img-thumbnail-box">
-                <img src="venom-logo.png" alt="Venom Fang Emblem Concept" />
-              </div>
-            </article>
-
-            <!-- أصول ZONE 99 والفيديوهات -->
-            <article class="portfolio-item gallery-item" data-type="video" data-src="logo-animation.mp4.mp4">
-              <div class="video-container">
-                <video muted loop playsinline width="100%">
-                  <source src="logo-animation.mp4.mp4" type="video/mp4" />
-                </video>
-                <div class="play-overlay">▶ Logo Reveal</div>
-              </div>
-            </article>
-
-            <article class="portfolio-item gallery-item" data-type="video" data-src="system-online-video.mp4.mp4">
-              <div class="video-container">
-                <video muted loop playsinline width="100%">
-                  <source src="system-online-video.mp4.mp4" type="video/mp4" />
-                </video>
-                <div class="play-overlay">▶ Motion Teaser</div>
-              </div>
-            </article>
-
-            <article class="portfolio-item gallery-item" data-type="video" data-src="neon-sip-video.mp4">
-              <div class="video-container">
-                <video muted loop playsinline width="100%">
-                  <source src="neon-sip-video.mp4" type="video/mp4" />
-                </video>
-                <div class="play-overlay">▶ Neon Sip Video</div>
-              </div>
-            </article>
-
-            <article class="portfolio-item gallery-item" data-type="image" data-src="system-online-poster.png.png">
-              <div class="img-thumbnail-box">
-                <img src="system-online-poster.png.png" alt="ZONE 99 Launch Poster" />
-              </div>
-            </article>
-
-            <article class="portfolio-item gallery-item" data-type="image" data-src="system-overload-poster.png.png">
-              <div class="img-thumbnail-box">
-                <img src="system-overload-poster.png.png" alt="Glitch Burger Key Visual" />
-              </div>
-            </article>
-
-            <article class="portfolio-item gallery-item" data-type="image" data-src="neon-sip-poster.png.png">
-              <div class="img-thumbnail-box">
-                <img src="neon-sip-poster.png.png" alt="Neon Sip Poster" />
-              </div>
-            </article>
-
-            <article class="portfolio-item gallery-item" data-type="image" data-src="menu-brochure.png.png">
-              <div class="img-thumbnail-box">
-                <img src="menu-brochure.png.png" alt="Menu Brochure C-Fold" />
-              </div>
-            </article>
-
-            <article class="portfolio-item gallery-item" data-type="image" data-src="burger-box-matte.jpg.jpg">
-              <div class="img-thumbnail-box">
-                <img src="burger-box-matte.jpg.jpg" alt="Cyber Packaging Matte Box" />
-              </div>
-            </article>
-
-            <article class="portfolio-item gallery-item" data-type="image" data-src="burger-box-kraft.jpg.jpg">
-              <div class="img-thumbnail-box">
-                <img src="burger-box-kraft.jpg.jpg" alt="Tactile Packaging Kraft Edition" />
-              </div>
-            </article>
-
-            <article class="portfolio-item gallery-item" data-type="image" data-src="staff-cap-mockup.jpg.jpg">
-              <div class="img-thumbnail-box">
-                <img src="staff-cap-mockup.jpg.jpg" alt="Tactical Crew Cap" />
-              </div>
-            </article>
-
-            <article class="portfolio-item gallery-item" data-type="image" data-src="cookie-poster.png.png">
-              <div class="img-thumbnail-box">
-                <img src="cookie-poster.png.png" alt="Zero-Day Cookie Promo" />
-              </div>
-            </article>
-
-            <article class="portfolio-item gallery-item" data-type="image" data-src="brand-hero-visual.jpg.jpg">
-              <div class="img-thumbnail-box">
-                <img src="brand-hero-visual.jpg.jpg" alt="Brand Hero Visual" />
-              </div>
-            </article>
-
-            <article class="portfolio-item gallery-item" data-type="video" data-src="wark3.mp4">
-              <div class="video-container">
-                <video muted loop playsinline width="100%">
-                  <source src="wark3.mp4" type="video/mp4" />
-                </video>
-                <div class="play-overlay">▶ Commercial Edit</div>
-              </div>
-            </article>
-
-            <article class="portfolio-item gallery-item" data-type="image" data-src="wark2.png">
-              <div class="img-thumbnail-box">
-                <img src="wark2.png" alt="Commercial Design Project 1" />
-              </div>
-            </article>
-
-            <article class="portfolio-item gallery-item" data-type="image" data-src="wark4.png">
-              <div class="img-thumbnail-box">
-                <img src="wark4.png" alt="Commercial Design Project 2" />
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- =========================================
-           قسم About Me (بالنص المطلوب بدقة)
-           ========================================= -->
-      <section class="about section" id="about">
-        <div class="container">
+    <!-- 4. سكشن About Me بالنص الدقيق -->
+    <section class="section-layout container" id="about">
+      <div class="about-container">
+        <div class="section-headline">
           <h2>About Me</h2>
-          <p>
-            I'm Sherif Ashraf &mdash; a graphic designer, video editor, and content creator who treats every project as a full production, not just a task. On the design side, I build brand visuals, 3D commercial graphics, and promotional artwork that give products and businesses a real identity. On the editing side, I handle dynamic cuts, pacing, sound design, and color &mdash; turning raw footage into content that actually holds attention.
-          </p>
-          <p style="margin-top: 18px;">
-            I don't stop at the technical work either. I've run media buying, marketing, editing, and design for the same project at the same time, which means I understand how a piece of content performs, not just how it looks. And with a background in acting and directing, I bring a director's eye for framing and real, unscripted charisma in front of the camera &mdash; so anything I'm part of, whether behind the lens or in front of it, comes out natural.
-          </p>
-          <p class="closing-lead">
-            From the first idea to the final export, I like owning the whole process.
-          </p>
-          
-          <div class="about-highlights">
-            <div class="tag">Content Creation<span>UGC, on-camera, natural reactions</span></div>
-            <div class="tag">Video Editing<span>Dynamic cuts, sound design & pacing</span></div>
-            <div class="tag">Graphic Design<span>3D product visuals & full branding</span></div>
-            <div class="tag">Directing & Acting<span>Framing, presence & authenticity</span></div>
-            <div class="tag">Media Buying & Marketing<span>End-to-end campaign execution</span></div>
+        </div>
+        <p>
+          I'm Sherif Ashraf — a graphic designer, video editor, and content creator who treats every project as a full production, not just a task.
+        </p>
+        <p>
+          On the design side, I build brand visuals, 3D commercial graphics, and promotional artwork that give products and businesses a real identity. On the editing side, I handle dynamic cuts, pacing, sound design, and color — turning raw footage into content that actually holds attention.
+        </p>
+        <p>
+          I don't stop at the technical work either. I've run media buying, marketing, editing, and design for the same project at the same time, which means I understand how a piece of content performs, not just how it looks. And with a background in acting and directing, I bring a director's eye for framing and real, unscripted charisma in front of the camera — so anything I'm part of, whether behind the lens or in front of it, comes out natural.
+        </p>
+        <p class="about-lead-bold">
+          From the first idea to the final export, I like owning the whole process.
+        </p>
+
+        <div class="highlights-row">
+          <div class="highlight-box">
+            <h4>Content Creation</h4>
+            <span>UGC, on-camera, natural charisma</span>
+          </div>
+          <div class="highlight-box">
+            <h4>Video Editing</h4>
+            <span>Dynamic cuts, sound design & pacing</span>
+          </div>
+          <div class="highlight-box">
+            <h4>Graphic Design</h4>
+            <span>3D commercial artwork & full branding</span>
+          </div>
+          <div class="highlight-box">
+            <h4>Directing & Acting</h4>
+            <span>Camera framing & unscripted presence</span>
           </div>
         </div>
-      </section>
-
-      <section class="contact section" id="contact">
-        <div class="container">
-          <h2>Contact Me</h2>
-          
-          <div class="contact-info-box">
-            <p><strong>Direct Email:</strong> <a href="mailto:ashreef988@gmail.com">ashreef988@gmail.com</a></p>
-            <p><strong>WhatsApp:</strong> <a href="https://wa.me/201018585432" target="_blank">01018585432</a></p>
-          </div>
-
-          <form class="compact-form" action="https://formspree.io/f/myegkqkd" method="POST">
-            <label>
-              Your Name
-              <input type="text" name="name" required placeholder="Your name" />
-            </label>
-            <label>
-              Your Email
-              <input type="email" name="email" required placeholder="Your email" />
-            </label>
-            <label>
-              Message
-              <textarea name="message" rows="3" required placeholder="Write your message..."></textarea>
-            </label>
-            <button type="submit" class="btn">Send Message</button>
-          </form>
-        </div>
-      </section>
-    </main>
-
-    <!-- الشريط المتحرك الملون بالألوان البطيخية والنيون -->
-    <div class="ticker-container">
-      <div class="ticker-track">
-        <span class="t-pink">⭐ ashreef988@gmail.com</span>
-        <span class="t-dot">•</span>
-        <span class="t-green">📱 WhatsApp: 01018585432</span>
-        <span class="t-dot">•</span>
-        <span class="t-cyan">📷 Instagram: @shefooo011</span>
-        <span class="t-dot">•</span>
-        <span class="t-yellow">🎵 TikTok: @s.h.r.e.e.f0</span>
-        <span class="t-dot">•</span>
-        <span class="t-green">🎬 Full Production Specialist</span>
-        <span class="t-dot">•</span>
-        <span class="t-pink">⚡ Let's Create Together!</span>
-        <span class="t-dot">•</span>
-        <span class="t-pink">⭐ ashreef988@gmail.com</span>
-        <span class="t-dot">•</span>
-        <span class="t-green">📱 WhatsApp: 01018585432</span>
-        <span class="t-dot">•</span>
-        <span class="t-cyan">📷 Instagram: @shefooo011</span>
-        <span class="t-dot">•</span>
-        <span class="t-yellow">🎵 TikTok: @s.h.r.e.e.f0</span>
-        <span class="t-dot">•</span>
-        <span class="t-green">🎬 Full Production Specialist</span>
-        <span class="t-dot">•</span>
-        <span class="t-pink">⚡ Let's Create Together!</span>
       </div>
-    </div>
+    </section>
 
-    <!-- نافذة المودال للتكبير -->
-    <div class="image-modal" id="imageModal">
-      <span class="close-modal">&times;</span>
-      <button class="modal-arrow prev-btn" id="modalPrev" aria-label="Previous">&#10094;</button>
-      <div class="modal-media-wrapper">
-        <img class="modal-content" id="modalImg" alt="Enlarged View" style="display:none;" />
-        <video class="modal-content" id="modalVideo" controls style="display:none;"></video>
+    <!-- المودال للشاشة الكاملة -->
+    <div class="media-modal" id="mediaModal">
+      <span class="modal-close" id="modalClose">&times;</span>
+      <div class="modal-box">
+        <img id="mImg" src="" alt="Enlarged" style="display:none;" />
+        <video id="mVideo" controls style="display:none;"></video>
       </div>
-      <button class="modal-arrow next-btn" id="modalNext" aria-label="Next">&#10095;</button>
     </div>
 
     <script>
-      /* مشغل المودال للوسائط */
-      document.addEventListener("DOMContentLoaded", () => {
-        const modal = document.getElementById("imageModal");
-        const modalImg = document.getElementById("modalImg");
-        const modalVideo = document.getElementById("modalVideo");
-        const closeModal = document.querySelector(".close-modal");
-        const prevBtn = document.getElementById("modalPrev");
-        const nextBtn = document.getElementById("modalNext");
+      /* 1. نظام أنيميشن الإنترو والدوائر المتتابعة */
+      window.addEventListener("DOMContentLoaded", () => {
+        const stage = document.getElementById("hero-reveal-stage");
+        
+        // بعد ثانيتين تظهر الدائرة الثالثة لتفتح الشاشة بالكامل
+        setTimeout(() => {
+          stage.classList.add("spotlight-unlocked");
+        }, 2200);
+      });
 
-        const galleryItems = Array.from(document.querySelectorAll(".gallery-item"));
-        let currentIndex = 0;
+      /* 2. تحريك المعرض الأفقي بنعومة فائقة مع حركة الماوس والسحب */
+      const viewport = document.getElementById("galleryViewport");
+      const track = document.getElementById("galleryTrack");
 
-        function showMedia(index) {
-          if (index < 0) index = galleryItems.length - 1;
-          if (index >= galleryItems.length) index = 0;
-          currentIndex = index;
+      let isDown = false;
+      let startX;
+      let scrollLeftPos = 0;
+      let targetTranslate = 0;
+      let currentTranslate = 0;
 
-          const item = galleryItems[currentIndex];
-          const type = item.getAttribute("data-type");
-          const src = item.getAttribute("data-src");
+      // سكرول متفاعل مع موضع الماوس في الشاشة
+      window.addEventListener("mousemove", (e) => {
+        if (isDown) return;
+        const maxScroll = track.scrollWidth - window.innerWidth;
+        const mouseRatio = e.clientX / window.innerWidth;
+        targetTranslate = -mouseRatio * maxScroll;
+      });
+
+      function animateGallery() {
+        currentTranslate += (targetTranslate - currentTranslate) * 0.08;
+        if (!isDown) {
+          track.style.transform = `translateX(${currentTranslate}px)`;
+        }
+        requestAnimationFrame(animateGallery);
+      }
+      animateGallery();
+
+      // إمكانية السحب اليدوي بالماوس أو اللمس (Touch & Drag)
+      viewport.addEventListener("mousedown", (e) => {
+        isDown = true;
+        startX = e.pageX - track.offsetLeft;
+        scrollLeftPos = currentTranslate;
+      });
+
+      window.addEventListener("mouseup", () => {
+        isDown = false;
+      });
+
+      viewport.addEventListener("mousemove", (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - track.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        targetTranslate = scrollLeftPos + walk;
+      });
+
+      /* 3. مشغل المودال للوسائط */
+      const modal = document.getElementById("mediaModal");
+      const modalImg = document.getElementById("mImg");
+      const modalVid = document.getElementById("mVideo");
+      const modalClose = document.getElementById("modalClose");
+      const triggers = document.querySelectorAll(".modal-trigger");
+
+      triggers.forEach(t => {
+        t.addEventListener("click", () => {
+          const type = t.getAttribute("data-type");
+          const src = t.getAttribute("data-src");
 
           if (type === "video") {
             modalImg.style.display = "none";
-            modalVideo.style.display = "block";
-            modalVideo.src = src;
-            modalVideo.currentTime = 0;
-            modalVideo.play();
+            modalVid.style.display = "block";
+            modalVid.src = src;
+            modalVid.play();
           } else {
-            modalVideo.pause();
-            modalVideo.style.display = "none";
+            modalVid.pause();
+            modalVid.style.display = "none";
             modalImg.style.display = "block";
             modalImg.src = src;
           }
           modal.classList.add("active");
-        }
-
-        galleryItems.forEach((item, index) => {
-          item.addEventListener("click", (e) => {
-            if (e.target.tagName === 'A') return;
-            showMedia(index);
-          });
         });
+      });
 
-        function hideModal() {
-          modal.classList.remove("active");
-          modalVideo.pause();
-          modalVideo.src = "";
-          modalImg.src = "";
-        }
+      function closeModal() {
+        modal.classList.remove("active");
+        modalVid.pause();
+        modalVid.src = "";
+        modalImg.src = "";
+      }
 
-        closeModal.addEventListener("click", hideModal);
-
-        modal.addEventListener("click", (e) => {
-          if (e.target === modal) hideModal();
-        });
-
-        prevBtn.addEventListener("click", (e) => {
-          e.stopPropagation();
-          showMedia(currentIndex - 1);
-        });
-
-        nextBtn.addEventListener("click", (e) => {
-          e.stopPropagation();
-          showMedia(currentIndex + 1);
-        });
-
-        document.addEventListener("keydown", (e) => {
-          if (!modal.classList.contains("active")) return;
-          if (e.key === "Escape") hideModal();
-          if (e.key === "ArrowLeft") showMedia(currentIndex - 1);
-          if (e.key === "ArrowRight") showMedia(currentIndex + 1);
-        });
-
-        const hamburgerBtn = document.getElementById("hamburgerBtn");
-        const navLinks = document.getElementById("navLinks");
-
-        hamburgerBtn.addEventListener("click", () => {
-          hamburgerBtn.classList.toggle("active");
-          navLinks.classList.toggle("open");
-        });
-
-        navLinks.querySelectorAll("a").forEach((link) => {
-          link.addEventListener("click", () => {
-            hamburgerBtn.classList.remove("active");
-            navLinks.classList.remove("open");
-          });
-        });
+      modalClose.addEventListener("click", closeModal);
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeModal();
       });
     </script>
   </body>
