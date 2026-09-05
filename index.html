@@ -272,4 +272,434 @@
         position: absolute;
         bottom: 14px;
         left: 14px;
-        background: rgba(0, 0,
+        background: rgba(0, 0, 0, 0.7);
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        color: #fff;
+        backdrop-filter: blur(4px);
+      }
+
+      /* 5. ABOUT ME SECTION */
+      .about-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border-glass);
+        border-radius: 20px;
+        padding: 40px;
+        max-width: 900px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .about-card p {
+        font-size: 1.05rem;
+        color: var(--text-dim);
+        margin-bottom: 16px;
+      }
+
+      .about-card p strong {
+        color: #fff;
+      }
+
+      /* 6. CONTACT & FORMSPREE */
+      .contact-card {
+        max-width: 480px;
+        margin: 0 auto;
+        background: var(--card-bg);
+        border: 1px solid var(--border-glass);
+        border-radius: 20px;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .contact-card label {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        font-size: 0.85rem;
+        color: var(--text-dim);
+        text-align: left;
+      }
+
+      .contact-card input,
+      .contact-card textarea {
+        background: rgba(5, 6, 8, 0.8);
+        border: 1px solid var(--border-glass);
+        padding: 12px 14px;
+        border-radius: 10px;
+        color: #fff;
+        font-family: inherit;
+      }
+
+      .contact-card input:focus,
+      .contact-card textarea:focus {
+        outline: none;
+        border-color: var(--gold-glow);
+      }
+
+      /* 7. شريط متحرك ملون */
+      .ticker-bar {
+        overflow: hidden;
+        background: #000;
+        border-top: 1px solid var(--border-glass);
+        border-bottom: 1px solid var(--border-glass);
+        padding: 12px 0;
+        white-space: nowrap;
+        margin-top: 80px;
+      }
+
+      .ticker-move {
+        display: inline-block;
+        animation: tickScroll 25s linear infinite;
+      }
+
+      .ticker-move span {
+        margin: 0 16px;
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+
+      .c-gold { color: var(--gold-light); }
+      .c-green { color: var(--accent-green); }
+      .c-pink { color: var(--accent-pink); }
+      .c-cyan { color: var(--cyber-cyan); }
+
+      @keyframes tickScroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+
+      /* 8. زرارات السوشيال العائمة */
+      .social-stack {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        z-index: 1000;
+      }
+
+      .s-btn {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: transform 0.2s ease;
+      }
+
+      .s-btn:hover {
+        transform: scale(1.15);
+      }
+
+      .s-wa { background: #25d366; }
+      .s-ig { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); }
+      .s-fb { background: #1877f2; }
+      .s-tt { background: #000; }
+
+      /* 9. المودال مع أسهم التنقل */
+      .modal-stage {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.95);
+        z-index: 10000;
+        display: none;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal-stage.active { display: flex; }
+
+      .modal-box {
+        max-width: 90vw;
+        max-height: 85vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal-box img, .modal-box video {
+        max-width: 100%;
+        max-height: 80vh;
+        border-radius: 12px;
+      }
+
+      .modal-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 2rem;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid var(--border-glass);
+        color: #fff;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+
+      .arrow-left { left: 20px; }
+      .arrow-right { right: 20px; }
+      .modal-x {
+        position: absolute;
+        top: 24px;
+        right: 28px;
+        font-size: 38px;
+        color: #fff;
+        cursor: pointer;
+      }
+
+      @media (max-width: 850px) {
+        .case-studies-duo { grid-template-columns: 1fr; }
+        .custom-cursor-glow { display: none; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="custom-cursor-glow" id="cursorGlow"></div>
+
+    <div class="social-stack">
+      <a href="https://wa.me/201018585432" target="_blank" class="s-btn s-wa" aria-label="WhatsApp">
+        <svg viewBox="0 0 32 32" width="22" height="22" fill="#fff"><path d="M16 2C8.3 2 2 8.3 2 16c0 2.7.8 5.3 2.1 7.4L2.7 29.3a1 1 0 001.3 1.3l5.9-1.4A13.9 13.9 0 0016 30c7.7 0 14-6.3 14-14S23.7 2 16 2zm8 19.4c-.3.9-1.6 1.7-2.7 2-.7.1-1.7.3-4.8-1-4.1-1.7-6.7-5.8-6.9-6.1-.2-.3-1.6-2.2-1.6-4.2s1-3 1.4-3.4c.4-.4.8-.5 1.1-.5.3 0 .5 0 .8 0 .3 0 .6-.1.9.7.3.8 1.2 2.8 1.3 3 .1.2.2.4 0 .7-.1.3-.2.4-.4.7-.2.2-.4.5-.6.7-.2.2-.4.4-.2.8.2.4 1 1.7 2.2 2.8 1.6 1.4 2.9 1.8 3.3 2 .4.2.7.2.9-.1.2-.3 1-1.2 1.3-1.6.3-.4.5-.3.9-.2.4.1 2.4 1.1 2.8 1.3.4.2.7.3.8.5.1.2.1 1-.2 1.9z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/shefooo011?igsh=cWFzdnVlbXk4dWQz" target="_blank" class="s-btn s-ig" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+      </a>
+      <a href="https://www.facebook.com/share/1HTk7ZaRGQ/" target="_blank" class="s-btn s-fb" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="#fff"><path d="M22 12c0-5.5-4.5-10-10-10S2 6.5 2 12c0 5 3.7 9.1 8.4 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7C18.3 21.1 22 17 22 12z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@s.h.r.e.e.f0?_r=1&_t=ZS-98jaZ600Aj7" target="_blank" class="s-btn s-tt" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="#fff"><path d="M19.6 6.7a4.8 4.8 0 0 1-3.8-4.3V2h-3.4v13.7a2.9 2.9 0 0 1-5.2 1.7 2.9 2.9 0 0 1 2.3-4.6c.3 0 .6 0 .9.1V9.4a6.3 6.3 0 0 0-1-.1A6.3 6.3 0 0 0 3 15.7a6.3 6.3 0 0 0 10.8 4.4 6.3 6.3 0 0 0 2-4.5V8.7a8.3 8.3 0 0 0 4.8 1.5V6.7z"/></svg>
+      </a>
+    </div>
+
+    <header class="hero-section">
+      <h1 class="glowing-brand-title">SHERIF ASHRAF</h1>
+      <p class="hero-sub">Creative Director & Full Production Specialist</p>
+      <div class="hero-buttons">
+        <a href="#projects" class="btn btn-gold">View Work ↓</a>
+        <a href="Sherif_Ashraf_CV.pdf" download="Sherif_Ashraf_CV.pdf" class="btn btn-glass">Download CV</a>
+      </div>
+    </header>
+
+    <section class="container">
+      <div class="section-headline">
+        <h2>What I Deliver</h2>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-num">01</div>
+          <h3>Video Editing</h3>
+          <p>Dynamic cuts, pacing, sound design, and color grading built to hold retention from second zero.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-num">02</div>
+          <h3>Motion Graphics</h3>
+          <p>Sleek title typography, VFX enhancements, and visual assets engineered for seamless conversions.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-num">03</div>
+          <h3>Short-Form Content</h3>
+          <p>Hook-first TikToks, Reels, and UGC that perform consistently across modern algorithms.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-num">04</div>
+          <h3>Graphic Design</h3>
+          <p>End-to-end branding, 3D commercial product packaging, and high-CTR social posters.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" id="projects">
+      <div class="section-headline">
+        <h2>Featured Projects</h2>
+      </div>
+      <div class="case-studies-duo">
+        <div class="duo-card">
+          <div class="duo-visual">
+            <img src="system-overload-poster.png.png" alt="ZONE 99" />
+          </div>
+          <div class="duo-body">
+            <h3>ZONE 99</h3>
+            <p>Cyberpunk dark kitchen brand identity, 3D matte burger packaging, teasers, and a live web prototype.</p>
+            <a href="https://khalidmedia.my.canva.site/zone-99-cyber-burger-landing-page" target="_blank" class="btn btn-gold">Launch Experience ↗</a>
+          </div>
+        </div>
+
+        <div class="duo-card">
+          <div class="duo-visual">
+            <img src="venom-hero-presentation.png" alt="VENOM LABS" />
+          </div>
+          <div class="duo-body">
+            <h3>VENOM LABS</h3>
+            <p>High-potency clinical nutrition branding, custom creatine/whey mockups, and responsive landing interface.</p>
+            <a href="https://khalidmedia.my.canva.site/venom-labs-landing-page" target="_blank" class="btn btn-gold">Launch Experience ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="section-headline">
+        <h2>Short-Form & Visual Assets</h2>
+      </div>
+      <div class="shorts-viewport" id="shortsTrack">
+        <div class="short-card modal-click" data-type="video" data-src="logo-animation.mp4.mp4">
+          <video muted loop playsinline preload="metadata"><source src="logo-animation.mp4.mp4" type="video/mp4" /></video>
+          <div class="short-badge">▶ Video Reveal</div>
+        </div>
+        <div class="short-card modal-click" data-type="video" data-src="system-online-video.mp4.mp4">
+          <video muted loop playsinline preload="metadata"><source src="system-online-video.mp4.mp4" type="video/mp4" /></video>
+          <div class="short-badge">▶ Motion Teaser</div>
+        </div>
+        <div class="short-card modal-click" data-type="video" data-src="neon-sip-video.mp4">
+          <video muted loop playsinline preload="metadata"><source src="neon-sip-video.mp4" type="video/mp4" /></video>
+          <div class="short-badge">▶ Drink Motion</div>
+        </div>
+        <div class="short-card modal-click" data-type="image" data-src="burger-box-matte.jpg.jpg">
+          <img src="burger-box-matte.jpg.jpg" alt="Matte Box" />
+          <div class="short-badge">Artwork</div>
+        </div>
+        <div class="short-card modal-click" data-type="image" data-src="venom-creatine-tub.png">
+          <img src="venom-creatine-tub.png" alt="Creatine Tub" />
+          <div class="short-badge">3D Mockup</div>
+        </div>
+        <div class="short-card modal-click" data-type="image" data-src="venom-whey-tub.png">
+          <img src="venom-whey-tub.png" alt="Whey Tub" />
+          <div class="short-badge">3D Mockup</div>
+        </div>
+        <div class="short-card modal-click" data-type="image" data-src="cookie-poster.png.png">
+          <img src="cookie-poster.png.png" alt="Cookie Poster" />
+          <div class="short-badge">Poster</div>
+        </div>
+        <div class="short-card modal-click" data-type="image" data-src="wark2.png">
+          <img src="wark2.png" alt="3D Commercial" />
+          <div class="short-badge">3D Render</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" style="margin-top: 60px;">
+      <div class="about-card">
+        <h2 style="margin-bottom: 20px; font-size: 2.2rem;">About Me</h2>
+        <p>I'm Sherif Ashraf — a graphic designer, video editor, and content creator who treats every project as a full production, not just a task.</p>
+        <p>On the design side, I build brand visuals, 3D commercial graphics, and promotional artwork that give products and businesses a real identity. On the editing side, I handle dynamic cuts, pacing, sound design, and color — turning raw footage into content that actually holds attention.</p>
+        <p>I don't stop at the technical work either. I've run media buying, marketing, editing, and design for the same project at the same time, which means I understand how a piece of content performs, not just how it looks. And with a background in acting and directing, I bring a director's eye for framing and real, unscripted charisma in front of the camera.</p>
+        <p><strong>From the first idea to the final export, I like owning the whole process.</strong></p>
+      </div>
+    </section>
+
+    <section class="container" style="margin-top: 70px;">
+      <div class="section-headline">
+        <h2>Let's Connect</h2>
+      </div>
+      <form class="contact-card" action="https://formspree.io/f/myegkqkd" method="POST">
+        <label>Name<input type="text" name="name" required placeholder="Your Name" /></label>
+        <label>Email<input type="email" name="email" required placeholder="Your Email" /></label>
+        <label>Message<textarea name="message" rows="3" required placeholder="Project details..."></textarea></label>
+        <button type="submit" class="btn btn-gold" style="justify-content: center;">Send Message</button>
+      </form>
+    </section>
+
+    <div class="ticker-bar">
+      <div class="ticker-move">
+        <span class="c-gold">⭐ ashreef988@gmail.com</span>•
+        <span class="c-green">📱 WhatsApp: 01018585432</span>•
+        <span class="c-cyan">📷 Instagram: @shefooo011</span>•
+        <span class="c-pink">🎵 TikTok: @s.h.r.e.e.f0</span>•
+        <span class="c-gold">🎬 Full Production Specialist</span>•
+        <span class="c-green">⚡ Let's Create Together!</span>•
+        <span class="c-gold">⭐ ashreef988@gmail.com</span>•
+        <span class="c-green">📱 WhatsApp: 01018585432</span>•
+        <span class="c-cyan">📷 Instagram: @shefooo011</span>•
+        <span class="c-pink">🎵 TikTok: @s.h.r.e.e.f0</span>•
+        <span class="c-gold">🎬 Full Production Specialist</span>•
+        <span class="c-green">⚡ Let's Create Together!</span>
+      </div>
+    </div>
+
+    <div class="modal-stage" id="mediaModal">
+      <span class="modal-x" id="modalClose">&times;</span>
+      <div class="modal-arrow arrow-left" id="mPrev">&#10094;</div>
+      <div class="modal-box">
+        <img id="mImg" src="" alt="View" style="display:none;" />
+        <video id="mVideo" controls style="display:none;"></video>
+      </div>
+      <div class="modal-arrow arrow-right" id="mNext">&#10095;</div>
+    </div>
+
+    <script>
+      // 1. مؤشر الماوس المضيء
+      const glow = document.getElementById("cursorGlow");
+      window.addEventListener("mousemove", (e) => {
+        glow.style.left = e.clientX + "px";
+        glow.style.top = e.clientY + "px";
+      });
+
+      // 2. تفعيل المودال وأسهم التنقل
+      const modal = document.getElementById("mediaModal");
+      const mImg = document.getElementById("mImg");
+      const mVideo = document.getElementById("mVideo");
+      const mClose = document.getElementById("modalClose");
+      const mPrev = document.getElementById("mPrev");
+      const mNext = document.getElementById("mNext");
+      const items = Array.from(document.querySelectorAll(".modal-click"));
+      let currentIndex = 0;
+
+      function displayItem(idx) {
+        if (idx < 0) idx = items.length - 1;
+        if (idx >= items.length) idx = 0;
+        currentIndex = idx;
+
+        const target = items[currentIndex];
+        const type = target.getAttribute("data-type");
+        const src = target.getAttribute("data-src");
+
+        if (type === "video") {
+          mImg.style.display = "none";
+          mVideo.style.display = "block";
+          mVideo.src = src;
+          mVideo.play();
+        } else {
+          mVideo.pause();
+          mVideo.style.display = "none";
+          mImg.style.display = "block";
+          mImg.src = src;
+        }
+        modal.classList.add("active");
+      }
+
+      items.forEach((item, i) => {
+        item.addEventListener("click", () => displayItem(i));
+      });
+
+      mPrev.addEventListener("click", (e) => { e.stopPropagation(); displayItem(currentIndex - 1); });
+      mNext.addEventListener("click", (e) => { e.stopPropagation(); displayItem(currentIndex + 1); });
+
+      function exitModal() {
+        modal.classList.remove("active");
+        mVideo.pause();
+        mVideo.src = "";
+        mImg.src = "";
+      }
+
+      mClose.addEventListener("click", exitModal);
+      modal.addEventListener("click", (e) => { if (e.target === modal) exitModal(); });
+      document.addEventListener("keydown", (e) => {
+        if (!modal.classList.contains("active")) return;
+        if (e.key === "Escape") exitModal();
+        if (e.key === "ArrowLeft") displayItem(currentIndex - 1);
+        if (e.key === "ArrowRight") displayItem(currentIndex + 1);
+      });
+    </script>
+  </body>
+</html>
